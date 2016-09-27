@@ -1,0 +1,4 @@
+
+This repository contains our guacamole app for Agora.
+
+The "settings-guac" directory holds backups of the settings files that are in /etc/guacamole

@@ -1,0 +1,10 @@
+Quentin Baker (qrb2)
+
+Final Project Proposal:
+
+I want to build a small stock market simulator game. I will use canvas 
+to generate a graph with somewhat predictable tendancies, then reveal 
+part of the graph to the user. The user will have the option to SKIP, 
+or BUY with 10,25,50 or 100 percent of the money they have. The rest of
+the graph will be revealed in increments, and at each increment they may
+either WAIT or SELL their stock. The goal will be to reach 1,000,000 dollars.

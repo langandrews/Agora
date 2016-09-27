@@ -1,0 +1,6 @@
+I am planing on making a Minesweeper program for my final project.
+I plan on having different levels that you can chose.
+board sizes raging from 5x5 to 15x15.
+bomb number raging from 5 to 25.
+If able I will have a timer to time your speed.
+If able I will have score chart with top previous scores.

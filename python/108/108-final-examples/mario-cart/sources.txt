@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/2138518/python-bind-allow-multiple-keys-to-be-pressed-simultaniously
+
+http://stackoverflow.com/questions/3380726/converting-a-rgb-color-tuple-to-a-six-digit-code-in-python

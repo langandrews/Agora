@@ -1,0 +1,1 @@
+This project will be an game revolving around birds. More specifically, the game will be an incremental game in which the player can click a button to recieve seeds, and use those seeds to "hire" birds that will bring them seeds over time. The objective of the game is to get as high of a seed-count as possible.

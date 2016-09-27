@@ -1,0 +1,38 @@
+<configs>
+    <config name='default1' protocol='vnc'>
+	<param name="hostname" value="localhost" />
+	<param name='port' value='60042'/>
+    </config>
+    <config name='default2' protocol='vnc'>
+	<param name="hostname" value="localhost" />
+	<param name='port' value='60043'/>
+    </config>
+    <config name='distrib.py-16555' protocol='vnc'>
+        <param name="hostname" value="localhost" />
+        <param name='port' value='5950' />
+    </config>
+    <config name='tkintertest2.py-16573' protocol='vnc'>
+        <param name="hostname" value="localhost" />
+        <param name='port' value='5951' />
+    </config>
+    <config name='distrib.py-16632' protocol='vnc'>
+        <param name="hostname" value="localhost" />
+        <param name='port' value='5952' />
+    </config>
+    <config name='distrib.py-16872' protocol='vnc'>
+        <param name="hostname" value="localhost" />
+        <param name='port' value='5953' />
+    </config>
+    <config name='tkintertest2.py-16892' protocol='vnc'>
+        <param name="hostname" value="localhost" />
+        <param name='port' value='5954' />
+    </config>
+    <config name='distrib.py-19510' protocol='vnc'>
+        <param name="hostname" value="localhost" />
+        <param name='port' value='5955' />
+    </config>
+    <config name='distrib.py-29236' protocol='vnc'>
+        <param name="hostname" value="localhost" />
+        <param name='port' value='5956' />
+    </config>
+</configs>
