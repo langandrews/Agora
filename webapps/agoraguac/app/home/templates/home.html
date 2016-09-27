@@ -1,0 +1,182 @@
+<!--
+   Copyright (C) 2015 Glyptodon LLC
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+   THE SOFTWARE.
+-->
+
+<div class="view" ng-class="{loading: !isLoaded()}">
+
+    <div class="connection-list-ui">
+
+	<!-- Agora -->
+	<div class="header">
+		<h2>Agora Connections</h2>
+		<guac-group-list-filter connection-groups="rootConnectionGroups"
+                	filtered-connection-groups="filteredRootConnectionGroups"
+	                placeholder="'HOME.FIELD_PLACEHOLDER_FILTER' | translate"
+        	        connection-properties="filteredConnectionProperties"
+                	connection-group-properties="filteredConnectionGroupProperties"></guac-group-list-filter>
+	</div>
+	<div class="all-connections">		
+		<!-- This program list should probably be more dynamic - there's a lot of repetition here..	Get rid of the commented img tag if it looks good up there ^ -->
+		<div><a id="program1" class="program-list-item" href="" ng-click="reload()">distrib.py</a>
+			<div class="program-item-details" id="program-details" style="display:none"><p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>
+			<guac-group-list
+               		  context="context"
+               		  connection-groups="filteredRootConnectionGroups"
+                	  connection-template="'app/home/templates/connection.html'"
+                	  connection-group-template="'app/home/templates/connectionGroup.html'"
+                	  page-size="20"></guac-group-list>
+
+			</div>
+		</div>
+		<div><a id="program2" class="program-list-item" href="" ng-click="reload()">tkintertest2.py</a>
+			<div class="program-item-details" style="display:none">
+			<p>Description: A simple calculator program.</p>
+			<guac-group-list
+                          context="context"
+                          connection-groups="filteredRootConnectionGroups"
+                          connection-template="'app/home/templates/connection.html'"
+                          connection-group-template="'app/home/templates/connectionGroup.html'"
+                          page-size="20"></guac-group-list>
+			</div>
+		</div>
+		<div style="display:none"><a id="program3" class="program-list-item" href="" ng-click="reload()">mario-cart</a>
+			<div class="program-item-details" style="display:none">
+			<p>Click below to run the program.</p>
+			<guac-group-list
+                          context="context"
+                          connection-groups="filteredRootConnectionGroups"
+                          connection-template="'app/home/templates/connection.html'"
+                          connection-group-template="'app/home/templates/connectionGroup.html'"
+                          page-size="20"></guac-group-list>
+			</div>
+		</div>
+	</div>
+
+        <!-- The recent connections for this user -->
+        <div class="header">
+            <h2>{{'HOME.SECTION_HEADER_RECENT_CONNECTIONS' | translate}}</h2>
+        <!--    <guac-user-menu></guac-user-menu> -->
+        </div>
+        <div class="recent-connections">
+            <guac-recent-connections root-groups="rootConnectionGroups"></guac-recent-connections>
+        </div>
+
+	<!-- Agora- adding ajax code here -->
+        <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script>
+        $(document).ready(function() {
+
+           /**
+            * Keep track of whether a Program Details box should be displayed (hidden by default)
+            */
+           var displayFlag = "0";
+           displayFlag = sessionStorage.getItem("displayOn");
+           if(displayFlag != null && displayFlag != "0") {
+                $("#"+displayFlag).next().slideDown();
+		$("#"+displayFlag).after("<img id='loadinggif' src='app/home/graphics/ajax-loader.gif'/>");
+                // Before removing, save prog name in a different sess storage var
+                sessionStorage.setItem("thisProgName", displayFlag);
+                sessionStorage.setItem("displayOn", "0");
+           }
+	});
+
+        /**
+         * Filter the connection list. This is done by starting out with everything hidden (see css in index.html), then
+         * find the correct connection to display.
+         * Using mouseover is a pretty messy way to do it.. but connectionNames is empty when this runs on document.ready.
+         */
+        $("body").mouseover(function() {
+           var shown = false;
+           if(!shown) {
+             // Retrieve the program name that was clicked on
+             var thisProgId = sessionStorage.getItem("thisProgName");
+             var thisPid = sessionStorage.getItem("thisPid");
+             var thisProgName = $("#"+thisProgId).text();
+             // look through all connections for the one that matches
+             var connectionNames = $(".name.ng-binding:hidden");
+             for(var i = 0; i < connectionNames.length; i++) {
+                var itemName = connectionNames.eq(i).text();
+                // for now checking against program name, and pid number
+                if(itemName.lastIndexOf(thisProgName, 0) == 0) {
+                    if(itemName.lastIndexOf(thisPid) >= 0) {
+                        // Get the connection list-item to be shown
+                        var listItem = connectionNames.eq(i).parent(".caption").parent("a.ng-scope").parent("ng-include").parent(".caption").parent("div").parent(".list-item.ng-scope");
+                        connectionNames.eq(i).text("Run Program");
+                        listItem.show();
+                        $("#loadinggif").remove();
+                        shown = true;
+                    }
+                }
+             }
+           }
+        });
+
+
+        /**
+         * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).
+         *
+         * Will also reload the page (see angular reload function) and expands that item's details box.
+         */
+	$(".program-list-item").click(function(event) {
+		// Show a loading gif next to the program that was clicked.
+		$(this).after("<img src='app/home/graphics/ajax-loader.gif'/>");
+
+		var myId = this.id;
+		var myProgName = $(this).text();
+		
+		// if already displaying don't slide down -- check if the corresponding .program-item-details div is visible
+		var isDetailOn = $(this).next().next().is(':visible');
+		if(!isDetailOn) {
+			// Send the program name (e.g. mario-cart) as a parameter to the servlet.
+			// Receives back the pid of the process started. Then use that to filter.
+			$.get('AgoraServlet',{program:myProgName},function(responseText) {
+				$('#hellotext').text(responseText);
+				var myPid = responseText;
+				sessionStorage.setItem("thisPid", myPid);
+			})
+			.fail(function() { alert("error!!"); });
+
+			// store which item was clicked before the page refreshes
+			sessionStorage.setItem("displayOn", myId);
+		} else {
+			sessionStorage.setItem("displayOn", "0");
+		}
+	});
+
+	/**
+	 * Kill a process when tab is closed - use the pid that was stored earlier.
+	 * This code is also in client.html. 
+	 */
+	$( window ).unload(function() {
+		alert("unloading..");
+		var myPidOut = sessionStorage.getItem("thisPid");
+		$.get('KillServlet',{pid:myPidOut},function(responseText) {
+			var newVar = responseText;
+			console.log("jquery received from KillServlet value " + newVar);
+		})
+	});
+
+        </script>
+	<div id="hellotext" style="display:none"></div>
+
+    </div>
+
+</div>
