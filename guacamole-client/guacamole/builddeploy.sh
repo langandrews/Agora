@@ -4,5 +4,5 @@
 mvn package
 cd target
 mv agoraguac-1.war agoraguac.war
-cp agoraguac.war /var/lib/tomcat7/webapps
+cp agoraguac.war /home/Agora/webapps
 echo "agoraguac app deployed"

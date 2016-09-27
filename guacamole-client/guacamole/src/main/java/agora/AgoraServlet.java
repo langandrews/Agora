@@ -33,9 +33,9 @@ public class AgoraServlet extends HttpServlet {
         // an "upload" page interface, it could even be a radio button to choose python 2 or 3.
 	HashMap<String, String> programs;
 	programs = new HashMap<String, String>();
-	programs.put("distrib.py", "2");
-	programs.put("tkintertest2.py", "3");
-	programs.put("mario-cart", "3");
+	programs.put("distrib.py", "p2");
+	programs.put("tkintertest2.py", "p3");
+	programs.put("mario-cart", "p3");
 
     	String progName = request.getParameter("program");
 	String langVersion = programs.get(progName);

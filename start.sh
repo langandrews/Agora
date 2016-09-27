@@ -22,8 +22,8 @@ echo "Display will be $nextDisplay"
 # Grab the python program dynamically from the command line. 
 # However, this program name could be different from the path. Need a way to connect them.
 progName=$1
-pyVersion=$2
-echo "python version is $pyVersion"
+langVersion=$2
+echo "python version is $langVersion"
 
 ############
 # Start the display, Xvfb, python program, and x11vnc
@@ -39,11 +39,12 @@ echo $thisPid > /home/AgoraGuac/pids/recent.txt
 echo "AGORA:Xvfb starting on $nextDisplay ..."
 
 # Handle different python versions
-if [ "$pyVersion" = 2 ]
+if [ "$langVersion" = "p2" ]
   then
     python /home/AgoraGuac/python/$progName &
     echo "python 2"
-  else
+  elif [ "$langVersion" = "p3" ]
+  then
     python3 /home/AgoraGuac/python/$progName &
     echo "python 3"
 fi
