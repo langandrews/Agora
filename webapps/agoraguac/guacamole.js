@@ -49114,7 +49114,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"				var myPid = responseText;\n" +
 	"				sessionStorage.setItem(\"thisPid\", myPid);\n" +
 	"			})\n" +
-	"			.fail(function() { alert(\"error!!\"); });\n" +
+	"			//.fail(function() { alert(\"error!!\"); });\n" +
 	"\n" +
 	"			// store which item was clicked before the page refreshes\n" +
 	"			sessionStorage.setItem(\"displayOn\", myId);\n" +
