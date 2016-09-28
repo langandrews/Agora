@@ -42,11 +42,11 @@ public class AgoraServlet extends HttpServlet {
 	System.out.println("Language version is " + langVersion);
 
 	// Run start.sh script to start the vnc server with a python program and version
-	Process P2 = new ProcessBuilder().inheritIO().command("/home/AgoraGuac/start.sh" , progName, langVersion).start();
+	Process P2 = new ProcessBuilder().inheritIO().command("/home/Agora/start.sh" , progName, langVersion).start();
 	//name += "   Running start.sh... program name is " + progName;
 	System.out.println("This is Corwin console output from Agora Servlet");
 
-	// Read from the file /home/AgoraGuac/pids/recent.txt - which contains the most recently started process.  Use a delay 
+	// Read from the file /home/Agora/pids/recent.txt - which contains the most recently started process.  Use a delay 
 	// to make sure the file has already been written to by start.sh when we read it.
 	// maybe also remove the delay in the angular reload
 	try {
@@ -55,7 +55,7 @@ public class AgoraServlet extends HttpServlet {
 	} catch(InterruptedException ex) {
 		Thread.currentThread().interrupt();
 	}
-	List<String> lines = Files.readAllLines(Paths.get("/home/AgoraGuac/pids/recent.txt"), StandardCharsets.US_ASCII);
+	List<String> lines = Files.readAllLines(Paths.get("/home/Agora/pids/recent.txt"), StandardCharsets.US_ASCII);
 	String myPid = lines.get(0);
 	System.out.println("the most recent pid is " + myPid);
 

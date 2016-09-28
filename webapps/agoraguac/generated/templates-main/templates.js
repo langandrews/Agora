@@ -971,7 +971,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"                          page-size=\"20\"></guac-group-list>\n" +
 	"			</div>\n" +
 	"		</div>\n" +
-	"		<div style=\"display:none\"><a id=\"program3\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">mario-cart</a>\n" +
+	"		<div><a id=\"program3\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">mario-cart</a>\n" +
 	"			<div class=\"program-item-details\" style=\"display:none\">\n" +
 	"			<p>Click below to run the program.</p>\n" +
 	"			<guac-group-list\n" +
