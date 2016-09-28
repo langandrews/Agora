@@ -950,36 +950,37 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"	<div class=\"all-connections\">		\n" +
 	"		<!-- This program list should probably be more dynamic - there's a lot of repetition here..	Get rid of the commented img tag if it looks good up there ^ -->\n" +
 	"		<div><a id=\"program1\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">distrib.py</a>\n" +
-	"			<div class=\"program-item-details\" id=\"program-details\" style=\"display:none\"><p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>\n" +
-	"			<guac-group-list\n" +
-	"               		  context=\"context\"\n" +
-	"               		  connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"                	  connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"                	  connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"                	  page-size=\"20\"></guac-group-list>\n" +
+	"			<div class=\"program-item-details\" id=\"program-details\" style=\"display:none\">\n" +
+	"                            <p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>\n" +
+	"                            <guac-group-list\n" +
+	"                              context=\"context\"\n" +
+	"                              connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"                              connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"                              connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"                              page-size=\"100\"></guac-group-list>\n" +
 	"\n" +
 	"			</div>\n" +
 	"		</div>\n" +
 	"		<div><a id=\"program2\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">tkintertest2.py</a>\n" +
 	"			<div class=\"program-item-details\" style=\"display:none\">\n" +
-	"			<p>Description: A simple calculator program.</p>\n" +
-	"			<guac-group-list\n" +
-	"                          context=\"context\"\n" +
-	"                          connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"                          connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"                          connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"                          page-size=\"20\"></guac-group-list>\n" +
+	"                            <p>Description: A simple calculator program.</p>\n" +
+	"                            <guac-group-list\n" +
+	"                              context=\"context\"\n" +
+	"                              connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"                              connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"                              connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"                              page-size=\"20\"></guac-group-list>\n" +
 	"			</div>\n" +
 	"		</div>\n" +
 	"		<div><a id=\"program3\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">mario-cart</a>\n" +
 	"			<div class=\"program-item-details\" style=\"display:none\">\n" +
-	"			<p>Click below to run the program.</p>\n" +
-	"			<guac-group-list\n" +
-	"                          context=\"context\"\n" +
-	"                          connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"                          connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"                          connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"                          page-size=\"20\"></guac-group-list>\n" +
+	"                            <p>Click below to run the program.</p>\n" +
+	"                            <guac-group-list\n" +
+	"                              context=\"context\"\n" +
+	"                              connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"                              connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"                              connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"                              page-size=\"20\"></guac-group-list>\n" +
 	"			</div>\n" +
 	"		</div>\n" +
 	"	</div>\n" +
