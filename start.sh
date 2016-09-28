@@ -2,7 +2,12 @@
 #
 # Agora
 # Authors: Drew Campo and Corwin Webster
+# Expanded by: Joel Stehouwer and Andrew Lang
 ############
+
+# Log file that this script writes to
+logfile="/home/Agora/logs/start_sh.log"
+echo -e "\n\nStart begin" >> $logfile
 
 ############
 # Find the next available port from port.txt, then increment port number
@@ -17,6 +22,7 @@ echo $((nextPort+1)) > $filename
 nextDisplay=$((nextPort-5900))
 echo "Read $nextPort from file"
 echo "Display will be $nextDisplay"
+echo -e "Next display is $nextDisplay" >> $logfile
 
 ############
 # Grab the python program dynamically from the command line. 
@@ -24,6 +30,7 @@ echo "Display will be $nextDisplay"
 progName=$1
 langVersion=$2
 echo "python version is $langVersion"
+echo -e "Program Name: $progName, and Language Version $langVersion" >> $logfile
 
 ############
 # Start the display, Xvfb, python program, and x11vnc
@@ -37,13 +44,14 @@ touch /home/Agora/pids/${thisPid}.pid
 echo $thisPid > /home/Agora/pids/${thisPid}.pid
 echo $thisPid > /home/Agora/pids/recent.txt
 echo "AGORA:Xvfb starting on $nextDisplay ..."
+echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 
 # Handle different python versions
-if [ "$langVersion" = "p2" ]
+if [ "$langVersion" = 2 ]
   then
     python /home/Agora/python/$progName &
     echo "python 2"
-  elif [ "$langVersion" = "p3" ]
+  elif [ "$langVersion" = 3 ]
   then
     python3 /home/Agora/python/$progName &
     echo "python 3"
@@ -53,6 +61,7 @@ echo "AGORA:starting python program $progName ..."
 
 x11vnc -display :$nextDisplay -forever -shared -rfbport $nextPort &
 echo "AGORA:x11vnc server starting on port $nextPort ..."
+echo -e "Agora:x11vnc server starting on $nextPort" >> $logfile
 
 ############
 # Update noauth config file with new port. Remove the last line of the file, then add the new config, then add the final closing tag again.
@@ -64,3 +73,5 @@ echo '        <param name="hostname" value="localhost" />' >> $noauthfile
 echo "        <param name='port' value='$nextPort' />" >> $noauthfile
 echo '    </config>' >> $noauthfile
 echo '</configs>' >> $noauthfile
+
+echo -e "Start_sh end\n\n" >> $logfile
