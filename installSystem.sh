@@ -1,11 +1,8 @@
 #!/bin/bash
 # Script to install the full Agora system.
 
-# Gain root access. This is necessary to install Agora.
-sudo su
-
 # Install dependencies
-apt-get install -y make libcairo2-dev libpng12-dev libjpeg62-dev libossp-uuid-dev  freerdp-x11 libssh2-1 libfreerdp-dev libvorbis-dev libssl0.9.8 gcc libssh-dev libpulse-dev tomcat7 tomcat7-admin tomcat7-docs libpango1.0-dev libssh2-1-dev git python-tk libvncserver-dev xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps x11vnc maven default-jdk
+apt-get install -y make libcairo2-dev libpng12-dev libjpeg62-dev libossp-uuid-dev  freerdp-x11 libssh2-1 libfreerdp-dev libvorbis-dev gcc libssh-dev libpulse-dev tomcat7 tomcat7-admin tomcat7-docs libpango1.0-dev libssh2-1-dev git python-tk libvncserver-dev xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps x11vnc maven default-jdk
 
 # Download and install guacamole.
 wget -O guacamole-server-0.9.9.tar.gz http://sourceforge.net/projects/guacamole/files/current/source/guacamole-server-0.9.9.tar.gz/download
