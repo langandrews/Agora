@@ -23,66 +23,69 @@ echo -e "Finished installing dependencies\n"
 
 # Download and install guacamole.
 echo -e "Download and install guacamole"
-wget -O guacamole-server-0.9.9.tar.gz http://sourceforge.net/projects/guacamole/files/current/source/guacamole-server-0.9.9.tar.gz/download
-tar -xvzf guacamole-server-0.9.9.tar.gz
-cd guacamole-server-0.9.9
-./configure --with-init-dir=/etc/init.d
-make && make install
-update-rc.d guacd defaults
-ldconfig
-mkdir /etc/guacamole
+wget -O guacamole-server-0.9.9.tar.gz http://sourceforge.net/projects/guacamole/files/current/source/guacamole-server-0.9.9.tar.gz/download >> $logFile
+tar -xvzf guacamole-server-0.9.9.tar.gz >> $logFile
+cd guacamole-server-0.9.9 >> $logFile
+./configure --with-init-dir=/etc/init.d >> $logFile
+make && make install >> $logFile
+update-rc.d guacd defaults >> $logFile
+ldconfig >> $logFile
+mkdir /etc/guacamole >> $logFile
+cd /home/Agora >> $logFile
+rm -r guacamole-server-0.9.9/ >> $logFile
+rm guacamole-server-0.9.9.tar.gz $logFile
 echo -e "Finished installing guacamole\n"
 
 
 # Clone Agora repo to /home folder.
 echo -e "Get Agora from github"
-cd /home
-git clone https://github.com/solsaver/Agora
+cd /home >> $logFile
+git clone https://github.com/solsaver/Agora >> $logFile
 echo -e "Finished configuring Agora\n"
 
 
 # Install guacamole-auth-noauth extension.
 echo -e "Install guacamole no-auth extension"
-wget -O guacamole-auth-noauth-0.9.8.tar.gz https://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-noauth-0.9.8.tar.gz/download
-tar -xvzf guacamole-auth-noauth-0.9.8.tar.gz
-mkdir /etc/guacamole/extensions
-cp guacamole-auth-noauth-0.9.8/guacamole-auth-noauth-0.9.8.jar /etc/guacamole/extensions
-rm guacamole-auth-noauth-0.9.8.tar.gz
-rm -r guacamole-auth-noauth-0.9.8
+wget -O guacamole-auth-noauth-0.9.8.tar.gz https://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-noauth-0.9.8.tar.gz/download >> $logFile
+tar -xvzf guacamole-auth-noauth-0.9.8.tar.gz >> $logFile
+mkdir /etc/guacamole/extensions >> $logFile
+cp guacamole-auth-noauth-0.9.8/guacamole-auth-noauth-0.9.8.jar /etc/guacamole/extensions >> $logFile
+rm guacamole-auth-noauth-0.9.8.tar.gz >> $logFile
+rm -r guacamole-auth-noauth-0.9.8 >> $logFile
 echo -e "Finished installing guacamole no-auth extension\n"
 
 
 # Copy over guacamole setting files.
 echo -e "Configure guacamole settings"
-cp Agora/settings-guac/* /etc/guacamole
-cd /etc/guacamole
-chmod 777 .
+cp Agora/settings-guac/* /etc/guacamole >> $logFile
+cd /etc/guacamole >> $logFile
+chmod 777 . >> $logFile
 echo -e "Finished configuring guacamole settings\n"
 
 
 # Make a link to the properties file so that the guacaole server can read it.
 echo -e "Set up tomcat7"
-mkdir /usr/share/tomcat7/.guacamole
-ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7/.guacamole
+mkdir /usr/share/tomcat7/.guacamole >> $logFile
+ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7/.guacamole >> $logFile
 
 # make a link to the webapps files to override tomcat's default page with the Agora page.
-rm -r /var/lib/tomcat7/webapps
-ln -s /home/Agora/webapps /var/lib/tomcat7/
+rm -r /var/lib/tomcat7/webapps >> $logFile
+ln -s /home/Agora/webapps /var/lib/tomcat7/ >> $logFile
 echo -e "Finished setting up tomcat7\n"
 
 
 # Build the maven project then copy the resulting war file to the webapps directory.
 echo -e "Build the maven project"
-cd /home/Agora/guacamole-client/guacamole
-mvn package
-cd target
-mv agoraguac-1.war agoraguac.war
-cp agoraguac.war /home/Agora/webapps
+cd /home/Agora/guacamole-client/guacamole >> $logFile
+mvn package >> $logFile
+cd target >> $logFile
+mv agoraguac-1.war agoraguac.war >> $logFile
+cp agoraguac.war /home/Agora/webapps >> $logFile
 echo -e "Finished building the maven project\n"
 
 
 # Start/Restart required services
 echo -e "Restart guacd and tomcat7"
-service guacd start
-service tomcat7 restart
+service guacd start >> $logFile
+service tomcat7 restart >> $logFile
 echo -e "Agora has been deployed, navigate to localhost:8080 to see the results"
