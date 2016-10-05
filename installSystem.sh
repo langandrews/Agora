@@ -1,9 +1,9 @@
 #!/bin/bash
 # Script to install the full Agora system.
 
-logFile=install_log.txt
+logFile=$(pwd)"/install_log.txt"
 
-echo -e "Installing Agora to your machine.  Please be patient as we install a lot of dependencies...\nIf there are any errors, please refer to the file named \"install_log.txt\"."
+echo -e "Installing Agora to your machine.  Please be patient as we install a lot of dependencies...\nIf there are any errors, please refer to $logFile"
 
 
 # Install dependencies
