@@ -49107,6 +49107,8 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"		\n" +
 	"		// if already displaying don't slide down -- check if the corresponding .program-item-details div is visible\n" +
 	"		var isDetailOn = $(this).next().next().is(':visible');\n" +
+	"                console.log(\"Is detail on?\");\n" +
+	"                console.log(isDetailOn);\n" +
 	"		if(!isDetailOn) {\n" +
 	"			// Send the program name (e.g. mario-cart) as a parameter to the servlet.\n" +
 	"			// Receives back the pid of the process started. Then use that to filter.\n" +
@@ -49114,14 +49116,16 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"				$('#hellotext').text(responseText);\n" +
 	"				var myPid = responseText;\n" +
 	"				sessionStorage.setItem(\"thisPid\", myPid);\n" +
+	"                                console.log(myPid);\n" +
 	"			})\n" +
-	"			//.fail(function() { alert(\"error!!\"); });\n" +
+	"			.fail(function() { alert(\"error!!\"); });\n" +
 	"\n" +
 	"			// store which item was clicked before the page refreshes\n" +
 	"			sessionStorage.setItem(\"displayOn\", myId);\n" +
 	"		} else {\n" +
 	"			sessionStorage.setItem(\"displayOn\", \"0\");\n" +
 	"		}\n" +
+	"                console.log(\"Program list item click done\");\n" +
 	"	});\n" +
 	"\n" +
 	"	/**\n" +

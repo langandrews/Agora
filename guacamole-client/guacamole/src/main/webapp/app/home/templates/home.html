@@ -145,6 +145,8 @@
 		
 		// if already displaying don't slide down -- check if the corresponding .program-item-details div is visible
 		var isDetailOn = $(this).next().next().is(':visible');
+                console.log("Is detail on?");
+                console.log(isDetailOn);
 		if(!isDetailOn) {
 			// Send the program name (e.g. mario-cart) as a parameter to the servlet.
 			// Receives back the pid of the process started. Then use that to filter.
@@ -152,14 +154,16 @@
 				$('#hellotext').text(responseText);
 				var myPid = responseText;
 				sessionStorage.setItem("thisPid", myPid);
+                                console.log(myPid);
 			})
-			//.fail(function() { alert("error!!"); });
+			.fail(function() { alert("error!!"); });
 
 			// store which item was clicked before the page refreshes
 			sessionStorage.setItem("displayOn", myId);
 		} else {
 			sessionStorage.setItem("displayOn", "0");
 		}
+                console.log("Program list item click done");
 	});
 
 	/**
