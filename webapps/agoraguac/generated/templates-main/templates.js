@@ -957,7 +957,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"                              connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"                              connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"                              connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"                              page-size=\"100\"></guac-group-list>\n" +
+	"                              page-size=\"2\"></guac-group-list>\n" +
 	"\n" +
 	"			</div>\n" +
 	"		</div>\n" +
@@ -1020,10 +1020,12 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"         */\n" +
 	"        $(\"body\").mouseover(function() {\n" +
 	"           var shown = false;\n" +
+	"           console.log(\"mouseover\");\n" +
 	"           if(!shown) {\n" +
 	"             // Retrieve the program name that was clicked on\n" +
 	"             var thisProgId = sessionStorage.getItem(\"thisProgName\");\n" +
 	"             var thisPid = sessionStorage.getItem(\"thisPid\");\n" +
+	"             console.log(thisPid);\n" +
 	"             var thisProgName = $(\"#\"+thisProgId).text();\n" +
 	"             // look through all connections for the one that matches\n" +
 	"             var connectionNames = $(\".name.ng-binding:hidden\");\n" +
@@ -1038,6 +1040,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"                        listItem.show();\n" +
 	"                        $(\"#loadinggif\").remove();\n" +
 	"                        shown = true;\n" +
+	"                        console.log(\"Yay!\");\n" +
 	"                    }\n" +
 	"                }\n" +
 	"             }\n" +
@@ -1059,15 +1062,15 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"		\n" +
 	"		// if already displaying don't slide down -- check if the corresponding .program-item-details div is visible\n" +
 	"		var isDetailOn = $(this).next().next().is(':visible');\n" +
-	"                console.log(\"Is detail on?\");\n" +
-	"                console.log(isDetailOn);\n" +
 	"		if(!isDetailOn) {\n" +
 	"			// Send the program name (e.g. mario-cart) as a parameter to the servlet.\n" +
 	"			// Receives back the pid of the process started. Then use that to filter.\n" +
+	"                        console.log(\"Start servlet\");\n" +
 	"			$.get('AgoraServlet',{program:myProgName},function(responseText) {\n" +
 	"				$('#hellotext').text(responseText);\n" +
 	"				var myPid = responseText;\n" +
 	"				sessionStorage.setItem(\"thisPid\", myPid);\n" +
+	"                                console.log(sessionStorage.getItem('thisPid'));\n" +
 	"                                console.log(myPid);\n" +
 	"			})\n" +
 	"			.fail(function() { alert(\"error!!\"); });\n" +
@@ -1077,7 +1080,6 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"		} else {\n" +
 	"			sessionStorage.setItem(\"displayOn\", \"0\");\n" +
 	"		}\n" +
-	"                console.log(\"Program list item click done\");\n" +
 	"	});\n" +
 	"\n" +
 	"	/**\n" +

@@ -7,7 +7,7 @@
 
 # Log file that this script writes to
 logfile="/home/Agora/logs/start_sh.log"
-echo -e "\n\nStart begin" >> $logfile
+echo -e "Start begin" >> $logfile
 
 ############
 # Find the next available port from port.txt, then increment port number
@@ -41,9 +41,10 @@ echo "AGORA:Display $nextDisplay set..."
 # Save the pid this xvfb is started on, keep a file for the most recent one
 thisPid=$!
 touch /home/Agora/pids/${thisPid}.pid
-echo $thisPid > /home/Agora/pids/${thisPid}.pid
+echo $thisPid > /home/Agora/pids/$thisPid.pid
 echo $thisPid > /home/Agora/pids/recent.txt
 echo "AGORA:Xvfb starting on $nextDisplay ..."
+echo -e "Agora process for $progName on pid $thisPid" >> $logfile
 echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 
 # Handle different python versions
@@ -51,10 +52,13 @@ if [ "$langVersion" = 2 ]
   then
     python /home/Agora/python/$progName &
     echo "python 2"
+    echo -e "$progName python 2running" >> $logfile
+
   elif [ "$langVersion" = 3 ]
   then
     python3 /home/Agora/python/$progName &
     echo "python 3"
+    echo -e "$progName python 2 running" >> $logfile
 fi
 #python3 /home/Agora/python/108/108-final-examples/mario-cart/main.py &
 echo "AGORA:starting python program $progName ..."
