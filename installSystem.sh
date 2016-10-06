@@ -84,6 +84,11 @@ cp agoraguac.war /home/Agora/webapps >> $logFile
 echo -e "Finished building the maven project\n"
 
 
+echo -e "Set up permissions"
+cd /homeAgora >> $logFile
+sudo chmod 666 pids
+sudo chmod 666 pids/recent.txt
+
 # Start/Restart required services
 echo -e "Restart guacd and tomcat7"
 service guacd start >> $logFile
