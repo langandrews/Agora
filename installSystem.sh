@@ -88,6 +88,7 @@ echo -e "Set up permissions"
 cd /homeAgora >> $logFile
 sudo chmod 666 pids
 sudo chmod 666 pids/recent.txt
+echo -e "Finished setting up permissions\n"
 
 # Start/Restart required services
 echo -e "Restart guacd and tomcat7"
