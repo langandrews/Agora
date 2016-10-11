@@ -68,7 +68,18 @@
                               connection-group-template="'app/home/templates/connectionGroup.html'"
                               page-size="20"></guac-group-list>
 			</div>
+		<div><a id="program4" class="program-list-item" href="" ng-click="reload()">GuiApp1</a>
+			<div class="program-item-details" style="display:none">
+                            <p>Java test... Please work, oh dear God please work.</p>
+                            <guac-group-list
+                              context="context"
+                              connection-groups="filteredRootConnectionGroups"
+                              connection-template="'app/home/templates/connection.html'"
+                              connection-group-template="'app/home/templates/connectionGroup.html'"
+                              page-size="20"></guac-group-list>
+			</div>
 		</div>
+	</div>
 	</div>
 
         <!-- The recent connections for this user -->

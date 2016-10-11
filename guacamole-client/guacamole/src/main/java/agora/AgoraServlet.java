@@ -33,16 +33,24 @@ public class AgoraServlet extends HttpServlet {
         // an "upload" page interface, it could even be a radio button to choose python 2 or 3.
 	HashMap<String, String> programs;
 	programs = new HashMap<String, String>();
-	programs.put("distrib.py", "2");
-	programs.put("tkintertest2.py", "3");
-	programs.put("mario-cart", "3");
+	programs.put("distrib.py", "p2");
+	programs.put("tkintertest2.py", "p3");
+	programs.put("mario-cart", "p3");
+	programs.put("GuiApp1", "j");
 
     	String progName = request.getParameter("program");
 	String langVersion = programs.get(progName);
 	System.out.println("Language version is " + langVersion);
 
 	// Run start.sh script to start the vnc server with a python program and version
-	Process P2 = new ProcessBuilder().inheritIO().command("/home/Agora/start.sh" , progName, langVersion).start();
+	if (langVersion == "p2") {
+		Process P2 = new ProcessBuilder().inheritIO().command("/home/Agora/start_python.sh" , progName, langVersion).start();
+	} else if (langVersion == "p3") {
+		Process P3 = new ProcessBuilder().inheritIO().command("/home/Agora/start_python.sh" , progName, langVersion).start();
+	} else if (langVersion == "j") {
+		Process PJ = new ProcessBuilder().inheritIO().command("/home/Agora/start_java.sh", progName, langVersion).start();
+	}
+
 	//name += "   Running start.sh... program name is " + progName;
 	System.out.println("This is Corwin console output from Agora Servlet");
 
