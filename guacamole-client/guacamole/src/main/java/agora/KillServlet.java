@@ -25,11 +25,9 @@ public class KillServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String pid = request.getParameter("pid");
-	//String pid = "23877";
 
 	Process P3 = new ProcessBuilder().inheritIO().command("/home/Agora/kill.sh" , pid).start();
 	System.out.println("In KillServlet, started script to kill process " + pid);
-//	name += " Killing process " + pid;
    
     response.setContentType("text/plain");  
     response.setCharacterEncoding("UTF-8"); 

@@ -52,13 +52,13 @@ if [ "$langVersion" = 2 ]
   then
     python /home/Agora/python/$progName &
     echo "python 2"
-    echo -e "$progName python 2running" >> $logfile
+    echo -e "$progName python 2 running" >> $logfile
 
   elif [ "$langVersion" = 3 ]
   then
     python3 /home/Agora/python/$progName &
     echo "python 3"
-    echo -e "$progName python 2 running" >> $logfile
+    echo -e "$progName python 3 running" >> $logfile
 fi
 #python3 /home/Agora/python/108/108-final-examples/mario-cart/main.py &
 echo "AGORA:starting python program $progName ..."

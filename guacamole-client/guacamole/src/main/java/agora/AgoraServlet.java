@@ -43,7 +43,6 @@ public class AgoraServlet extends HttpServlet {
 
 	// Run start.sh script to start the vnc server with a python program and version
 	Process P2 = new ProcessBuilder().inheritIO().command("/home/Agora/start.sh" , progName, langVersion).start();
-        Process blah = new ProcessBuilder().inheritIO().command("/home/blah.sh").start();
 	//name += "   Running start.sh... program name is " + progName;
 	System.out.println("This is Corwin console output from Agora Servlet");
 
@@ -56,22 +55,13 @@ public class AgoraServlet extends HttpServlet {
 	} catch(InterruptedException ex) {
 		Thread.currentThread().interrupt();
 	}
-        Process blah4 = new ProcessBuilder().inheritIO().command("/home/blah.sh").start();
 	List<String> lines = Files.readAllLines(Paths.get("/home/Agora/pids/recent.txt"), StandardCharsets.US_ASCII);
-        Process blah6 = new ProcessBuilder().inheritIO().command("/home/blah.sh").start();
-        Process blah7 = new ProcessBuilder().inheritIO().command("/home/blahprint.sh", Integer.toString(lines.size())).start();
-        Process blah9 = new ProcessBuilder().inheritIO().command("/home/blahprint.sh", lines.get(0)).start();
 	String myPid = lines.get(0);
 	System.out.println("the most recent pid is " + myPid);
-        Process blah5 = new ProcessBuilder().inheritIO().command("/home/blah.sh").start();
 
-   
         response.setContentType("text/plain");  
         response.setCharacterEncoding("UTF-8"); 
         response.getWriter().write(myPid); 
-
-        Process blah3 = new ProcessBuilder().inheritIO().command("/home/blah.sh").start();
-
   }
 
   

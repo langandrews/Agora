@@ -106,7 +106,6 @@
          */
         $("body").mouseover(function() {
            var shown = false;
-           console.log("mouseover");
            if(!shown) {
              // Retrieve the program name that was clicked on
              var thisProgId = sessionStorage.getItem("thisProgName");
@@ -126,7 +125,6 @@
                         listItem.show();
                         $("#loadinggif").remove();
                         shown = true;
-                        console.log("Yay!");
                     }
                 }
              }
@@ -151,12 +149,10 @@
 		if(!isDetailOn) {
 			// Send the program name (e.g. mario-cart) as a parameter to the servlet.
 			// Receives back the pid of the process started. Then use that to filter.
-                        console.log("Start servlet");
 			$.get('AgoraServlet',{program:myProgName},function(responseText) {
 				$('#hellotext').text(responseText);
 				var myPid = responseText;
 				sessionStorage.setItem("thisPid", myPid);
-                                console.log(sessionStorage.getItem('thisPid'));
                                 console.log(myPid);
 			})
 			.fail(function() { alert("error!!"); });

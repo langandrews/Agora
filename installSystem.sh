@@ -84,10 +84,15 @@ cp agoraguac.war /home/Agora/webapps >> $logFile
 echo -e "Finished building the maven project\n"
 
 
-echo -e "Set up permissions"
+echo -e "Set up permissions and create neccessary folders and files"
 cd /homeAgora >> $logFile
 sudo chmod 666 pids
+touch pids/recent.txt
 sudo chmod 666 pids/recent.txt
+mkdir /home/Agora/logs
+sudo chmod 777 /home/Agora/logs
+touch /home/Agora/logs/start_sh.log
+sudo chmod 777 /home/Agora/logs/start_sh.log
 echo -e "Finished setting up permissions\n"
 
 # Start/Restart required services
