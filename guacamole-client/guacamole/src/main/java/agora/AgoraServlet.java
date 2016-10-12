@@ -43,13 +43,7 @@ public class AgoraServlet extends HttpServlet {
 	System.out.println("Language version is " + langVersion);
 
 	// Run start.sh script to start the vnc server with a python program and version
-	if (langVersion == "p2") {
-		Process P2 = new ProcessBuilder().inheritIO().command("/home/Agora/start_python.sh" , progName, langVersion).start();
-	} else if (langVersion == "p3") {
-		Process P3 = new ProcessBuilder().inheritIO().command("/home/Agora/start_python.sh" , progName, langVersion).start();
-	} else if (langVersion == "j") {
-		Process PJ = new ProcessBuilder().inheritIO().command("/home/Agora/start_java.sh", progName, langVersion).start();
-	}
+	Process P2 = new ProcessBuilder().inheritIO().command("/home/Agora/start.sh" , progName, langVersion).start();
 
 	//name += "   Running start.sh... program name is " + progName;
 	System.out.println("This is Corwin console output from Agora Servlet");

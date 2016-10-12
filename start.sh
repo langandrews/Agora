@@ -29,7 +29,7 @@ echo -e "Next display is $nextDisplay" >> $logfile
 # However, this program name could be different from the path. Need a way to connect them.
 progName=$1
 langVersion=$2
-echo "python version is $langVersion"
+echo "Language is $langVersion"
 echo -e "Program Name: $progName, and Language Version $langVersion" >> $logfile
 
 ############
@@ -48,17 +48,22 @@ echo -e "Agora process for $progName on pid $thisPid" >> $logfile
 echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 
 # Handle different python versions
-if [ "$langVersion" = 2 ]
+if [ "$langVersion" = "p2" ]
   then
     python /home/Agora/python/$progName &
     echo "python 2"
     echo -e "$progName python 2 running" >> $logfile
 
-  elif [ "$langVersion" = 3 ]
+  elif [ "$langVersion" = "p3" ]
   then
     python3 /home/Agora/python/$progName &
     echo "python 3"
     echo -e "$progName python 3 running" >> $logfile
+  elif [ "$langVersion" = "j" ]
+  then
+    java /home/Agora/java/$progName &
+    echo "java"
+    echo -e "$progName java running" >> $logFile
 fi
 #python3 /home/Agora/python/108/108-final-examples/mario-cart/main.py &
 echo "AGORA:starting python program $progName ..."
