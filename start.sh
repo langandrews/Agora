@@ -49,7 +49,7 @@ echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 # Handle different python versions
 if [ "$langVersion" = "p2" ]
 then
-  python /home/Agora/python/$progName &
+  python2 /home/Agora/python/$progName &
   progPid=$!
   echo "python 2"
   echo -e "$progName python 2 running" >> $logfile
@@ -116,4 +116,3 @@ echo -e "Start_sh end\n\n" >> $logfile
 echo -e $thisPid > /home/Agora/pids/$thisPid.pid
 echo -e $x11Pid >> /home/Agora/pids/${thisPid}.pid
 echo -e $progPid >> /home/Agora/pids/${thisPid}.pid
-echo -e "Port $nextPort" >> /home/Agora/pids/${thisPid}.pid

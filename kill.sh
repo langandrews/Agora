@@ -16,12 +16,8 @@ echo -e "Killing pid $pid" >> $logfile
 
 while IFS='' read -r line
 do
-  if [[ $line == *"Port"* ]]
-  then
-    python /home/Agora/scripts/update_noauth_config.py $line
-  fi
-    echo -e $line >> $logfile
-    #kill $line
+  echo -e $pid >> $logfile
+  kill $pid
 done < /home/Agora/pids/$pid.pid
-
-#rm /home/Agora/pids/$pid.pid
+python2 /home/Agora/scripts/update_noauth_config.py $pid
+rm /home/Agora/pids/$pid.pid

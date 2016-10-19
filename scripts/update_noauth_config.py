@@ -1,14 +1,17 @@
 import sys
 
-# This should be ['update_noauth_config.py', 'Port', 'num'], num is the port of the entry
-# we want to remove from /etc/guacamole/noauth-config.xml
-args = str(sys.argv)
-print args
+# This program should be run like:
+# python update_noauth_config.py $port $pid
+args = sys.argv
+pid = args[1]
 
-content = [line.rstrip('\n') for line in open('/etc/guacamole/noauth-config.xml')]
-i = 1
-for line in content:
-  print str(i) + line
-  i += 1
-  if args[2] in line:
-    print "Line " + str(i) + "has the port"
+file = open('noauth_config.xml', 'r')
+lines = file.read().split('\n')
+for i in range(len(lines)):
+    if pid in lines[i]:
+        del lines[i:i+4]
+        break
+file = open('noauth_config.xml', 'w')
+for line in lines:
+    file.write(line + "\n");
+file.close()
