@@ -26,6 +26,10 @@ public class GuiApp1 {
         guiFrame.setSize(300,250);
         //This will center the JFrame in the middle of the screen
         guiFrame.setLocationRelativeTo(null);
+
+        JLabel label = new JLabel("Im a label");
+        guiFrame.add(label, BorderLayout.CENTER);
+        /*
         //Options for the JComboBox
         String[] fruitOptions = {"Apple", "Apricot", "Banana" ,"Cherry", "Date", "Kiwi", "Orange", "Pear", "Strawberry"};
         //Options for the JList
@@ -65,6 +69,7 @@ public class GuiApp1 {
         guiFrame.add(listPanel, BorderLayout.CENTER);
         guiFrame.add(vegFruitBut,BorderLayout.SOUTH);
         //make sure the JFrame is visible
+        */
         guiFrame.setVisible(true);
     }
 }

@@ -43,7 +43,7 @@
                               connection-groups="filteredRootConnectionGroups"
                               connection-template="'app/home/templates/connection.html'"
                               connection-group-template="'app/home/templates/connectionGroup.html'"
-                              page-size="2"></guac-group-list>
+                              page-size="20"></guac-group-list>
 
 			</div>
 		</div>
@@ -70,7 +70,18 @@
 			</div>
 		<div><a id="program4" class="program-list-item" href="" ng-click="reload()">GuiApp1</a>
 			<div class="program-item-details" style="display:none">
-                            <p>Java test... Please work, oh dear God please work.</p>
+                            <p>Java test... </p>
+                            <guac-group-list
+                              context="context"
+                              connection-groups="filteredRootConnectionGroups"
+                              connection-template="'app/home/templates/connection.html'"
+                              connection-group-template="'app/home/templates/connectionGroup.html'"
+                              page-size="20"></guac-group-list>
+			</div>
+		</div>
+		<div><a id="program5" class="program-list-item" href="" ng-click="reload()">HelloWorld</a>
+			<div class="program-item-details" style="display:none">
+                            <p>Java test, check logs/java_try.log... </p>
                             <guac-group-list
                               context="context"
                               connection-groups="filteredRootConnectionGroups"
@@ -161,6 +172,7 @@
 			// Send the program name (e.g. mario-cart) as a parameter to the servlet.
 			// Receives back the pid of the process started. Then use that to filter.
 			$.get('AgoraServlet',{program:myProgName},function(responseText) {
+                                console.log(responseText);
 				$('#hellotext').text(responseText);
 				var myPid = responseText;
 				sessionStorage.setItem("thisPid", myPid);

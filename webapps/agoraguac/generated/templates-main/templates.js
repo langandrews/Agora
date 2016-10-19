@@ -957,7 +957,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"                              connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"                              connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"                              connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"                              page-size=\"2\"></guac-group-list>\n" +
+	"                              page-size=\"20\"></guac-group-list>\n" +
 	"\n" +
 	"			</div>\n" +
 	"		</div>\n" +
@@ -984,7 +984,18 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"			</div>\n" +
 	"		<div><a id=\"program4\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">GuiApp1</a>\n" +
 	"			<div class=\"program-item-details\" style=\"display:none\">\n" +
-	"                            <p>Java test... Please work, oh dear God please work.</p>\n" +
+	"                            <p>Java test... </p>\n" +
+	"                            <guac-group-list\n" +
+	"                              context=\"context\"\n" +
+	"                              connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"                              connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"                              connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"                              page-size=\"20\"></guac-group-list>\n" +
+	"			</div>\n" +
+	"		</div>\n" +
+	"		<div><a id=\"program5\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">HelloWorld</a>\n" +
+	"			<div class=\"program-item-details\" style=\"display:none\">\n" +
+	"                            <p>Java test, check logs/java_try.log... </p>\n" +
 	"                            <guac-group-list\n" +
 	"                              context=\"context\"\n" +
 	"                              connection-groups=\"filteredRootConnectionGroups\"\n" +
@@ -1075,6 +1086,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"			// Send the program name (e.g. mario-cart) as a parameter to the servlet.\n" +
 	"			// Receives back the pid of the process started. Then use that to filter.\n" +
 	"			$.get('AgoraServlet',{program:myProgName},function(responseText) {\n" +
+	"                                console.log(responseText);\n" +
 	"				$('#hellotext').text(responseText);\n" +
 	"				var myPid = responseText;\n" +
 	"				sessionStorage.setItem(\"thisPid\", myPid);\n" +
