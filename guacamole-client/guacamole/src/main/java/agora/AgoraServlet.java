@@ -38,6 +38,7 @@ public class AgoraServlet extends HttpServlet {
 	programs.put("mario-cart", "p3");
 	programs.put("GuiApp1", "jg");
         programs.put("HelloWorld", "jc");
+        programs.put("main", "cpp");
 
     	String progName = request.getParameter("program");
 	String langVersion = programs.get(progName);

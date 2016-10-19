@@ -81,6 +81,15 @@ then
   cd $here
 fi
 
+# Handle c++ console program
+if [ "$langVersion" = "cpp" ]
+then
+  xterm -e "bash -c \"/home/Agora/cpp/$progName; read -n 1\"" &
+  progPid=$!
+  echo "c++ console program"
+  echo -e "$progName c++ console running" >> $logfile
+fi
+
 #python3 /home/Agora/python/108/108-final-examples/mario-cart/main.py &
 echo "AGORA:starting python program $progName ..."
 
