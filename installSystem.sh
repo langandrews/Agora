@@ -2,7 +2,7 @@
 # Script to install the full Agora system.
 
 here=$(pwd)
-logFile=$(pwd)"/install_log.txt"
+logFile=$(pwd)"/install_system.log"
 
 echo -e "Installing Agora to your machine.  Please be patient as we install a lot of dependencies...\nIf there are any errors, please refer to $logFile" 2>&1
 
@@ -87,9 +87,9 @@ echo -e "Finished building the maven project\n"
 
 echo -e "Set up permissions and create neccessary folders and files"
 cd /home/Agora > $logFile 2>&1
-sudo chmod 666 pids
+sudo chmod 777 pids
 touch pids/recent.txt
-sudo chmod 666 pids/recent.txt
+sudo chmod 777 pids/recent.txt
 mkdir /home/Agora/logs
 sudo chmod 777 /home/Agora/logs
 touch /home/Agora/logs/start_sh.log
