@@ -1,6 +1,7 @@
 #!/bin/bash
 # Script to install the full Agora system.
 
+here=$(pwd)
 logFile=$(pwd)"/install_log.txt"
 
 echo -e "Installing Agora to your machine.  Please be patient as we install a lot of dependencies...\nIf there are any errors, please refer to $logFile"
@@ -32,8 +33,8 @@ update-rc.d guacd defaults >> $logFile
 ldconfig >> $logFile
 mkdir /etc/guacamole >> $logFile
 cd /home/Agora >> $logFile
-rm -r guacamole-server-0.9.9/ >> $logFile
-rm guacamole-server-0.9.9.tar.gz $logFile
+rm -r $here/guacamole-server-0.9.9/ >> $logFile
+rm $here/guacamole-server-0.9.9.tar.gz $logFile
 echo -e "Finished installing guacamole\n"
 
 
@@ -85,7 +86,8 @@ echo -e "Finished building the maven project\n"
 
 
 echo -e "Set up permissions and create neccessary folders and files"
-cd /homeAgora >> $logFile
+cd /home/Agora >> $logFile
+mkdir pids
 sudo chmod 666 pids
 touch pids/recent.txt
 sudo chmod 666 pids/recent.txt
