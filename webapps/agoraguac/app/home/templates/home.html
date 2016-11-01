@@ -36,7 +36,7 @@
     <div class="all-connections">		
       <!-- This program list should probably be more dynamic - there's a lot of repetition here..	Get rid of the commented img tag if it looks good up there ^ -->
       <div><a id="distrib.py" class="program-list-item" href="" ng-click="reload()">Python Distribute</a>
-        <div class="program-item-details" id="program-details" style="display:none">
+        <div class="program-item-details" style="display:none">
           <p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>
           <guac-group-list
             context="context"
@@ -135,7 +135,6 @@
        displayFlag = sessionStorage.getItem("displayOn");
        if(displayFlag != null && displayFlag != "0") {
             $("#"+displayFlag).next().slideDown();
-            $("#"+displayFlag).after("<img id='loadinggif' src='app/home/graphics/ajax-loader.gif'/>");
             // Before removing, save prog name in a different sess storage var
             sessionStorage.setItem("thisProgName", displayFlag);
             sessionStorage.setItem("displayOn", "0");
@@ -153,7 +152,6 @@
          // Retrieve the program name that was clicked on
          var thisProgName = sessionStorage.getItem("thisProgName");
          var thisPid = sessionStorage.getItem("thisPid");
-         console.log(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')");
          var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
          
          if (buttonToClick) {
@@ -172,9 +170,6 @@
      * Will also reload the page (see angular reload function) and expands that item's details box.
      */
     $(".program-list-item").click(function(event) {
-      // Show a loading gif next to the program that was clicked.
-      $(this).after("<img src='app/home/graphics/ajax-loader.gif'/>");
-
       var myId = this.id;
       var progName = $(this).text();
       var myPid;
@@ -185,13 +180,10 @@
         // Send the program name (e.g. mario-cart) as a parameter to the servlet.
         // Receives back the pid of the process started. Then use that to filter.
         $.get('AgoraServlet',{program:progName},function(responseText) {
-          console.log(responseText);
           $('#hellotext').text(responseText);
           myPid = responseText;
           sessionStorage.setItem("thisPid", myPid);
           sessionStorage.setItem("thisProgName", myId);
-          console.log(myPid);
-
         })
         .fail(function() { alert("Error! Failed get from AgoraServlet."); });
 

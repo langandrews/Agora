@@ -48998,7 +48998,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"    <div class=\"all-connections\">		\n" +
 	"      <!-- This program list should probably be more dynamic - there's a lot of repetition here..	Get rid of the commented img tag if it looks good up there ^ -->\n" +
 	"      <div><a id=\"distrib.py\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Python Distribute</a>\n" +
-	"        <div class=\"program-item-details\" id=\"program-details\" style=\"display:none\">\n" +
+	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
 	"          <p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>\n" +
 	"          <guac-group-list\n" +
 	"            context=\"context\"\n" +
@@ -49097,7 +49097,6 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"       displayFlag = sessionStorage.getItem(\"displayOn\");\n" +
 	"       if(displayFlag != null && displayFlag != \"0\") {\n" +
 	"            $(\"#\"+displayFlag).next().slideDown();\n" +
-	"            $(\"#\"+displayFlag).after(\"<img id='loadinggif' src='app/home/graphics/ajax-loader.gif'/>\");\n" +
 	"            // Before removing, save prog name in a different sess storage var\n" +
 	"            sessionStorage.setItem(\"thisProgName\", displayFlag);\n" +
 	"            sessionStorage.setItem(\"displayOn\", \"0\");\n" +
@@ -49115,7 +49114,6 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"         // Retrieve the program name that was clicked on\n" +
 	"         var thisProgName = sessionStorage.getItem(\"thisProgName\");\n" +
 	"         var thisPid = sessionStorage.getItem(\"thisPid\");\n" +
-	"         console.log(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\");\n" +
 	"         var buttonToClick = $(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\")[0];\n" +
 	"         \n" +
 	"         if (buttonToClick) {\n" +
@@ -49134,9 +49132,6 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"     * Will also reload the page (see angular reload function) and expands that item's details box.\n" +
 	"     */\n" +
 	"    $(\".program-list-item\").click(function(event) {\n" +
-	"      // Show a loading gif next to the program that was clicked.\n" +
-	"      $(this).after(\"<img src='app/home/graphics/ajax-loader.gif'/>\");\n" +
-	"\n" +
 	"      var myId = this.id;\n" +
 	"      var progName = $(this).text();\n" +
 	"      var myPid;\n" +
@@ -49147,13 +49142,10 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"        // Send the program name (e.g. mario-cart) as a parameter to the servlet.\n" +
 	"        // Receives back the pid of the process started. Then use that to filter.\n" +
 	"        $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
-	"          console.log(responseText);\n" +
 	"          $('#hellotext').text(responseText);\n" +
 	"          myPid = responseText;\n" +
 	"          sessionStorage.setItem(\"thisPid\", myPid);\n" +
 	"          sessionStorage.setItem(\"thisProgName\", myId);\n" +
-	"          console.log(myPid);\n" +
-	"\n" +
 	"        })\n" +
 	"        .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
 	"\n" +
