@@ -35,7 +35,7 @@
     </div>
     <div class="all-connections">		
       <!-- This program list should probably be more dynamic - there's a lot of repetition here..	Get rid of the commented img tag if it looks good up there ^ -->
-      <div><a id="program1" class="program-list-item" href="" ng-click="reload()">distrib.py</a>
+      <div><a id="distrib.py" class="program-list-item" href="" ng-click="reload()">Python Distribute</a>
         <div class="program-item-details" id="program-details" style="display:none">
           <p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>
           <guac-group-list
@@ -44,10 +44,9 @@
             connection-template="'app/home/templates/connection.html'"
             connection-group-template="'app/home/templates/connectionGroup.html'"
             page-size="20"></guac-group-list>
-
         </div>
       </div>
-      <div><a id="program2" class="program-list-item" href="" ng-click="reload()">tkintertest2.py</a>
+      <div><a id="tkintertest2.py" class="program-list-item" href="" ng-click="reload()">Python Calculator</a>
         <div class="program-item-details" style="display:none">
           <p>Description: A simple calculator program.</p>
           <guac-group-list
@@ -58,7 +57,7 @@
             page-size="20"></guac-group-list>
         </div>
       </div>
-      <div><a id="program3" class="program-list-item" href="" ng-click="reload()">mario-cart</a>
+      <div><a id="main.py" class="program-list-item" href="" ng-click="reload()">Mario Cart</a>
         <div class="program-item-details" style="display:none">
           <p>Click below to run the program.</p>
           <guac-group-list
@@ -68,7 +67,7 @@
             connection-group-template="'app/home/templates/connectionGroup.html'"
             page-size="20"></guac-group-list>
         </div>
-      <div><a id="program4" class="program-list-item" href="" ng-click="reload()">GuiApp1</a>
+      <div><a id="GuiApp1" class="program-list-item" href="" ng-click="reload()">Java Gui</a>
         <div class="program-item-details" style="display:none">
           <p>Java test... </p>
           <guac-group-list
@@ -79,7 +78,7 @@
             page-size="20"></guac-group-list>
         </div>
       </div>
-      <div><a id="program5" class="program-list-item" href="" ng-click="reload()">HelloWorld</a>
+      <div><a id="HelloWorld" class="program-list-item" href="" ng-click="reload()">Java Console</a>
         <div class="program-item-details" style="display:none">
           <p>Java test, check logs/java_try.log... </p>
           <guac-group-list
@@ -90,9 +89,20 @@
             page-size="20"></guac-group-list>
         </div>
       </div>
-      <div><a id="program6" class="program-list-item" href="" ng-click="reload()">main</a>
+      <div><a id="main" class="program-list-item" href="" ng-click="reload()">C++ Console</a>
         <div class="program-item-details" style="display:none">
           <p>C++ program</p>
+          <guac-group-list
+            context="context"
+            connection-groups="filteredRootConnectionGroups"
+            connection-template="'app/home/templates/connection.html'"
+            connection-group-template="'app/home/templates/connectionGroup.html'"
+            page-size="20"></guac-group-list>
+        </div>
+      </div>
+      <div><a id="hello.exe" class="program-list-item" href="" ng-click="reload()">C# Console</a>
+        <div class="program-item-details" style="display:none">
+          <p>C# program</p>
           <guac-group-list
             context="context"
             connection-groups="filteredRootConnectionGroups"
@@ -125,7 +135,6 @@
        displayFlag = sessionStorage.getItem("displayOn");
        if(displayFlag != null && displayFlag != "0") {
             $("#"+displayFlag).next().slideDown();
-            $("#"+displayFlag).after("<img id='loadinggif' src='app/home/graphics/ajax-loader.gif'/>");
             // Before removing, save prog name in a different sess storage var
             sessionStorage.setItem("thisProgName", displayFlag);
             sessionStorage.setItem("displayOn", "0");
@@ -141,25 +150,15 @@
        var shown = false;
        if(!shown) {
          // Retrieve the program name that was clicked on
-         var thisProgId = sessionStorage.getItem("thisProgName");
+         var thisProgName = sessionStorage.getItem("thisProgName");
          var thisPid = sessionStorage.getItem("thisPid");
-         console.log(thisPid);
-         var thisProgName = $("#"+thisProgId).text();
-         // look through all connections for the one that matches
-         var connectionNames = $(".name.ng-binding:hidden");
-         for(var i = 0; i < connectionNames.length; i++) {
-            var itemName = connectionNames.eq(i).text();
-            // for now checking against program name, and pid number
-            if(itemName.lastIndexOf(thisProgName, 0) == 0) {
-                if(itemName.lastIndexOf(thisPid) >= 0) {
-                    // Get the connection list-item to be shown
-                    var listItem = connectionNames.eq(i).parent(".caption").parent("a.ng-scope").parent("ng-include").parent(".caption").parent("div").parent(".list-item.ng-scope");
-                    connectionNames.eq(i).text("Run Program");
-                    listItem.show();
-                    $("#loadinggif").remove();
-                    shown = true;
-                }
-            }
+         var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
+         
+         if (buttonToClick) {
+           buttonToClick.click();
+           // Avoid opening the same thing next time
+           sessionStorage.setItem('thisProgName', null);
+           sessionStorage.setItem('thisPid', null);
          }
        }
     });
@@ -171,38 +170,35 @@
      * Will also reload the page (see angular reload function) and expands that item's details box.
      */
     $(".program-list-item").click(function(event) {
-            // Show a loading gif next to the program that was clicked.
-            $(this).after("<img src='app/home/graphics/ajax-loader.gif'/>");
+      var myId = this.id;
+      var progName = $(this).text();
+      var myPid;
+      
+      // if already displaying don't slide down -- check if the corresponding .program-item-details div is visible
+      var isDetailOn = $(this).next().next().is(':visible');
+      if(!isDetailOn) {
+        // Send the program name (e.g. mario-cart) as a parameter to the servlet.
+        // Receives back the pid of the process started. Then use that to filter.
+        $.get('AgoraServlet',{program:progName},function(responseText) {
+          $('#hellotext').text(responseText);
+          myPid = responseText;
+          sessionStorage.setItem("thisPid", myPid);
+          sessionStorage.setItem("thisProgName", myId);
+        })
+        .fail(function() { alert("Error! Failed get from AgoraServlet."); });
 
-            var myId = this.id;
-            var myProgName = $(this).text();
-            
-            // if already displaying don't slide down -- check if the corresponding .program-item-details div is visible
-            var isDetailOn = $(this).next().next().is(':visible');
-            if(!isDetailOn) {
-                    // Send the program name (e.g. mario-cart) as a parameter to the servlet.
-                    // Receives back the pid of the process started. Then use that to filter.
-                    $.get('AgoraServlet',{program:myProgName},function(responseText) {
-                            console.log(responseText);
-                            $('#hellotext').text(responseText);
-                            var myPid = responseText;
-                            sessionStorage.setItem("thisPid", myPid);
-                            console.log(myPid);
-                    })
-                    .fail(function() { alert("error!!"); });
-
-                    // store which item was clicked before the page refreshes
-                    sessionStorage.setItem("displayOn", myId);
-            } else {
-                    sessionStorage.setItem("displayOn", "0");
-            }
+        // store which item was clicked before the page refreshes
+        sessionStorage.setItem("displayOn", myId);
+      } else {
+        sessionStorage.setItem("displayOn", "0");
+      }
     });
 
     /**
      * Kill a process when tab is closed - use the pid that was stored earlier.
      * This code is also in client.html. 
      */
-    $( window ).unload(function() {
+    $(window).unload(function() {
             alert("unloading..");
             var myPidOut = sessionStorage.getItem("thisPid");
             $.get('KillServlet',{pid:myPidOut},function(responseText) {

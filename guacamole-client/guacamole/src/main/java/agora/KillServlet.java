@@ -15,31 +15,24 @@ import java.io.*;
  */
 
 public class KillServlet extends HttpServlet {
- private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     
     public KillServlet() {
        
     }
 
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String pid = request.getParameter("pid");
 
 	Process P3 = new ProcessBuilder().inheritIO().command("/home/Agora/kill.sh" , pid).start();
 	System.out.println("In KillServlet, started script to kill process " + pid);
    
-    response.setContentType("text/plain");  
-    response.setCharacterEncoding("UTF-8"); 
-    response.getWriter().write(pid); 
+        response.setContentType("text/plain");  
+        response.setCharacterEncoding("UTF-8"); 
+        response.getWriter().write(pid); 
+    }
 
-
-  }
-
-  
- protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-  
- }
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { }
 }

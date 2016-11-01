@@ -25,10 +25,10 @@ echo "Display will be $nextDisplay"
 echo -e "Next display is $nextDisplay" >> $logfile
 
 ############
-# Grab the python program dynamically from the command line. 
-# However, this program name could be different from the path. Need a way to connect them.
-progName=$1
-langVersion=$2
+# Grab the program info dynamically from the command line. 
+directory=$1
+progName=$2
+langVersion=$3
 echo "Language is $langVersion"
 echo -e "Program Name: $progName, and Language Version $langVersion" >> $logfile
 
@@ -49,14 +49,16 @@ echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 # Handle different python versions
 if [ "$langVersion" = "p2" ]
 then
-  python2 /home/Agora/python/$progName &
+  #python2 /home/Agora/python/$progName &
+  python2 $directory$progName &
   progPid=$!
   echo "python 2"
   echo -e "$progName python 2 running" >> $logfile
 fi
 if [ "$langVersion" = "p3" ]
 then
-  python3 /home/Agora/python/$progName &
+  #python3 /home/Agora/python/$progName &
+  python3 $directory$progName &
   progPid=$!
   echo "python 3"
   echo -e "$progName python 3 running" >> $logfile
@@ -65,7 +67,7 @@ fi
 # Handle java console or gui programs
 if [ "$langVersion" = "jc" ]
 then
-  xterm -e "bash -c \"cd /home/Agora/java; clear; java $progName; read -n 1\"" &
+  xterm -e "bash -c \"cd $directory; clear; java $progName; read -n 1\"" &
   progPid=$!
   echo "java console program"
   echo -e "$progName java console running" >> $logfile
@@ -73,7 +75,7 @@ fi
 if [ "$langVersion" = "jg" ]
 then
   here=$(pwd)
-  cd /home/Agora/java
+  cd $directory
   java $progName &
   progPid=$!
   echo "java console program"
@@ -84,13 +86,20 @@ fi
 # Handle c++ console program
 if [ "$langVersion" = "cpp" ]
 then
-  xterm -e "bash -c \"/home/Agora/cpp/$progName; read -n 1\"" &
+  xterm -e "bash -c \"$directory$progName; read -n 1\"" &
   progPid=$!
   echo "c++ console program"
   echo -e "$progName c++ console running" >> $logfile
 fi
 
-#python3 /home/Agora/python/108/108-final-examples/mario-cart/main.py &
+if [ "$langVersion" = "cs" ]
+then
+  xterm -e "bash -c \"mono $directory$progName; read -n 1\"" &
+  progPid=$!
+  echo "C# program"
+  echo -e "$progName C# running" >> $logFile
+fi 
+
 echo "AGORA:starting python program $progName ..."
 
 x11vnc -display :$nextDisplay -forever -shared -rfbport $nextPort &
