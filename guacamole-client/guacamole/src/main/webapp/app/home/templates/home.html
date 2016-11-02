@@ -43,7 +43,7 @@
             connection-groups="filteredRootConnectionGroups"
             connection-template="'app/home/templates/connection.html'"
             connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="20"></guac-group-list>
+            page-size="250"></guac-group-list>
         </div>
       </div>
       <div><a id="tkintertest2.py" class="program-list-item" href="" ng-click="reload()">Python Calculator</a>
@@ -54,7 +54,7 @@
             connection-groups="filteredRootConnectionGroups"
             connection-template="'app/home/templates/connection.html'"
             connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="20"></guac-group-list>
+            page-size="250"></guac-group-list>
         </div>
       </div>
       <div><a id="main.py" class="program-list-item" href="" ng-click="reload()">Mario Cart</a>
@@ -65,7 +65,7 @@
             connection-groups="filteredRootConnectionGroups"
             connection-template="'app/home/templates/connection.html'"
             connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="20"></guac-group-list>
+            page-size="250"></guac-group-list>
         </div>
       <div><a id="GuiApp1" class="program-list-item" href="" ng-click="reload()">Java Gui</a>
         <div class="program-item-details" style="display:none">
@@ -75,7 +75,7 @@
             connection-groups="filteredRootConnectionGroups"
             connection-template="'app/home/templates/connection.html'"
             connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="20"></guac-group-list>
+            page-size="250"></guac-group-list>
         </div>
       </div>
       <div><a id="HelloWorld" class="program-list-item" href="" ng-click="reload()">Java Console</a>
@@ -86,7 +86,7 @@
             connection-groups="filteredRootConnectionGroups"
             connection-template="'app/home/templates/connection.html'"
             connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="20"></guac-group-list>
+            page-size="250"></guac-group-list>
         </div>
       </div>
       <div><a id="main" class="program-list-item" href="" ng-click="reload()">C++ Console</a>
@@ -97,7 +97,7 @@
             connection-groups="filteredRootConnectionGroups"
             connection-template="'app/home/templates/connection.html'"
             connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="20"></guac-group-list>
+            page-size="250"></guac-group-list>
         </div>
       </div>
       <div><a id="hello.exe" class="program-list-item" href="" ng-click="reload()">C# Console</a>
@@ -108,7 +108,18 @@
             connection-groups="filteredRootConnectionGroups"
             connection-template="'app/home/templates/connection.html'"
             connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="20"></guac-group-list>
+            page-size="250"></guac-group-list>
+        </div>
+      </div>
+      <div><a id="CSharpGui.exe" class="program-list-item" href="" ng-click="reload()">C# Gui</a>
+        <div class="program-item-details" style="display:none">
+          <p>C# Gui Program</p>
+          <guac-group-list
+            context="context"
+            connection-groups="filteredRootConnectionGroups"
+            connection-template="'app/home/templates/connection.html'"
+            connection-group-template="'app/home/templates/connectionGroup.html'"
+            page-size="250"></guac-group-list>
         </div>
       </div>
     </div>
@@ -162,7 +173,6 @@
          }
        }
     });
-
 
     /**
      * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).

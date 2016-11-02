@@ -40,17 +40,13 @@ public class AgoraServlet extends HttpServlet {
     // Need some way to differentiate between program name and program path (e.g. "mario-cart" vs "108/108-final-examples/mario-cart/main.py"), but they could be the same.
     // The above was a comment from Campo-Webster, we hope to solve this with the Tuple class
 
-    // Hashtable to hardcode the python version for each available program.  Eventually in
-    // an "upload" page interface, it could even be a radio button to choose python 2 or 3.
+    List<String> project_list = Files.readAllLines(Paths.get("/home/Agora/resources/project_listing.txt"), StandardCharsets.US_ASCII);
     HashMap<String, Tuple> programs;
     programs = new HashMap<String, Tuple>();
-    programs.put("Python Distribute", new Tuple("/home/Agora/python/", "distrib.py", "p2"));
-    programs.put("Python Calculator", new Tuple("/home/Agora/python/", "tkintertest2.py", "p3"));
-    programs.put("Mario Cart", new Tuple("/home/Agora/python/108/108-final-examples/mario-cart/", "main.py", "p3"));
-    programs.put("Java Gui", new Tuple("/home/Agora/java/", "GuiApp1", "jg"));
-    programs.put("Java Console", new Tuple("/home/Agora/java/", "HelloWorld", "jc"));
-    programs.put("C++ Console", new Tuple("/home/Agora/cpp/", "main", "cpp"));
-    programs.put("C# Console", new Tuple("/home/Agora/csharp/", "hello.exe", "cs"));
+    for (int i = 0; i < project_list.size(); i++) {
+      String[] proj = project_list.get(i).split(",");
+      programs.put(proj[0], new Tuple(proj[1], proj[2], proj[3]));
+    }
 
     String displayWebName = request.getParameter("program");
     String directory = programs.get(displayWebName).dir;

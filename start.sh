@@ -67,7 +67,7 @@ fi
 # Handle java console or gui programs
 if [ "$langVersion" = "jc" ]
 then
-  xterm -e "bash -c \"cd $directory; clear; java $progName; read -n 1\"" &
+  xterm -fg white -bg black -e "bash -c \"cd $directory; clear; java $progName; read -n 1\"" &
   progPid=$!
   echo "java console program"
   echo -e "$progName java console running" >> $logfile
@@ -78,7 +78,7 @@ then
   cd $directory
   java $progName &
   progPid=$!
-  echo "java console program"
+  echo "java gui program"
   echo -e "$progName java gui running" >> $logfile
   cd $here
 fi
@@ -86,7 +86,7 @@ fi
 # Handle c++ console program
 if [ "$langVersion" = "cpp" ]
 then
-  xterm -e "bash -c \"$directory$progName; read -n 1\"" &
+  xterm -fg white -bg black -e "bash -c \"$directory$progName; read -n 1\"" &
   progPid=$!
   echo "c++ console program"
   echo -e "$progName c++ console running" >> $logfile
@@ -94,11 +94,19 @@ fi
 
 if [ "$langVersion" = "cs" ]
 then
-  xterm -e "bash -c \"mono $directory$progName; read -n 1\"" &
+  xterm -fg white -bg black -e "bash -c \"mono $directory$progName; read -n 1\"" &
   progPid=$!
-  echo "C# program"
-  echo -e "$progName C# running" >> $logFile
+  echo "C# console program"
+  echo -e "$progName C# console running" >> $logFile
 fi 
+
+#if [ "$langVersion" = "csg" ]
+#then
+#  mono $directory$progName
+#  progPid=$!
+#  echo "C# gui program"
+#  echo -e "$progName C# gui running" >> $logFile
+#fi 
 
 echo "AGORA:starting python program $progName ..."
 

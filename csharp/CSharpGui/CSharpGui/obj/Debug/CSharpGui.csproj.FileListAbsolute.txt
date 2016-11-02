@@ -1,0 +1,8 @@
+c:\users\jstay\documents\visual studio 2013\Projects\CSharpGui\CSharpGui\bin\Debug\CSharpGui.exe.config
+c:\users\jstay\documents\visual studio 2013\Projects\CSharpGui\CSharpGui\bin\Debug\CSharpGui.exe
+c:\users\jstay\documents\visual studio 2013\Projects\CSharpGui\CSharpGui\bin\Debug\CSharpGui.pdb
+c:\users\jstay\documents\visual studio 2013\Projects\CSharpGui\CSharpGui\obj\Debug\CSharpGui.csprojResolveAssemblyReference.cache
+c:\users\jstay\documents\visual studio 2013\Projects\CSharpGui\CSharpGui\obj\Debug\CSharpGui.Properties.Resources.resources
+c:\users\jstay\documents\visual studio 2013\Projects\CSharpGui\CSharpGui\obj\Debug\CSharpGui.csproj.GenerateResource.Cache
+c:\users\jstay\documents\visual studio 2013\Projects\CSharpGui\CSharpGui\obj\Debug\CSharpGui.exe
+c:\users\jstay\documents\visual studio 2013\Projects\CSharpGui\CSharpGui\obj\Debug\CSharpGui.pdb

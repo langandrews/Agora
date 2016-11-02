@@ -1,0 +1,8 @@
+Python Distribute,/home/Agora/python/,distrib.py,p2
+Python Calculator,/home/Agora/python/,tkintertest2.py,p3
+Mario Cart,/home/Agora/python/108/108-final-examples/mario-cart/,main.py,p3
+Java Gui,/home/Agora/java/,GuiApp1,jg
+Java Console,/home/Agora/java/,HelloWorld,jc
+C++ Console,/home/Agora/cpp/,main,cpp
+C# Console,/home/Agora/csharp/,hello.exe,cs
+C# Gui,/home/Agora/csharp/CSharpGui/CSharpGui/bin/Debug/,CSharpGui.exe,cs

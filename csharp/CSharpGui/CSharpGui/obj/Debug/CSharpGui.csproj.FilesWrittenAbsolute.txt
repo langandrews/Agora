@@ -1,0 +1,7 @@
+/home/Agora/csharp/CSharpGui/CSharpGui/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/Agora/csharp/CSharpGui/CSharpGui/obj/Debug/CSharpGui.Properties.Resources.resources
+/home/Agora/csharp/CSharpGui/CSharpGui/bin/Debug/CSharpGui.exe.config
+/home/Agora/csharp/CSharpGui/CSharpGui/bin/Debug/CSharpGui.exe.mdb
+/home/Agora/csharp/CSharpGui/CSharpGui/bin/Debug/CSharpGui.exe
+/home/Agora/csharp/CSharpGui/CSharpGui/obj/Debug/CSharpGui.exe
+/home/Agora/csharp/CSharpGui/CSharpGui/obj/Debug/CSharpGui.exe.mdb

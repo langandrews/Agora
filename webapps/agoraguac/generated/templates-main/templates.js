@@ -957,7 +957,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"20\"></guac-group-list>\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
 	"      <div><a id=\"tkintertest2.py\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Python Calculator</a>\n" +
@@ -968,7 +968,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"20\"></guac-group-list>\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
 	"      <div><a id=\"main.py\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Mario Cart</a>\n" +
@@ -979,7 +979,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"20\"></guac-group-list>\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      <div><a id=\"GuiApp1\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Java Gui</a>\n" +
 	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
@@ -989,7 +989,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"20\"></guac-group-list>\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
 	"      <div><a id=\"HelloWorld\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Java Console</a>\n" +
@@ -1000,7 +1000,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"20\"></guac-group-list>\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
 	"      <div><a id=\"main\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">C++ Console</a>\n" +
@@ -1011,7 +1011,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"20\"></guac-group-list>\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
 	"      <div><a id=\"hello.exe\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">C# Console</a>\n" +
@@ -1022,7 +1022,18 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
 	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
 	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"20\"></guac-group-list>\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
+	"      <div><a id=\"CSharpGui.exe\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">C# Gui</a>\n" +
+	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
+	"          <p>C# Gui Program</p>\n" +
+	"          <guac-group-list\n" +
+	"            context=\"context\"\n" +
+	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
 	"    </div>\n" +
@@ -1076,7 +1087,6 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"         }\n" +
 	"       }\n" +
 	"    });\n" +
-	"\n" +
 	"\n" +
 	"    /**\n" +
 	"     * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).\n" +
