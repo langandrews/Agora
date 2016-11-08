@@ -933,7 +933,6 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n" +
 	"   THE SOFTWARE.\n" +
 	"-->\n" +
-	"\n" +
 	"<div class=\"view\" ng-class=\"{loading: !isLoaded()}\">\n" +
 	"\n" +
 	"  <div class=\"connection-list-ui\">\n" +
@@ -1052,7 +1051,6 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"    <script src=\"http://code.jquery.com/jquery-2.2.0.min.js\"></script>\n" +
 	"    <script>\n" +
 	"    $(document).ready(function() {\n" +
-	"\n" +
 	"       /**\n" +
 	"        * Keep track of whether a Program Details box should be displayed (hidden by default)\n" +
 	"        */\n" +
@@ -1064,6 +1062,9 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            sessionStorage.setItem(\"thisProgName\", displayFlag);\n" +
 	"            sessionStorage.setItem(\"displayOn\", \"0\");\n" +
 	"       }\n" +
+	"\n" +
+	"       $(\".program-list-item\").mouseover(function() { this.next().css('visibility','visible'); });\n" +
+	"       $(\".program-list-item\").mouseout(function() { this.next().css('visibility','hidden'); });\n" +
 	"    });\n" +
 	"\n" +
 	"    /**\n" +
