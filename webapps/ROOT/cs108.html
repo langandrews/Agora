@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>CS-108</title>
-	<link rel="stylesheet" type="text/css" href="styles.css"/>
-</head>
-<body>
-<div id="content">
-	<p>LOOK AT THIS GUACAMOLE AND DESPAIR</p>
-	<a href="http://guac-dev.org"><img src="../guacamole/images/logo-144.png"/></a>
-</div>
+  <head>
+    <title>CS-108</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+  </head>
+  <body>
+    <div id="content">
+      <div id="header">
+        <h1>Calvin College CS Department Project Showcase</h1>
+      </div>
+
+      <div id="mainbody">
+        <div id="projects">
+          <div id="project-list" class="project-section">
+            <div>
+              <div>QWER</div>
+              <div>ASDF</div>
+              <div>ZXVC</div>
+              <div><a id="distrib.py" class="program-list-item" href="" ng-click="reload()">Python Distribute</a>
+                <div class="program-item-details" style="display:none">
+                  <p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>
+                  <guac-group-list
+                    context="context"
+                    connection-groups="filteredRootConnectionGroups"
+                    connection-template="'app/home/templates/connection.html'"
+                    connection-group-template="'app/home/templates/connectionGroup.html'"
+                    page-size="250"></guac-group-list>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div id="right-sidebar" class="project-section">
+          <p>Right Sidebar</p>
+        </div>
+      </div>
+    </div>
+  <body>
+  <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script>
+  $(".program-list-item").click(function(event) {
+    console.log("Here");
+    var myId = this.id;
+    var progName = $(this).text();
+    var myPid;
+    
+    // if already displaying don't slide down -- check if the corresponding .program-item-details div is visible
+    // Send the program name (e.g. mario-cart) as a parameter to the servlet.
+    // Receives back the pid of the process started. Then use that to filter.
+    $.get('agoraguac/AgoraServlet',{program:progName},function() {
+      console.log("Here too");
+    });
+    //.fail(function() { alert("Error! Failed get from AgoraServlet."); });
+    console.log("Done");
+  });
+  </script>
+  <!--
+  <div id="content">
+    <p>LOOK AT THIS GUACAMOLE AND DESPAIR</p>
+    <a href="http://guac-dev.org"><img src="../guacamole/images/logo-144.png"/></a>
+  </div>
+  -->
 </body>
 </html>

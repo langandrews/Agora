@@ -39278,6 +39278,7 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 
             // If the item is a connection, generate a connection identifier
             if (item.isConnection)
+                //console.log(item); rawrrawr
                 return ClientIdentifier.toString({
                     dataSource : item.dataSource,
                     type       : ClientIdentifier.Types.CONNECTION,
@@ -39323,7 +39324,9 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 		if($location.path() !== '/')
 			$location.url('/');
 		else
-		$route.reload();
+		//$route.reload();
+                console.log($scope.context);
+                window.location.href = $scope.context[getClientIdentifier];
 	    }); 
 	}, 500);
     };
@@ -48728,7 +48731,6 @@ angular.module('app/groupList/templates/guacGroupList.html', []).run(['$template
 	"    -->\n" +
 	"\n" +
 	"    <script type=\"text/ng-template\" id=\"nestedGroup.html\">\n" +
-	"\n" +
 	"        <!-- Connection -->\n" +
 	"        <div class=\"connection\" ng-show=\"isVisibleConnection(item)\">\n" +
 	"            <div class=\"caption\">\n" +
@@ -49160,6 +49162,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"        })\n" +
 	"        .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
 	"\n" +
+	"        debugger;\n" +
 	"        // store which item was clicked before the page refreshes\n" +
 	"        sessionStorage.setItem(\"displayOn\", myId);\n" +
 	"      } else {\n" +

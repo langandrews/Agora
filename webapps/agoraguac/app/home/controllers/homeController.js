@@ -100,6 +100,7 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 
             // If the item is a connection, generate a connection identifier
             if (item.isConnection)
+                //console.log(item); rawrrawr
                 return ClientIdentifier.toString({
                     dataSource : item.dataSource,
                     type       : ClientIdentifier.Types.CONNECTION,
@@ -145,7 +146,9 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 		if($location.path() !== '/')
 			$location.url('/');
 		else
-		$route.reload();
+		//$route.reload();
+                console.log($scope.context);
+                window.location.href = $scope.context[getClientIdentifier];
 	    }); 
 	}, 500);
     };

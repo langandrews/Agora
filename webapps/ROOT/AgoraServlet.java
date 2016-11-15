@@ -22,10 +22,6 @@ public class AgoraServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String name="hello hello";
-    //name = "Hello "+request.getParameter("user");
-    //if(request.getParameter("user").toString().equals("")){
-    // name="Hello User";
-    //}
     response.setContentType("text/plain");  
     response.setCharacterEncoding("UTF-8"); 
     response.getWriter().write(name); 

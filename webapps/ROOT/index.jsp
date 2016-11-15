@@ -1,40 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Agora</title>
-		<link rel="stylesheet" type="text/css" href="styles.css"/>
-		<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-		<script>
-$(document).ready(function() {
- $("#header").click(function() {
-  $("#thingy").slideToggle(); 
- })
+  <head>
+    <title>Agora</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+      });
+  </script>
+  </head>
+  <body>
+    <div id="content">
+      <div id="header">
+        <h1>Calvin College CS Department Project Showcase</h1>
+      </div>
 
-});
-
-		</script>
-	</head>
-	<body>
-	<div id="content">
-		<div id="header"><h1>Welcome to Agora!</h1>
-		<p>This website is still under construction.</p></div>
-
-<div id="thingy">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.</p></div>
-
-		<div id="mainbody">
-		<p class="firstParagraph">Available Classes:</p>
-		<ul>
-			<li><a href="cs108.html">CS108</a></li>
-			<li><a href="cs112.html">CS112</a></li>
-			<li><a href="cs214.html">CS214</a></li>
-		</ul>
-			<p>Go to guacamole app: <a target="_blank" href="../guacamole">click here</a></p>
-			<p>Go to AgoraGuac app: <a target="_blank" href="../agoraguac">Here</a></p>
-		</div>
-
-
-	</div>
-	<body>
+      <div id="mainbody">
+        <div id="projects">
+          <div id="popular" class="project-section">
+            <div>
+	      <a href="most_popular.html">More...</a>
+              <p>Most Popular</p>
+            </div>
+          </div>
+          <div id="department-favorites" class="project-section">
+            <div>
+	      <a href="department_favorites.html">More...</a>
+              <p>Department Favorites</p>
+            </div>
+          </div>
+          <div id="cs108" class="project-section">
+            <div>
+	      <a href="cs108.html">More...</a>
+              <p>CS 108: Introductory Programming in Python</p>
+            </div>
+          </div>
+          <div id="cs112" class="project-section">
+            <div>
+	      <a href="cs112.html">More...</a>
+              <p>CS 112: Data Structures in C++</p>
+            </div>
+          </div>
+          <div id="cs212" class="project-section">
+            <div>
+	      <a href="cs212.html">More...</a>
+              <p>CS 212: Algorithms in C#</p>
+            </div>
+          </div>
+          <div id="cs232" class="project-section">
+            <div>
+	      <a href="cs232.html">More...</a>
+              <p>CS 232: Networking In Java</p>
+            </div>
+          </div>
+          <div id="independent" class="project-section">
+            <div>
+	      <a href="independent.html">More...</a>
+              <p>Independent: Projects Unrelated to a Specific Class</p>
+            </div>
+          </div>
+        </div>
+        <div id="right-sidebar" class="project-section">
+          <p>Right Sidebar</p>
+        </div>
+      </div>
+    </div>
+  <body>
 </html>
+
+<!--
+<p>Go to guacamole app: <a target="_blank" href="../guacamole">click here</a></p>
+<p>Go to AgoraGuac app: <a target="_blank" href="../agoraguac">Here</a></p>
+-->
