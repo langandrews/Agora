@@ -45,21 +45,9 @@ git clone https://github.com/solsaver/Agora > $logFile 2>&1
 echo -e "Finished configuring Agora\n"
 
 
-# Install guacamole-auth-noauth extension.
-# I don't think we have to do this anymore because in the block below we copy the jar file
-#echo -e "Install guacamole no-auth extension"
-#wget -O guacamole-auth-noauth-0.9.8.tar.gz https://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-noauth-0.9.8.tar.gz/download > $logFile 2>&1
-#tar -xvzf guacamole-auth-noauth-0.9.8.tar.gz > $logFile 2>&1
-#mkdir /etc/guacamole/extensions > $logFile 2>&1
-#cp guacamole-auth-noauth-0.9.8/guacamole-auth-noauth-0.9.8.jar /etc/guacamole/extensions > $logFile 2>&1
-#rm guacamole-auth-noauth-0.9.8.tar.gz > $logFile 2>&1
-#rm -r guacamole-auth-noauth-0.9.8 > $logFile 2>&1
-#echo -e "Finished installing guacamole no-auth extension\n"
-
-
 # Copy over guacamole setting files.
 echo -e "Configure guacamole settings"
-ln -s Agora/settings-guac/ /etc/guacamole > $logFile 2>&1
+cp -r Agora/settings-guac/* /etc/guacamole/ > $logFile 2>&1
 cd /etc/guacamole > $logFile 2>&1
 chmod 777 . > $logFile 2>&1
 echo -e "Finished configuring guacamole settings\n"
@@ -68,7 +56,7 @@ echo -e "Finished configuring guacamole settings\n"
 # Make a link to the properties file so that the guacaole server can read it.
 echo -e "Set up tomcat7"
 mkdir /usr/share/tomcat7/.guacamole > $logFile 2>&1
-ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7/.guacamole > $logFile 2>&1
+cp settings-guac/guacamole.properties /usr/share/tomcat7/.guacamole/ > $logFile 2>&1
 
 # make a link to the webapps files to override tomcat's default page with the Agora page.
 rm -r /var/lib/tomcat7/webapps > $logFile 2>&1
