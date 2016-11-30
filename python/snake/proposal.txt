@@ -1,0 +1,12 @@
+Final Project proposal
+November 19, 2014
+Hannah Ludema (hel7)
+
+For my final project I will make create a version of the snake game.
+The user will be able to control the snake to make it move around
+the screen and eat up its 'food'. As the snake eats more food it will
+become longer and longer. The snake cannot run into itself. There will
+be additional settings so the user can choose if the snake can go 
+through the edges and come back around or if the game will end if it 
+runs into the edge. Also there will settings to determine how fast 
+the snake moves.

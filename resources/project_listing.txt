@@ -1,6 +1,9 @@
 Python Distribute,/home/Agora/python/,distrib.py,p2
 Python Calculator,/home/Agora/python/,tkintertest2.py,p3
-Mario Cart,/home/Agora/python/108/108-final-examples/mario-cart/,main.py,p3
+Mario Cart,/home/Agora/python/maze/,main.py,p3
+Snake,/home/Agora/python/snake/,driver.py,p3
+Othello (Kinda),/home/Agora/python/othello/,driver.py,p3
+Super Tic Tac Toe,/home/Agora/python/super_tic_tac_toe/,driver.py,p3
 Java Gui,/home/Agora/java/,GuiApp1,jg
 Java Console,/home/Agora/java/,HelloWorld,jc
 C++ Console,/home/Agora/cpp/,main,cpp

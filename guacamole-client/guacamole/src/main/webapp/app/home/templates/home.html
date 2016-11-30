@@ -19,67 +19,64 @@
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
    THE SOFTWARE.
 -->
-<div class="view" ng-class="{loading: !isLoaded()}">
+<html>
+  <head>
+    <title>CS-108</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+  </head>
+  <body>
+    <div id="content">
+      <div id="header">
+        <h1>Calvin College CS Department Project Showcase</h1>
+        <div class="invisible" style="display:none">
+          <guac-group-list-filter connection-groups="rootConnectionGroups"
+            filtered-connection-groups="filteredRootConnectionGroups"
+            placeholder="Rawr"
+            connection-properties="filteredConnectionProperties"
+            connection-group-properties="filteredConnectionGroupProperties"></guac-group-list-filter>
+          <guac-group-list
+            context="context"
+            connection-groups="filteredRootConnectionGroups"
+            connection-template="'app/home/templates/connection.html'"
+            connection-group-template="'app/home/templates/connectionGroup.html'"
+            page-size="250"></guac-group-list>
+        </div>
+      </div>
 
-  <div class="connection-list-ui">
-
-    <!-- Agora -->
-    <div class="header">
-      <h2>Agora Connections</h2>
-        <guac-group-list-filter connection-groups="rootConnectionGroups"
-          filtered-connection-groups="filteredRootConnectionGroups"
-          placeholder="'HOME.FIELD_PLACEHOLDER_FILTER' | translate"
-          connection-properties="filteredConnectionProperties"
-          connection-group-properties="filteredConnectionGroupProperties"></guac-group-list-filter>
-    </div>
-    <div id="group-list-thing">
-      <guac-group-list
-        context="context"
-        connection-groups="filteredRootConnectionGroups"
-        connection-template="'app/home/templates/connection.html'"
-        connection-group-template="'app/home/templates/connectionGroup.html'"
-        page-size="250"></guac-group-list>
-    </div>
-    <div class="all-connections" ng-controller="progListController">		
-      <div ng-repeat="progListItem in progListItems">
-        <a id={{progListItem.id}} class="program-list-item" onclick="progListItemClick();" href="" ng-click="reload()">{{progListItem.name}}</a>
-        <div class="program-item-details" style="display:none">
-          <p>{{progListItem.details}}</p>
+      <div id="mainbody">
+        <div id="projects">
+          <div id="project-list" class="project-section" ng-controller="progListController">
+            <div ng-repeat="progListItem in progListItems">
+              <a id={{progListItem.id}} class="program-list-item" onclick="progListItemClick();" href="" ng-click="reload()">{{progListItem.name}}</a>
+              <div class="program-item-details" style="display:none">
+                <p>{{progListItem.details}}</p>
+              </div>
+            </div>
+              </div>
+            </div>
+          </div>
+        <div id="right-sidebar" class="project-section">
+          <p>Right Sidebar</p>
         </div>
       </div>
     </div>
 
-    <!-- The recent connections for this user -->
-    <div class="header">
-        <h2>{{'HOME.SECTION_HEADER_RECENT_CONNECTIONS' | translate}}</h2>
-    <!--    <guac-user-menu></guac-user-menu> -->
-    </div>
-    <div class="recent-connections">
-        <guac-recent-connections root-groups="rootConnectionGroups"></guac-recent-connections>
-    </div>
-    <div id="clickme"></div>
-
-    <!-- Agora- adding ajax code here -->
     <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script>
-    $(document).ready(function() {
-    });
-
     /**
-     * Filter the connection list. This is done by starting out with everything hidden (see css in index.html), then
-     * find the correct connection to display.
-     * Using mouseover is a pretty messy way to do it.. but connectionNames is empty when this runs on document.ready.
+     * This is a bad way to do what we want, but it works
+     * The sessionStorage will have the program information we want to run
+     * We do not know where the button comes from, but this works to find and click it
      */
     $("body").mouseover(function() {
-       // Retrieve the program name that was clicked on
        var thisProgName = sessionStorage.getItem("thisProgName");
        var thisPid = sessionStorage.getItem("thisPid");
        var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
        
        if (buttonToClick) {
-         //console.log(buttonToClick);
+	 console.log("Clicking " + buttonToClick);
          buttonToClick.click();
-         // Avoid opening the same thing next time
+         // Clear state to avoid opening the same thing forever
          sessionStorage.setItem('thisProgName', null);
          sessionStorage.setItem('thisPid', null);
        }
@@ -87,21 +84,22 @@
 
     /**
      * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).
+     * and store the program information for the program we want to run
      *
-     * Will also reload the page (see angular reload function) and expands that item's details box.
+     * Will also reload the page (see angular reload function in "webapps/app/home/controllers/homeController.js")
      */
     function progListItemClick() {
       var myId = event.target.id;
       var progName = $(event.target).text();
-      var myPid;
       
-      // Send the program name (e.g. mario-cart) as a parameter to the servlet.
-      // Receives back the pid of the process started. Then use that to filter.
+      // Send the displayed program name (e.g. "Python Distribute") as a parameter to the servlet.
+      // Receives back the pid of the process started as responseText.
       $.get('AgoraServlet',{program:progName},function(responseText) {
-        myPid = responseText;
+        var myPid = responseText;
         sessionStorage.setItem("thisPid", myPid);
         sessionStorage.setItem("thisProgName", myId);
 
+        // Keep track of all the pids this browser session has initialized
         var pidList = sessionStorage.getItem("pidList");
         if (pidList) {
           pidList = pidList + "," + myPid;
@@ -115,8 +113,7 @@
     }
 
     /**
-     * Kill a process when tab is closed - use the pid that was stored earlier.
-     * This code is also in client.html. 
+     * Kill all of my processes when tab is closed using the pids that were stored earlier.
      */
     $(window).unload(function() {
       console.log("Unload");
@@ -132,5 +129,5 @@
       }
     });
     </script>
-  </div>
-</div>
+  </body>
+</html>

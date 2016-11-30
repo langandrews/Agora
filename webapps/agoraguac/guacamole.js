@@ -39809,6 +39809,20 @@ angular.module('index').config(['$routeProvider', '$locationProvider',
             resolve       : { updateCurrentToken: updateCurrentToken }
         })
 
+        .when('/cs112', {
+            bodyClassName : 'cs112',
+            templateUrl   : 'app/home/templates/cs112.html',
+            controller    : 'homeController',
+            resolve       : { updateCurrentToken: updateCurrentToken }
+        })
+
+        .when('/cs212', {
+            bodyClassName : 'cs212',
+            templateUrl   : 'app/home/templates/cs212.html',
+            controller    : 'homeController',
+            resolve       : { updateCurrentToken: updateCurrentToken }
+        })
+
         // Redirect to home screen if page not found
         .otherwise({
             resolve : { routeToUserHomePage: routeToUserHomePage }
@@ -46761,6 +46775,21 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "Click below to run the program."
     },
     {
+      id: "driver.py",
+      name: "Snake",
+      details: "A clone of the classic Snake game."
+    },
+    {
+      id: "driver.py",
+      name: "Othello (Kinda)",
+      details: "Othello game (mostly broken)."
+    },
+    {
+      id: "driver.py",
+      name: "Super Tic Tac Toe",
+      details: "Not your grandma's tic tac toe -IGN"
+    },
+    {
       id: "GuiApp1",
       name: "Java Gui",
       details: "Java test..."
@@ -48102,7 +48131,7 @@ angular.module('index').config(['$provide', function($provide) {
         return decoratedTemplateRequest;
 
     }]);
-}]);angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
+}]);angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/cs112.html', 'app/home/templates/cs212.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
 
 angular.module('app/client/templates/client.html', []).run(['$templateCache', function($templateCache) {
 	$templateCache.put('app/client/templates/client.html',
@@ -48948,6 +48977,280 @@ angular.module('app/home/templates/connectionGroup.html', []).run(['$templateCac
 	"</span>");
 }]);
 
+angular.module('app/home/templates/cs112.html', []).run(['$templateCache', function($templateCache) {
+	$templateCache.put('app/home/templates/cs112.html',
+	"<!--\n" +
+	"   Copyright (C) 2015 Glyptodon LLC\n" +
+	"\n" +
+	"   Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
+	"   of this software and associated documentation files (the \"Software\"), to deal\n" +
+	"   in the Software without restriction, including without limitation the rights\n" +
+	"   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n" +
+	"   copies of the Software, and to permit persons to whom the Software is\n" +
+	"   furnished to do so, subject to the following conditions:\n" +
+	"\n" +
+	"   The above copyright notice and this permission notice shall be included in\n" +
+	"   all copies or substantial portions of the Software.\n" +
+	"\n" +
+	"   THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n" +
+	"   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n" +
+	"   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n" +
+	"   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n" +
+	"   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n" +
+	"   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n" +
+	"   THE SOFTWARE.\n" +
+	"-->\n" +
+	"<html>\n" +
+	"  <head>\n" +
+	"    <title>CS-112</title>\n" +
+	"    <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>\n" +
+	"  </head>\n" +
+	"  <body>\n" +
+	"    <div id=\"content\">\n" +
+	"      <div id=\"header\">\n" +
+	"        <h1>Calvin College CS 112 Project Showcase</h1>\n" +
+	"        <div class=\"invisible\" style=\"display:none\">\n" +
+	"          <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
+	"            filtered-connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            placeholder=\"Rawr\"\n" +
+	"            connection-properties=\"filteredConnectionProperties\"\n" +
+	"            connection-group-properties=\"filteredConnectionGroupProperties\"></guac-group-list-filter>\n" +
+	"          <guac-group-list\n" +
+	"            context=\"context\"\n" +
+	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
+	"\n" +
+	"      <div id=\"mainbody\">\n" +
+	"        <div id=\"projects\">\n" +
+	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
+	"            <div ng-repeat=\"progListItem in progListItems\">\n" +
+	"              <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">{{progListItem.name}}</a>\n" +
+	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
+	"                <p>{{progListItem.details}}</p>\n" +
+	"              </div>\n" +
+	"            </div>\n" +
+	"              </div>\n" +
+	"            </div>\n" +
+	"          </div>\n" +
+	"        <div id=\"right-sidebar\" class=\"project-section\">\n" +
+	"          <p>Right Sidebar</p>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
+	"    </div>\n" +
+	"\n" +
+	"    <script src=\"http://code.jquery.com/jquery-2.2.0.min.js\"></script>\n" +
+	"    <script>\n" +
+	"    /**\n" +
+	"     * This is a bad way to do what we want, but it works\n" +
+	"     * The sessionStorage will have the program information we want to run\n" +
+	"     * We do not know where the button comes from, but this works to find and click it\n" +
+	"     */\n" +
+	"    $(\"body\").mouseover(function() {\n" +
+	"       var thisProgName = sessionStorage.getItem(\"thisProgName\");\n" +
+	"       var thisPid = sessionStorage.getItem(\"thisPid\");\n" +
+	"       var buttonToClick = $(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\")[0];\n" +
+	"       \n" +
+	"       if (buttonToClick) {\n" +
+	"	 console.log(\"Clicking \" + buttonToClick);\n" +
+	"         buttonToClick.click();\n" +
+	"         // Clear state to avoid opening the same thing forever\n" +
+	"         sessionStorage.setItem('thisProgName', null);\n" +
+	"         sessionStorage.setItem('thisPid', null);\n" +
+	"       }\n" +
+	"    });\n" +
+	"\n" +
+	"    /**\n" +
+	"     * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).\n" +
+	"     * and store the program information for the program we want to run\n" +
+	"     *\n" +
+	"     * Will also reload the page (see angular reload function in \"webapps/app/home/controllers/homeController.js\")\n" +
+	"     */\n" +
+	"    function progListItemClick() {\n" +
+	"      var myId = event.target.id;\n" +
+	"      var progName = $(event.target).text();\n" +
+	"      \n" +
+	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
+	"      // Receives back the pid of the process started as responseText.\n" +
+	"      $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
+	"        var myPid = responseText;\n" +
+	"        sessionStorage.setItem(\"thisPid\", myPid);\n" +
+	"        sessionStorage.setItem(\"thisProgName\", myId);\n" +
+	"\n" +
+	"        // Keep track of all the pids this browser session has initialized\n" +
+	"        var pidList = sessionStorage.getItem(\"pidList\");\n" +
+	"        if (pidList) {\n" +
+	"          pidList = pidList + \",\" + myPid;\n" +
+	"        } else {\n" +
+	"          pidList = myPid;\n" +
+	"        }\n" +
+	"        sessionStorage.setItem(\"pidList\", pidList);\n" +
+	"        console.log(pidList);\n" +
+	"      })\n" +
+	"      .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
+	"    }\n" +
+	"\n" +
+	"    /**\n" +
+	"     * Kill all of my processes when tab is closed using the pids that were stored earlier.\n" +
+	"     */\n" +
+	"    $(window).unload(function() {\n" +
+	"      console.log(\"Unload\");\n" +
+	"      var pidList = sessionStorage.getItem(\"pidList\");\n" +
+	"      console.log(pidList);\n" +
+	"      if (pidList) {\n" +
+	"        pidList = pidList.split(\",\");\n" +
+	"        console.log(pidList);\n" +
+	"        $.get('KillServlet',{pid:pidList},function(responseText) {\n" +
+	"          var newVar = responseText;\n" +
+	"          console.log(\"jquery received from KillServlet value \" + newVar);\n" +
+	"        });\n" +
+	"      }\n" +
+	"    });\n" +
+	"    </script>\n" +
+	"  </body>\n" +
+	"</html>");
+}]);
+
+angular.module('app/home/templates/cs212.html', []).run(['$templateCache', function($templateCache) {
+	$templateCache.put('app/home/templates/cs212.html',
+	"<!--\n" +
+	"   Copyright (C) 2015 Glyptodon LLC\n" +
+	"\n" +
+	"   Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
+	"   of this software and associated documentation files (the \"Software\"), to deal\n" +
+	"   in the Software without restriction, including without limitation the rights\n" +
+	"   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n" +
+	"   copies of the Software, and to permit persons to whom the Software is\n" +
+	"   furnished to do so, subject to the following conditions:\n" +
+	"\n" +
+	"   The above copyright notice and this permission notice shall be included in\n" +
+	"   all copies or substantial portions of the Software.\n" +
+	"\n" +
+	"   THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n" +
+	"   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n" +
+	"   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n" +
+	"   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n" +
+	"   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n" +
+	"   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n" +
+	"   THE SOFTWARE.\n" +
+	"-->\n" +
+	"<html>\n" +
+	"  <head>\n" +
+	"    <title>CS-112</title>\n" +
+	"    <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>\n" +
+	"  </head>\n" +
+	"  <body>\n" +
+	"    <div id=\"content\">\n" +
+	"      <div id=\"header\">\n" +
+	"        <h1>Calvin College CS 112 Project Showcase</h1>\n" +
+	"        <div class=\"invisible\" style=\"display:none\">\n" +
+	"          <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
+	"            filtered-connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            placeholder=\"Rawr\"\n" +
+	"            connection-properties=\"filteredConnectionProperties\"\n" +
+	"            connection-group-properties=\"filteredConnectionGroupProperties\"></guac-group-list-filter>\n" +
+	"          <guac-group-list\n" +
+	"            context=\"context\"\n" +
+	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
+	"\n" +
+	"      <div id=\"mainbody\">\n" +
+	"        <div id=\"projects\">\n" +
+	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
+	"            <div ng-repeat=\"progListItem in progListItems\">\n" +
+	"              <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">{{progListItem.name}}</a>\n" +
+	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
+	"                <p>{{progListItem.details}}</p>\n" +
+	"              </div>\n" +
+	"            </div>\n" +
+	"              </div>\n" +
+	"            </div>\n" +
+	"          </div>\n" +
+	"        <div id=\"right-sidebar\" class=\"project-section\">\n" +
+	"          <p>Right Sidebar</p>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
+	"    </div>\n" +
+	"\n" +
+	"    <script src=\"http://code.jquery.com/jquery-2.2.0.min.js\"></script>\n" +
+	"    <script>\n" +
+	"    /**\n" +
+	"     * This is a bad way to do what we want, but it works\n" +
+	"     * The sessionStorage will have the program information we want to run\n" +
+	"     * We do not know where the button comes from, but this works to find and click it\n" +
+	"     */\n" +
+	"    $(\"body\").mouseover(function() {\n" +
+	"       var thisProgName = sessionStorage.getItem(\"thisProgName\");\n" +
+	"       var thisPid = sessionStorage.getItem(\"thisPid\");\n" +
+	"       var buttonToClick = $(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\")[0];\n" +
+	"       \n" +
+	"       if (buttonToClick) {\n" +
+	"	 console.log(\"Clicking \" + buttonToClick);\n" +
+	"         buttonToClick.click();\n" +
+	"         // Clear state to avoid opening the same thing forever\n" +
+	"         sessionStorage.setItem('thisProgName', null);\n" +
+	"         sessionStorage.setItem('thisPid', null);\n" +
+	"       }\n" +
+	"    });\n" +
+	"\n" +
+	"    /**\n" +
+	"     * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).\n" +
+	"     * and store the program information for the program we want to run\n" +
+	"     *\n" +
+	"     * Will also reload the page (see angular reload function in \"webapps/app/home/controllers/homeController.js\")\n" +
+	"     */\n" +
+	"    function progListItemClick() {\n" +
+	"      var myId = event.target.id;\n" +
+	"      var progName = $(event.target).text();\n" +
+	"      \n" +
+	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
+	"      // Receives back the pid of the process started as responseText.\n" +
+	"      $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
+	"        var myPid = responseText;\n" +
+	"        sessionStorage.setItem(\"thisPid\", myPid);\n" +
+	"        sessionStorage.setItem(\"thisProgName\", myId);\n" +
+	"\n" +
+	"        // Keep track of all the pids this browser session has initialized\n" +
+	"        var pidList = sessionStorage.getItem(\"pidList\");\n" +
+	"        if (pidList) {\n" +
+	"          pidList = pidList + \",\" + myPid;\n" +
+	"        } else {\n" +
+	"          pidList = myPid;\n" +
+	"        }\n" +
+	"        sessionStorage.setItem(\"pidList\", pidList);\n" +
+	"        console.log(pidList);\n" +
+	"      })\n" +
+	"      .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
+	"    }\n" +
+	"\n" +
+	"    /**\n" +
+	"     * Kill all of my processes when tab is closed using the pids that were stored earlier.\n" +
+	"     */\n" +
+	"    $(window).unload(function() {\n" +
+	"      console.log(\"Unload\");\n" +
+	"      var pidList = sessionStorage.getItem(\"pidList\");\n" +
+	"      console.log(pidList);\n" +
+	"      if (pidList) {\n" +
+	"        pidList = pidList.split(\",\");\n" +
+	"        console.log(pidList);\n" +
+	"        $.get('KillServlet',{pid:pidList},function(responseText) {\n" +
+	"          var newVar = responseText;\n" +
+	"          console.log(\"jquery received from KillServlet value \" + newVar);\n" +
+	"        });\n" +
+	"      }\n" +
+	"    });\n" +
+	"    </script>\n" +
+	"  </body>\n" +
+	"</html>");
+}]);
+
 angular.module('app/home/templates/guacRecentConnections.html', []).run(['$templateCache', function($templateCache) {
 	$templateCache.put('app/home/templates/guacRecentConnections.html',
 	"<div>\n" +
@@ -49036,67 +49339,64 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n" +
 	"   THE SOFTWARE.\n" +
 	"-->\n" +
-	"<div class=\"view\" ng-class=\"{loading: !isLoaded()}\">\n" +
+	"<html>\n" +
+	"  <head>\n" +
+	"    <title>CS-108</title>\n" +
+	"    <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>\n" +
+	"  </head>\n" +
+	"  <body>\n" +
+	"    <div id=\"content\">\n" +
+	"      <div id=\"header\">\n" +
+	"        <h1>Calvin College CS Department Project Showcase</h1>\n" +
+	"        <div class=\"invisible\" style=\"display:none\">\n" +
+	"          <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
+	"            filtered-connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            placeholder=\"Rawr\"\n" +
+	"            connection-properties=\"filteredConnectionProperties\"\n" +
+	"            connection-group-properties=\"filteredConnectionGroupProperties\"></guac-group-list-filter>\n" +
+	"          <guac-group-list\n" +
+	"            context=\"context\"\n" +
+	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
 	"\n" +
-	"  <div class=\"connection-list-ui\">\n" +
-	"\n" +
-	"    <!-- Agora -->\n" +
-	"    <div class=\"header\">\n" +
-	"      <h2>Agora Connections</h2>\n" +
-	"        <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
-	"          filtered-connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"          placeholder=\"'HOME.FIELD_PLACEHOLDER_FILTER' | translate\"\n" +
-	"          connection-properties=\"filteredConnectionProperties\"\n" +
-	"          connection-group-properties=\"filteredConnectionGroupProperties\"></guac-group-list-filter>\n" +
-	"    </div>\n" +
-	"    <div id=\"group-list-thing\">\n" +
-	"      <guac-group-list\n" +
-	"        context=\"context\"\n" +
-	"        connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"        connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"        connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"        page-size=\"250\"></guac-group-list>\n" +
-	"    </div>\n" +
-	"    <div class=\"all-connections\" ng-controller=\"progListController\">		\n" +
-	"      <div ng-repeat=\"progListItem in progListItems\">\n" +
-	"        <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">{{progListItem.name}}</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>{{progListItem.details}}</p>\n" +
+	"      <div id=\"mainbody\">\n" +
+	"        <div id=\"projects\">\n" +
+	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
+	"            <div ng-repeat=\"progListItem in progListItems\">\n" +
+	"              <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">{{progListItem.name}}</a>\n" +
+	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
+	"                <p>{{progListItem.details}}</p>\n" +
+	"              </div>\n" +
+	"            </div>\n" +
+	"              </div>\n" +
+	"            </div>\n" +
+	"          </div>\n" +
+	"        <div id=\"right-sidebar\" class=\"project-section\">\n" +
+	"          <p>Right Sidebar</p>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
 	"    </div>\n" +
 	"\n" +
-	"    <!-- The recent connections for this user -->\n" +
-	"    <div class=\"header\">\n" +
-	"        <h2>{{'HOME.SECTION_HEADER_RECENT_CONNECTIONS' | translate}}</h2>\n" +
-	"    <!--    <guac-user-menu></guac-user-menu> -->\n" +
-	"    </div>\n" +
-	"    <div class=\"recent-connections\">\n" +
-	"        <guac-recent-connections root-groups=\"rootConnectionGroups\"></guac-recent-connections>\n" +
-	"    </div>\n" +
-	"    <div id=\"clickme\"></div>\n" +
-	"\n" +
-	"    <!-- Agora- adding ajax code here -->\n" +
 	"    <script src=\"http://code.jquery.com/jquery-2.2.0.min.js\"></script>\n" +
 	"    <script>\n" +
-	"    $(document).ready(function() {\n" +
-	"    });\n" +
-	"\n" +
 	"    /**\n" +
-	"     * Filter the connection list. This is done by starting out with everything hidden (see css in index.html), then\n" +
-	"     * find the correct connection to display.\n" +
-	"     * Using mouseover is a pretty messy way to do it.. but connectionNames is empty when this runs on document.ready.\n" +
+	"     * This is a bad way to do what we want, but it works\n" +
+	"     * The sessionStorage will have the program information we want to run\n" +
+	"     * We do not know where the button comes from, but this works to find and click it\n" +
 	"     */\n" +
 	"    $(\"body\").mouseover(function() {\n" +
-	"       // Retrieve the program name that was clicked on\n" +
 	"       var thisProgName = sessionStorage.getItem(\"thisProgName\");\n" +
 	"       var thisPid = sessionStorage.getItem(\"thisPid\");\n" +
 	"       var buttonToClick = $(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\")[0];\n" +
 	"       \n" +
 	"       if (buttonToClick) {\n" +
-	"         //console.log(buttonToClick);\n" +
+	"	 console.log(\"Clicking \" + buttonToClick);\n" +
 	"         buttonToClick.click();\n" +
-	"         // Avoid opening the same thing next time\n" +
+	"         // Clear state to avoid opening the same thing forever\n" +
 	"         sessionStorage.setItem('thisProgName', null);\n" +
 	"         sessionStorage.setItem('thisPid', null);\n" +
 	"       }\n" +
@@ -49104,21 +49404,22 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"\n" +
 	"    /**\n" +
 	"     * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).\n" +
+	"     * and store the program information for the program we want to run\n" +
 	"     *\n" +
-	"     * Will also reload the page (see angular reload function) and expands that item's details box.\n" +
+	"     * Will also reload the page (see angular reload function in \"webapps/app/home/controllers/homeController.js\")\n" +
 	"     */\n" +
 	"    function progListItemClick() {\n" +
 	"      var myId = event.target.id;\n" +
 	"      var progName = $(event.target).text();\n" +
-	"      var myPid;\n" +
 	"      \n" +
-	"      // Send the program name (e.g. mario-cart) as a parameter to the servlet.\n" +
-	"      // Receives back the pid of the process started. Then use that to filter.\n" +
+	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
+	"      // Receives back the pid of the process started as responseText.\n" +
 	"      $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
-	"        myPid = responseText;\n" +
+	"        var myPid = responseText;\n" +
 	"        sessionStorage.setItem(\"thisPid\", myPid);\n" +
 	"        sessionStorage.setItem(\"thisProgName\", myId);\n" +
 	"\n" +
+	"        // Keep track of all the pids this browser session has initialized\n" +
 	"        var pidList = sessionStorage.getItem(\"pidList\");\n" +
 	"        if (pidList) {\n" +
 	"          pidList = pidList + \",\" + myPid;\n" +
@@ -49132,8 +49433,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"    }\n" +
 	"\n" +
 	"    /**\n" +
-	"     * Kill a process when tab is closed - use the pid that was stored earlier.\n" +
-	"     * This code is also in client.html. \n" +
+	"     * Kill all of my processes when tab is closed using the pids that were stored earlier.\n" +
 	"     */\n" +
 	"    $(window).unload(function() {\n" +
 	"      console.log(\"Unload\");\n" +
@@ -49149,8 +49449,8 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"      }\n" +
 	"    });\n" +
 	"    </script>\n" +
-	"  </div>\n" +
-	"</div>");
+	"  </body>\n" +
+	"</html>");
 }]);
 
 angular.module('app/list/templates/guacFilter.html', []).run(['$templateCache', function($templateCache) {

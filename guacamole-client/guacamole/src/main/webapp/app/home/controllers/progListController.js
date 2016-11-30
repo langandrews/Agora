@@ -16,6 +16,21 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "Click below to run the program."
     },
     {
+      id: "driver.py",
+      name: "Snake",
+      details: "A clone of the classic Snake game."
+    },
+    {
+      id: "driver.py",
+      name: "Othello (Kinda)",
+      details: "Othello game (mostly broken)."
+    },
+    {
+      id: "driver.py",
+      name: "Super Tic Tac Toe",
+      details: "Not your grandma's tic tac toe -IGN"
+    },
+    {
       id: "GuiApp1",
       name: "Java Gui",
       details: "Java test..."

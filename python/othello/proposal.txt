@@ -1,0 +1,6 @@
+Project proposal 
+
+For my final project, I'd like to create a game of Othello.
+I will create a green board with 64 squares, and users place black or white tokens on the board and try to do it in places that will win them the most tokens.
+If one user's tokens are surrounded by the other's, the tokens will turn the second user's color. 
+At the end of the game, points are added up, and the player with the most tokens of his color on the board wins. 

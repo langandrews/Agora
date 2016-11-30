@@ -166,6 +166,20 @@ angular.module('index').config(['$routeProvider', '$locationProvider',
             resolve       : { updateCurrentToken: updateCurrentToken }
         })
 
+        .when('/cs112', {
+            bodyClassName : 'cs112',
+            templateUrl   : 'app/home/templates/cs112.html',
+            controller    : 'homeController',
+            resolve       : { updateCurrentToken: updateCurrentToken }
+        })
+
+        .when('/cs212', {
+            bodyClassName : 'cs212',
+            templateUrl   : 'app/home/templates/cs212.html',
+            controller    : 'homeController',
+            resolve       : { updateCurrentToken: updateCurrentToken }
+        })
+
         // Redirect to home screen if page not found
         .otherwise({
             resolve : { routeToUserHomePage: routeToUserHomePage }

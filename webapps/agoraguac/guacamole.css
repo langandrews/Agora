@@ -1612,60 +1612,83 @@ h2 {
 
 .settings.connectionHistory .history-list {
     width: 100%;
-}/*
- * Copyright (C) 2014 Glyptodon LLC
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-.history-unavailable div.recent-connections {
-    display: none;
+}body {
+  margin: 0px;
 }
 
-div.recent-connections,
-div.clipboardDiv,
-div.settings,
-div.all-connections {
-    margin: 1em;
-    padding: 0;
+#mainbody {
+  height: 500px;
 }
 
-.all-connections .list-buttons {
-    text-align: center;
-    padding: 0;
+#header {
+  background-color: #97252b;
+  text-align: center;
+  height: 60px;
 }
 
-div.recent-connections {
-    text-align: center;
+#header h1 {
+  margin: auto;
 }
 
-div.recent-connections div.connection {
-    -moz-border-radius: 0.5em;
-    -webkit-border-radius: 0.5em;
-    -khtml-border-radius: 0.5em;
-    border-radius: 0.5em;
-    display: inline-block;
-    padding: 1em;
-    margin: 1em;
-    text-align: center;
-    max-width: 75%;
-    overflow: hidden;
+#content {
+  background-color: #ffffff;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#projects {
+  float: left;
+  width: 80%;
+}
+
+#right-sidebar {
+  float: right;
+  width: 18%;
+  height: 400px;
+}
+
+.firstParagraph {
+  margin-top: 100px;
+}
+
+a:hover {
+  background-color: #99dddd;
+  color: black;
+}
+
+.project-section div a {
+  display: inline-block;
+  float: right;
+}
+
+.project-section {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px; 
+  margin: 2px;
+  height: auto;
+  float: left;
+  clear: left;
+}
+
+/* Too narrow to support three columns */
+@media all and (max-width: 1050px) {
+  #projects {
+    flex-direction: column;
+  }
+
+  #projects, #right-sidebar {
+    float: none;
+  }
+
+  #projects, #right-sidebar {
+  /* Return them to document order */
+    order: 0;
+  }
+  
+  #projects, #right-sidebar {
+    min-height: 50px;
+    max-height: 50px;
+  }
 }
 /*
  * Copyright (C) 2015 Glyptodon LLC
