@@ -24,14 +24,14 @@ public class KillServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String pid = request.getParameter("pid");
+    	String pidList = request.getParameter("pid");
 
-	Process P3 = new ProcessBuilder().inheritIO().command("/home/Agora/kill.sh" , pid).start();
-	System.out.println("In KillServlet, started script to kill process " + pid);
+	Process proc = new ProcessBuilder().inheritIO().command("/home/Agora/kill.sh" , pidList).start();
+	System.out.println("In KillServlet, started script to kill process " + pidList);
    
         response.setContentType("text/plain");  
         response.setCharacterEncoding("UTF-8"); 
-        response.getWriter().write(pid); 
+        response.getWriter().write(pidList); 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { }

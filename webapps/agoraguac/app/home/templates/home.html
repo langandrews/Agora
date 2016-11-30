@@ -32,96 +32,21 @@
           connection-properties="filteredConnectionProperties"
           connection-group-properties="filteredConnectionGroupProperties"></guac-group-list-filter>
     </div>
-    <div class="all-connections">		
-      <!-- This program list should probably be more dynamic - there's a lot of repetition here..	Get rid of the commented img tag if it looks good up there ^ -->
-      <div><a id="distrib.py" class="program-list-item" href="" ng-click="reload()">Python Distribute</a>
-        <div class="program-item-details" style="display:none">
-          <p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>
-          <guac-group-list
-            context="context"
-            connection-groups="filteredRootConnectionGroups"
-            connection-template="'app/home/templates/connection.html'"
-            connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="250"></guac-group-list>
-        </div>
-      </div>
-      <div><a id="tkintertest2.py" class="program-list-item" href="" ng-click="reload()">Python Calculator</a>
-        <div class="program-item-details" style="display:none">
-          <p>Description: A simple calculator program.</p>
-          <guac-group-list
-            context="context"
-            connection-groups="filteredRootConnectionGroups"
-            connection-template="'app/home/templates/connection.html'"
-            connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="250"></guac-group-list>
-        </div>
-      </div>
-      <div><a id="main.py" class="program-list-item" href="" ng-click="reload()">Mario Cart</a>
-        <div class="program-item-details" style="display:none">
-          <p>Click below to run the program.</p>
-          <guac-group-list
-            context="context"
-            connection-groups="filteredRootConnectionGroups"
-            connection-template="'app/home/templates/connection.html'"
-            connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="250"></guac-group-list>
-        </div>
-      <div><a id="GuiApp1" class="program-list-item" href="" ng-click="reload()">Java Gui</a>
-        <div class="program-item-details" style="display:none">
-          <p>Java test... </p>
-          <guac-group-list
-            context="context"
-            connection-groups="filteredRootConnectionGroups"
-            connection-template="'app/home/templates/connection.html'"
-            connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="250"></guac-group-list>
-        </div>
-      </div>
-      <div><a id="HelloWorld" class="program-list-item" href="" ng-click="reload()">Java Console</a>
-        <div class="program-item-details" style="display:none">
-          <p>Java test, check logs/java_try.log... </p>
-          <guac-group-list
-            context="context"
-            connection-groups="filteredRootConnectionGroups"
-            connection-template="'app/home/templates/connection.html'"
-            connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="250"></guac-group-list>
-        </div>
-      </div>
-      <div><a id="main" class="program-list-item" href="" ng-click="reload()">C++ Console</a>
-        <div class="program-item-details" style="display:none">
-          <p>C++ program</p>
-          <guac-group-list
-            context="context"
-            connection-groups="filteredRootConnectionGroups"
-            connection-template="'app/home/templates/connection.html'"
-            connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="250"></guac-group-list>
-        </div>
-      </div>
-      <div><a id="hello.exe" class="program-list-item" href="" ng-click="reload()">C# Console</a>
-        <div class="program-item-details" style="display:none">
-          <p>C# program</p>
-          <guac-group-list
-            context="context"
-            connection-groups="filteredRootConnectionGroups"
-            connection-template="'app/home/templates/connection.html'"
-            connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="250"></guac-group-list>
-        </div>
-      </div>
-      <div><a id="CSharpGui.exe" class="program-list-item" href="" ng-click="reload()">C# Gui</a>
-        <div class="program-item-details" style="display:none">
-          <p>C# Gui Program</p>
-          <guac-group-list
-            context="context"
-            connection-groups="filteredRootConnectionGroups"
-            connection-template="'app/home/templates/connection.html'"
-            connection-group-template="'app/home/templates/connectionGroup.html'"
-            page-size="250"></guac-group-list>
-        </div>
-      </div>
+    <div id="group-list-thing">
+      <guac-group-list
+        context="context"
+        connection-groups="filteredRootConnectionGroups"
+        connection-template="'app/home/templates/connection.html'"
+        connection-group-template="'app/home/templates/connectionGroup.html'"
+        page-size="250"></guac-group-list>
     </div>
+    <div class="all-connections" ng-controller="progListController">		
+      <div ng-repeat="progListItem in progListItems">
+        <a id={{progListItem.id}} class="program-list-item" onclick="progListItemClick();" href="" ng-click="reload()">{{progListItem.name}}</a>
+        <div class="program-item-details" style="display:none">
+          <p>{{progListItem.details}}</p>
+        </div>
+      </div>
     </div>
 
     <!-- The recent connections for this user -->
@@ -132,25 +57,12 @@
     <div class="recent-connections">
         <guac-recent-connections root-groups="rootConnectionGroups"></guac-recent-connections>
     </div>
+    <div id="clickme"></div>
 
     <!-- Agora- adding ajax code here -->
     <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script>
     $(document).ready(function() {
-       /**
-        * Keep track of whether a Program Details box should be displayed (hidden by default)
-        */
-       var displayFlag = "0";
-       displayFlag = sessionStorage.getItem("displayOn");
-       if(displayFlag != null && displayFlag != "0") {
-            $("#"+displayFlag).next().slideDown();
-            // Before removing, save prog name in a different sess storage var
-            sessionStorage.setItem("thisProgName", displayFlag);
-            sessionStorage.setItem("displayOn", "0");
-       }
-
-       $(".program-list-item").mouseover(function() { this.next().css('visibility','visible'); });
-       $(".program-list-item").mouseout(function() { this.next().css('visibility','hidden'); });
     });
 
     /**
@@ -159,19 +71,17 @@
      * Using mouseover is a pretty messy way to do it.. but connectionNames is empty when this runs on document.ready.
      */
     $("body").mouseover(function() {
-       var shown = false;
-       if(!shown) {
-         // Retrieve the program name that was clicked on
-         var thisProgName = sessionStorage.getItem("thisProgName");
-         var thisPid = sessionStorage.getItem("thisPid");
-         var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
-         
-         if (buttonToClick) {
-           buttonToClick.click();
-           // Avoid opening the same thing next time
-           sessionStorage.setItem('thisProgName', null);
-           sessionStorage.setItem('thisPid', null);
-         }
+       // Retrieve the program name that was clicked on
+       var thisProgName = sessionStorage.getItem("thisProgName");
+       var thisPid = sessionStorage.getItem("thisPid");
+       var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
+       
+       if (buttonToClick) {
+         //console.log(buttonToClick);
+         buttonToClick.click();
+         // Avoid opening the same thing next time
+         sessionStorage.setItem('thisProgName', null);
+         sessionStorage.setItem('thisPid', null);
        }
     });
 
@@ -180,48 +90,47 @@
      *
      * Will also reload the page (see angular reload function) and expands that item's details box.
      */
-    $(".program-list-item").click(function(event) {
-      var myId = this.id;
-      var progName = $(this).text();
+    function progListItemClick() {
+      var myId = event.target.id;
+      var progName = $(event.target).text();
       var myPid;
       
-      // if already displaying don't slide down -- check if the corresponding .program-item-details div is visible
-      var isDetailOn = $(this).next().next().is(':visible');
-      if(!isDetailOn) {
-        // Send the program name (e.g. mario-cart) as a parameter to the servlet.
-        // Receives back the pid of the process started. Then use that to filter.
-        $.get('AgoraServlet',{program:progName},function(responseText) {
-          $('#hellotext').text(responseText);
-          myPid = responseText;
-          sessionStorage.setItem("thisPid", myPid);
-          sessionStorage.setItem("thisProgName", myId);
-        })
-        .fail(function() { alert("Error! Failed get from AgoraServlet."); });
+      // Send the program name (e.g. mario-cart) as a parameter to the servlet.
+      // Receives back the pid of the process started. Then use that to filter.
+      $.get('AgoraServlet',{program:progName},function(responseText) {
+        myPid = responseText;
+        sessionStorage.setItem("thisPid", myPid);
+        sessionStorage.setItem("thisProgName", myId);
 
-        debugger;
-        // store which item was clicked before the page refreshes
-        sessionStorage.setItem("displayOn", myId);
-      } else {
-        sessionStorage.setItem("displayOn", "0");
-      }
-    });
+        var pidList = sessionStorage.getItem("pidList");
+        if (pidList) {
+          pidList = pidList + "," + myPid;
+        } else {
+          pidList = myPid;
+        }
+        sessionStorage.setItem("pidList", pidList);
+        console.log(pidList);
+      })
+      .fail(function() { alert("Error! Failed get from AgoraServlet."); });
+    }
 
     /**
      * Kill a process when tab is closed - use the pid that was stored earlier.
      * This code is also in client.html. 
      */
     $(window).unload(function() {
-            alert("unloading..");
-            var myPidOut = sessionStorage.getItem("thisPid");
-            $.get('KillServlet',{pid:myPidOut},function(responseText) {
-                    var newVar = responseText;
-                    console.log("jquery received from KillServlet value " + newVar);
-            })
+      console.log("Unload");
+      var pidList = sessionStorage.getItem("pidList");
+      console.log(pidList);
+      if (pidList) {
+        pidList = pidList.split(",");
+        console.log(pidList);
+        $.get('KillServlet',{pid:pidList},function(responseText) {
+          var newVar = responseText;
+          console.log("jquery received from KillServlet value " + newVar);
+        });
+      }
     });
-
     </script>
-    <div id="hellotext" style="display:none"></div>
-
   </div>
-
 </div>

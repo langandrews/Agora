@@ -1,4 +1,4 @@
-angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/home/templates/programListItem.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
+angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
 
 angular.module('app/client/templates/client.html', []).run(['$templateCache', function($templateCache) {
 	$templateCache.put('app/client/templates/client.html',
@@ -945,96 +945,21 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"          connection-properties=\"filteredConnectionProperties\"\n" +
 	"          connection-group-properties=\"filteredConnectionGroupProperties\"></guac-group-list-filter>\n" +
 	"    </div>\n" +
-	"    <div class=\"all-connections\">		\n" +
-	"      <!-- This program list should probably be more dynamic - there's a lot of repetition here..	Get rid of the commented img tag if it looks good up there ^ -->\n" +
-	"      <div><a id=\"distrib.py\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Python Distribute</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.</p>\n" +
-	"          <guac-group-list\n" +
-	"            context=\"context\"\n" +
-	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"250\"></guac-group-list>\n" +
-	"        </div>\n" +
-	"      </div>\n" +
-	"      <div><a id=\"tkintertest2.py\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Python Calculator</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>Description: A simple calculator program.</p>\n" +
-	"          <guac-group-list\n" +
-	"            context=\"context\"\n" +
-	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"250\"></guac-group-list>\n" +
-	"        </div>\n" +
-	"      </div>\n" +
-	"      <div><a id=\"main.py\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Mario Cart</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>Click below to run the program.</p>\n" +
-	"          <guac-group-list\n" +
-	"            context=\"context\"\n" +
-	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"250\"></guac-group-list>\n" +
-	"        </div>\n" +
-	"      <div><a id=\"GuiApp1\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Java Gui</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>Java test... </p>\n" +
-	"          <guac-group-list\n" +
-	"            context=\"context\"\n" +
-	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"250\"></guac-group-list>\n" +
-	"        </div>\n" +
-	"      </div>\n" +
-	"      <div><a id=\"HelloWorld\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">Java Console</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>Java test, check logs/java_try.log... </p>\n" +
-	"          <guac-group-list\n" +
-	"            context=\"context\"\n" +
-	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"250\"></guac-group-list>\n" +
-	"        </div>\n" +
-	"      </div>\n" +
-	"      <div><a id=\"main\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">C++ Console</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>C++ program</p>\n" +
-	"          <guac-group-list\n" +
-	"            context=\"context\"\n" +
-	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"250\"></guac-group-list>\n" +
-	"        </div>\n" +
-	"      </div>\n" +
-	"      <div><a id=\"hello.exe\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">C# Console</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>C# program</p>\n" +
-	"          <guac-group-list\n" +
-	"            context=\"context\"\n" +
-	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"250\"></guac-group-list>\n" +
-	"        </div>\n" +
-	"      </div>\n" +
-	"      <div><a id=\"CSharpGui.exe\" class=\"program-list-item\" href=\"\" ng-click=\"reload()\">C# Gui</a>\n" +
-	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"          <p>C# Gui Program</p>\n" +
-	"          <guac-group-list\n" +
-	"            context=\"context\"\n" +
-	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"            page-size=\"250\"></guac-group-list>\n" +
-	"        </div>\n" +
-	"      </div>\n" +
+	"    <div id=\"group-list-thing\">\n" +
+	"      <guac-group-list\n" +
+	"        context=\"context\"\n" +
+	"        connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"        connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"        connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"        page-size=\"250\"></guac-group-list>\n" +
 	"    </div>\n" +
+	"    <div class=\"all-connections\" ng-controller=\"progListController\">		\n" +
+	"      <div ng-repeat=\"progListItem in progListItems\">\n" +
+	"        <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">{{progListItem.name}}</a>\n" +
+	"        <div class=\"program-item-details\" style=\"display:none\">\n" +
+	"          <p>{{progListItem.details}}</p>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
 	"    </div>\n" +
 	"\n" +
 	"    <!-- The recent connections for this user -->\n" +
@@ -1045,25 +970,12 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"    <div class=\"recent-connections\">\n" +
 	"        <guac-recent-connections root-groups=\"rootConnectionGroups\"></guac-recent-connections>\n" +
 	"    </div>\n" +
+	"    <div id=\"clickme\"></div>\n" +
 	"\n" +
 	"    <!-- Agora- adding ajax code here -->\n" +
 	"    <script src=\"http://code.jquery.com/jquery-2.2.0.min.js\"></script>\n" +
 	"    <script>\n" +
 	"    $(document).ready(function() {\n" +
-	"       /**\n" +
-	"        * Keep track of whether a Program Details box should be displayed (hidden by default)\n" +
-	"        */\n" +
-	"       var displayFlag = \"0\";\n" +
-	"       displayFlag = sessionStorage.getItem(\"displayOn\");\n" +
-	"       if(displayFlag != null && displayFlag != \"0\") {\n" +
-	"            $(\"#\"+displayFlag).next().slideDown();\n" +
-	"            // Before removing, save prog name in a different sess storage var\n" +
-	"            sessionStorage.setItem(\"thisProgName\", displayFlag);\n" +
-	"            sessionStorage.setItem(\"displayOn\", \"0\");\n" +
-	"       }\n" +
-	"\n" +
-	"       $(\".program-list-item\").mouseover(function() { this.next().css('visibility','visible'); });\n" +
-	"       $(\".program-list-item\").mouseout(function() { this.next().css('visibility','hidden'); });\n" +
 	"    });\n" +
 	"\n" +
 	"    /**\n" +
@@ -1072,19 +984,17 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"     * Using mouseover is a pretty messy way to do it.. but connectionNames is empty when this runs on document.ready.\n" +
 	"     */\n" +
 	"    $(\"body\").mouseover(function() {\n" +
-	"       var shown = false;\n" +
-	"       if(!shown) {\n" +
-	"         // Retrieve the program name that was clicked on\n" +
-	"         var thisProgName = sessionStorage.getItem(\"thisProgName\");\n" +
-	"         var thisPid = sessionStorage.getItem(\"thisPid\");\n" +
-	"         var buttonToClick = $(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\")[0];\n" +
-	"         \n" +
-	"         if (buttonToClick) {\n" +
-	"           buttonToClick.click();\n" +
-	"           // Avoid opening the same thing next time\n" +
-	"           sessionStorage.setItem('thisProgName', null);\n" +
-	"           sessionStorage.setItem('thisPid', null);\n" +
-	"         }\n" +
+	"       // Retrieve the program name that was clicked on\n" +
+	"       var thisProgName = sessionStorage.getItem(\"thisProgName\");\n" +
+	"       var thisPid = sessionStorage.getItem(\"thisPid\");\n" +
+	"       var buttonToClick = $(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\")[0];\n" +
+	"       \n" +
+	"       if (buttonToClick) {\n" +
+	"         //console.log(buttonToClick);\n" +
+	"         buttonToClick.click();\n" +
+	"         // Avoid opening the same thing next time\n" +
+	"         sessionStorage.setItem('thisProgName', null);\n" +
+	"         sessionStorage.setItem('thisPid', null);\n" +
 	"       }\n" +
 	"    });\n" +
 	"\n" +
@@ -1093,67 +1003,50 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"     *\n" +
 	"     * Will also reload the page (see angular reload function) and expands that item's details box.\n" +
 	"     */\n" +
-	"    $(\".program-list-item\").click(function(event) {\n" +
-	"      var myId = this.id;\n" +
-	"      var progName = $(this).text();\n" +
+	"    function progListItemClick() {\n" +
+	"      var myId = event.target.id;\n" +
+	"      var progName = $(event.target).text();\n" +
 	"      var myPid;\n" +
 	"      \n" +
-	"      // if already displaying don't slide down -- check if the corresponding .program-item-details div is visible\n" +
-	"      var isDetailOn = $(this).next().next().is(':visible');\n" +
-	"      if(!isDetailOn) {\n" +
-	"        // Send the program name (e.g. mario-cart) as a parameter to the servlet.\n" +
-	"        // Receives back the pid of the process started. Then use that to filter.\n" +
-	"        $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
-	"          $('#hellotext').text(responseText);\n" +
-	"          myPid = responseText;\n" +
-	"          sessionStorage.setItem(\"thisPid\", myPid);\n" +
-	"          sessionStorage.setItem(\"thisProgName\", myId);\n" +
-	"        })\n" +
-	"        .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
+	"      // Send the program name (e.g. mario-cart) as a parameter to the servlet.\n" +
+	"      // Receives back the pid of the process started. Then use that to filter.\n" +
+	"      $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
+	"        myPid = responseText;\n" +
+	"        sessionStorage.setItem(\"thisPid\", myPid);\n" +
+	"        sessionStorage.setItem(\"thisProgName\", myId);\n" +
 	"\n" +
-	"        debugger;\n" +
-	"        // store which item was clicked before the page refreshes\n" +
-	"        sessionStorage.setItem(\"displayOn\", myId);\n" +
-	"      } else {\n" +
-	"        sessionStorage.setItem(\"displayOn\", \"0\");\n" +
-	"      }\n" +
-	"    });\n" +
+	"        var pidList = sessionStorage.getItem(\"pidList\");\n" +
+	"        if (pidList) {\n" +
+	"          pidList = pidList + \",\" + myPid;\n" +
+	"        } else {\n" +
+	"          pidList = myPid;\n" +
+	"        }\n" +
+	"        sessionStorage.setItem(\"pidList\", pidList);\n" +
+	"        console.log(pidList);\n" +
+	"      })\n" +
+	"      .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
+	"    }\n" +
 	"\n" +
 	"    /**\n" +
 	"     * Kill a process when tab is closed - use the pid that was stored earlier.\n" +
 	"     * This code is also in client.html. \n" +
 	"     */\n" +
 	"    $(window).unload(function() {\n" +
-	"            alert(\"unloading..\");\n" +
-	"            var myPidOut = sessionStorage.getItem(\"thisPid\");\n" +
-	"            $.get('KillServlet',{pid:myPidOut},function(responseText) {\n" +
-	"                    var newVar = responseText;\n" +
-	"                    console.log(\"jquery received from KillServlet value \" + newVar);\n" +
-	"            })\n" +
+	"      console.log(\"Unload\");\n" +
+	"      var pidList = sessionStorage.getItem(\"pidList\");\n" +
+	"      console.log(pidList);\n" +
+	"      if (pidList) {\n" +
+	"        pidList = pidList.split(\",\");\n" +
+	"        console.log(pidList);\n" +
+	"        $.get('KillServlet',{pid:pidList},function(responseText) {\n" +
+	"          var newVar = responseText;\n" +
+	"          console.log(\"jquery received from KillServlet value \" + newVar);\n" +
+	"        });\n" +
+	"      }\n" +
 	"    });\n" +
-	"\n" +
 	"    </script>\n" +
-	"    <div id=\"hellotext\" style=\"display:none\"></div>\n" +
-	"\n" +
 	"  </div>\n" +
-	"\n" +
 	"</div>");
-}]);
-
-angular.module('app/home/templates/programListItem.html', []).run(['$templateCache', function($templateCache) {
-	$templateCache.put('app/home/templates/programListItem.html',
-	"<div><a id={{item.progName}} class=\"program-list-item\" href=\"\" ng-click=\"reload()\">{{item.text}}</a>\n" +
-	"  <div class=\"program-item-details\" style=\"display:none\">\n" +
-	"    <p>{{item.description}}</p>\n" +
-	"    <guac-group-list\n" +
-	"    context=\"context\"\n" +
-	"    connection-groups=\"filteredRootConnectionGroups\"\n" +
-	"    connection-template=\"'app/home/templates/connection.html'\"\n" +
-	"    connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
-	"    page-size=\"20\"></guac-group-list>\n" +
-	"  </div>\n" +
-	"</div>\n" +
-	"");
 }]);
 
 angular.module('app/list/templates/guacFilter.html', []).run(['$templateCache', function($templateCache) {

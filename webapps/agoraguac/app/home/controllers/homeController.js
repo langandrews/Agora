@@ -97,23 +97,25 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
          *     identifier.
          */
         getClientIdentifier : function getClientIdentifier(item) {
+            //console.log(item);
 
             // If the item is a connection, generate a connection identifier
-            if (item.isConnection)
-                //console.log(item); rawrrawr
-                return ClientIdentifier.toString({
+            if (item.isConnection) {
+		return ClientIdentifier.toString({
                     dataSource : item.dataSource,
                     type       : ClientIdentifier.Types.CONNECTION,
                     id         : item.identifier
                 });
+	    }
 
             // If the item is a connection, generate a connection group identifier
-            if (item.isConnectionGroup)
+            if (item.isConnectionGroup) {
                 return ClientIdentifier.toString({
                     dataSource : item.dataSource,
                     type       : ClientIdentifier.Types.CONNECTION_GROUP,
                     id         : item.identifier
                 });
+	    }
 
             // Otherwise, no such identifier can exist
             return null;
@@ -140,17 +142,24 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 
 	//Agora - trying to add a logout function
     $scope.reload = function reload() {
-        // Delay a wee bit so that the reload will grab the new configs
-	$timeout( function() { 
-	    authenticationService.logout()['finally'](function logoutComplete() {
-		if($location.path() !== '/')
-			$location.url('/');
-		else
-		//$route.reload();
-                console.log($scope.context);
-                window.location.href = $scope.context[getClientIdentifier];
-	    }); 
-	}, 500);
+      console.log("scope reload in homecontroller.js");
+      //console.log($scope.context["getClientIdentifier"]());
+      // Delay a wee bit so that the reload will grab the new configs
+      $timeout( function() { 
+        authenticationService.logout()['finally'](function logoutComplete() {
+	  //$location.url("/agoraguac/#/client/" + $scope.context["getClientIdentifier"]());
+          if($location.path() !== '/') {
+            $location.url('/');
+	    console.log("I'm in the if");
+	  }
+          else {
+	    console.log("I'm in the else");
+            $route.reload();
+	  }
+          //console.log("This is a message. I'm making a note here, WE'RE STILL OBLIVIOUS.");
+          //window.location.href = $scope.context[getClientIdentifier];*/
+        }); 
+      }, 500);
     };
 
 
