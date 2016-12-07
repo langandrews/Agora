@@ -42,19 +42,27 @@
             page-size="250"></guac-group-list>
         </div>
       </div>
+      <!--<div>
+        <img src="/agoraguac/images/distrib_py.png"/>
+        <img src="images/distrib_py.png"/>
+      </div>-->
 
       <div id="mainbody">
         <div id="projects">
           <div id="project-list" class="project-section" ng-controller="progListController">
             <div ng-repeat="progListItem in progListItems">
-              <a id={{progListItem.id}} class="program-list-item" onclick="progListItemClick();" href="" ng-click="reload()">{{progListItem.name}}</a>
+              <a id={{progListItem.id}} class="program-list-item" onclick="progListItemClick();" href="" ng-click="reload()">
+                <figure>
+                  <img ng-src="{{progListItem.image}}"/>
+                  <figcaption>{{ progListItem.name }}</figcaption>
+                </figure>
+              </a>
               <div class="program-item-details" style="display:none">
                 <p>{{progListItem.details}}</p>
               </div>
             </div>
-              </div>
-            </div>
           </div>
+        </div>
         <div id="right-sidebar" class="project-section">
           <p>Right Sidebar</p>
         </div>
@@ -90,7 +98,7 @@
      */
     function progListItemClick() {
       var myId = event.target.id;
-      var progName = $(event.target).text();
+      var progName = event.target.nextElementSibling.textContent;
       
       // Send the displayed program name (e.g. "Python Distribute") as a parameter to the servlet.
       // Receives back the pid of the process started as responseText.

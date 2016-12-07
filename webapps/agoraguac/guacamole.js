@@ -46758,32 +46758,37 @@ angular.module('settings').provider('preferenceService', function preferenceServ
 
 });
 angular.module('home').controller('progListController', ['$scope', function($scope) {
+  $scope.picturePath = "images/";
   $scope.progListItems = [ 
     { 
       id: "distrib.py",
       name: "Python Distribute",
-      details: "Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas."
+      details: "Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.",
+      image: $scope.picturePath + "distrib_py.png" //"http://i63.tinypic.com/23jhiqr.png"
     }, 
     { 
       id: "tkintertest2.py",
       name: "Python Calculator",
-      details: "Description: A simple calculator program."
+      details: "Description: A simple calculator program.",
+      image: $scope.picturePath + "python_calculator.png" //"http://i63.tinypic.com/eja1qw.png"
     },
-    {
+    /*{
       id: "main.py",
       name: "Mario Cart",
       details: "Click below to run the program."
-    },
+    },*/
     {
       id: "driver.py",
       name: "Snake",
-      details: "A clone of the classic Snake game."
+      details: "A clone of the classic Snake game.",
+      image: $scope.picturePath + "snake.png" //"http://i65.tinypic.com/261ewci.png"
     },
     {
       id: "driver.py",
       name: "Othello (Kinda)",
-      details: "Othello game (mostly broken)."
-    },
+      details: "Othello game (mostly broken).",
+      image: $scope.picturePath + "othello.png" //"http://i64.tinypic.com/2eao32g.png"
+    }/*,
     {
       id: "driver.py",
       name: "Super Tic Tac Toe",
@@ -46813,7 +46818,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       id: "CSharpGui.exe",
       name: "C# Gui",
       details: "C# Gui Program"
-    }
+    }*/
   ];
 }]);
 /*
@@ -49139,13 +49144,13 @@ angular.module('app/home/templates/cs212.html', []).run(['$templateCache', funct
 	"-->\n" +
 	"<html>\n" +
 	"  <head>\n" +
-	"    <title>CS-112</title>\n" +
+	"    <title>CS-212</title>\n" +
 	"    <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>\n" +
 	"  </head>\n" +
 	"  <body>\n" +
 	"    <div id=\"content\">\n" +
 	"      <div id=\"header\">\n" +
-	"        <h1>Calvin College CS 112 Project Showcase</h1>\n" +
+	"        <h1>Calvin College CS 212 Project Showcase</h1>\n" +
 	"        <div class=\"invisible\" style=\"display:none\">\n" +
 	"          <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
 	"            filtered-connection-groups=\"filteredRootConnectionGroups\"\n" +
@@ -49362,19 +49367,27 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
+	"      <!--<div>\n" +
+	"        <img src=\"/agoraguac/images/distrib_py.png\"/>\n" +
+	"        <img src=\"images/distrib_py.png\"/>\n" +
+	"      </div>-->\n" +
 	"\n" +
 	"      <div id=\"mainbody\">\n" +
 	"        <div id=\"projects\">\n" +
 	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
 	"            <div ng-repeat=\"progListItem in progListItems\">\n" +
-	"              <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">{{progListItem.name}}</a>\n" +
+	"              <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">\n" +
+	"                <figure>\n" +
+	"                  <img ng-src=\"{{progListItem.image}}\"/>\n" +
+	"                  <figcaption>{{ progListItem.name }}</figcaption>\n" +
+	"                </figure>\n" +
+	"              </a>\n" +
 	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
 	"                <p>{{progListItem.details}}</p>\n" +
 	"              </div>\n" +
 	"            </div>\n" +
-	"              </div>\n" +
-	"            </div>\n" +
 	"          </div>\n" +
+	"        </div>\n" +
 	"        <div id=\"right-sidebar\" class=\"project-section\">\n" +
 	"          <p>Right Sidebar</p>\n" +
 	"        </div>\n" +
@@ -49410,7 +49423,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"     */\n" +
 	"    function progListItemClick() {\n" +
 	"      var myId = event.target.id;\n" +
-	"      var progName = $(event.target).text();\n" +
+	"      var progName = event.target.nextElementSibling.textContent;\n" +
 	"      \n" +
 	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
 	"      // Receives back the pid of the process started as responseText.\n" +
