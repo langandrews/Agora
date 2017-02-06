@@ -39249,9 +39249,7 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
      *     useful, false otherwise.
      */
     $scope.isLoaded = function isLoaded() {
-
         return $scope.rootConnectionGroup !== null;
-
     };
 
     /**
@@ -39259,7 +39257,6 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
      * functions or data.
      */
     $scope.context = {
-
         /**
          * Returns the unique string identifier which must be used when
          * connecting to a connection or connection group represented by the
@@ -39294,12 +39291,9 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
                     id         : item.identifier
                 });
 	    }
-
             // Otherwise, no such identifier can exist
             return null;
-
         }
-
     };
 
     // Retrieve root groups and all descendants
@@ -39312,20 +39306,18 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
         $scope.rootConnectionGroups = rootConnectionGroups;
     });
 
-	// Agora - we're not sure what we're doing here
+    // Agora - we're not sure what we're doing here
     $scope.delay = function(URL) {
 	alert("Hie ur in the delay");
 	setTimeout( function() { window.location = URL }, 500);
     };
 
-	//Agora - trying to add a logout function
+    //Agora - trying to add a logout function
     $scope.reload = function reload() {
       console.log("scope reload in homecontroller.js");
-      //console.log($scope.context["getClientIdentifier"]());
       // Delay a wee bit so that the reload will grab the new configs
       $timeout( function() { 
         authenticationService.logout()['finally'](function logoutComplete() {
-	  //$location.url("/agoraguac/#/client/" + $scope.context["getClientIdentifier"]());
           if($location.path() !== '/') {
             $location.url('/');
 	    console.log("I'm in the if");
@@ -39334,13 +39326,9 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 	    console.log("I'm in the else");
             $route.reload();
 	  }
-          //console.log("This is a message. I'm making a note here, WE'RE STILL OBLIVIOUS.");
-          //window.location.href = $scope.context[getClientIdentifier];*/
         }); 
       }, 500);
     };
-
-
 }]);
 /*
  * Copyright (C) 2014 Glyptodon LLC
@@ -46772,11 +46760,16 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "Description: A simple calculator program.",
       image: $scope.picturePath + "python_calculator.png" //"http://i63.tinypic.com/eja1qw.png"
     },
-    /*{
+    {
+      id: "gui.py",
+      name: "Solitaire",
+      details: "A Solitaire-like Card Game"
+    },
+    {
       id: "main.py",
       name: "Mario Cart",
       details: "Click below to run the program."
-    },*/
+    },
     {
       id: "driver.py",
       name: "Snake",
@@ -46788,7 +46781,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Othello (Kinda)",
       details: "Othello game (mostly broken).",
       image: $scope.picturePath + "othello.png" //"http://i64.tinypic.com/2eao32g.png"
-    }/*,
+    },
     {
       id: "driver.py",
       name: "Super Tic Tac Toe",
@@ -46818,8 +46811,8 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       id: "CSharpGui.exe",
       name: "C# Gui",
       details: "C# Gui Program"
-    }*/
-  ];
+    },
+      ];
 }]);
 /*
  * Copyright (C) 2014 Glyptodon LLC
@@ -49367,20 +49360,24 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
-	"      <!--<div>\n" +
-	"        <img src=\"/agoraguac/images/distrib_py.png\"/>\n" +
-	"        <img src=\"images/distrib_py.png\"/>\n" +
-	"      </div>-->\n" +
-	"\n" +
 	"      <div id=\"mainbody\">\n" +
 	"        <div id=\"projects\">\n" +
 	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
 	"            <div ng-repeat=\"progListItem in progListItems\">\n" +
 	"              <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">\n" +
-	"                <figure>\n" +
-	"                  <img ng-src=\"{{progListItem.image}}\"/>\n" +
-	"                  <figcaption>{{ progListItem.name }}</figcaption>\n" +
-	"                </figure>\n" +
+	"                <div>\n" +
+	"                  <figure style=\"float: left;\">\n" +
+	"                    <img ng-src=\"{{progListItem.image}}\"/>\n" +
+	"                  </figure>\n" +
+	"                  <div style=\"clear: none; margin-top: 18px; padding-left: 20px;\">\n" +
+	"                    <p>{{ progListItem.name }}</p>\n" +
+	"                    <p>Author: abcd efghijklmno</p>\n" +
+	"                    <p>Date Added: Dec 12, 2016</p>\n" +
+	"                  </div>\n" +
+	"                  <div style=\"clear: left;\">\n" +
+	"                    {{progListItem.details}}\n" +
+	"                  </div>\n" +
+	"                </div>\n" +
 	"              </a>\n" +
 	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
 	"                <p>{{progListItem.details}}</p>\n" +
@@ -49388,9 +49385,11 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            </div>\n" +
 	"          </div>\n" +
 	"        </div>\n" +
+	"        <!--\n" +
 	"        <div id=\"right-sidebar\" class=\"project-section\">\n" +
 	"          <p>Right Sidebar</p>\n" +
 	"        </div>\n" +
+	"        -->\n" +
 	"      </div>\n" +
 	"    </div>\n" +
 	"\n" +
@@ -49423,7 +49422,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"     */\n" +
 	"    function progListItemClick() {\n" +
 	"      var myId = event.target.id;\n" +
-	"      var progName = event.target.nextElementSibling.textContent;\n" +
+	"      var progName = event.target.parentElement.nextElementSibling.firstElementChild.textContent;\n" +
 	"      \n" +
 	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
 	"      // Receives back the pid of the process started as responseText.\n" +

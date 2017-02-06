@@ -1229,20 +1229,24 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
-	"      <!--<div>\n" +
-	"        <img src=\"/agoraguac/images/distrib_py.png\"/>\n" +
-	"        <img src=\"images/distrib_py.png\"/>\n" +
-	"      </div>-->\n" +
-	"\n" +
 	"      <div id=\"mainbody\">\n" +
 	"        <div id=\"projects\">\n" +
 	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
 	"            <div ng-repeat=\"progListItem in progListItems\">\n" +
 	"              <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">\n" +
-	"                <figure>\n" +
-	"                  <img ng-src=\"{{progListItem.image}}\"/>\n" +
-	"                  <figcaption>{{ progListItem.name }}</figcaption>\n" +
-	"                </figure>\n" +
+	"                <div>\n" +
+	"                  <figure style=\"float: left;\">\n" +
+	"                    <img ng-src=\"{{progListItem.image}}\"/>\n" +
+	"                  </figure>\n" +
+	"                  <div style=\"clear: none; margin-top: 18px; padding-left: 20px;\">\n" +
+	"                    <p>{{ progListItem.name }}</p>\n" +
+	"                    <p>Author: abcd efghijklmno</p>\n" +
+	"                    <p>Date Added: Dec 12, 2016</p>\n" +
+	"                  </div>\n" +
+	"                  <div style=\"clear: left;\">\n" +
+	"                    {{progListItem.details}}\n" +
+	"                  </div>\n" +
+	"                </div>\n" +
 	"              </a>\n" +
 	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
 	"                <p>{{progListItem.details}}</p>\n" +
@@ -1250,9 +1254,11 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            </div>\n" +
 	"          </div>\n" +
 	"        </div>\n" +
+	"        <!--\n" +
 	"        <div id=\"right-sidebar\" class=\"project-section\">\n" +
 	"          <p>Right Sidebar</p>\n" +
 	"        </div>\n" +
+	"        -->\n" +
 	"      </div>\n" +
 	"    </div>\n" +
 	"\n" +
@@ -1285,7 +1291,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"     */\n" +
 	"    function progListItemClick() {\n" +
 	"      var myId = event.target.id;\n" +
-	"      var progName = event.target.nextElementSibling.textContent;\n" +
+	"      var progName = event.target.parentElement.nextElementSibling.firstElementChild.textContent;\n" +
 	"      \n" +
 	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
 	"      // Receives back the pid of the process started as responseText.\n" +

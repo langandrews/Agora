@@ -46,11 +46,13 @@ echo "AGORA:Xvfb starting on $nextDisplay ..."
 echo -e "Agora process for $progName on pid $thisPid" >> $logfile
 echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 
+cd $directory
+
 # Handle different python versions
 if [ "$langVersion" = "p2" ]
 then
   #python2 /home/Agora/python/$progName &
-  python2 $directory$progName &
+  python2 $progName &
   progPid=$!
   echo "python 2"
   echo -e "$progName python 2 running" >> $logfile
@@ -58,7 +60,7 @@ fi
 if [ "$langVersion" = "p3" ]
 then
   #python3 /home/Agora/python/$progName &
-  python3 $directory$progName &
+  python3 $progName &
   progPid=$!
   echo "python 3"
   echo -e "$progName python 3 running" >> $logfile
@@ -67,7 +69,7 @@ fi
 # Handle java console or gui programs
 if [ "$langVersion" = "jc" ]
 then
-  xterm -fg white -bg black -e "bash -c \"cd $directory; clear; java $progName; read -n 1\"" &
+  xterm -fg white -bg black -e "bash -c \"clear; java $progName; read -n 1\"" &
   progPid=$!
   echo "java console program"
   echo -e "$progName java console running" >> $logfile
@@ -75,7 +77,6 @@ fi
 if [ "$langVersion" = "jg" ]
 then
   here=$(pwd)
-  cd $directory
   java $progName &
   progPid=$!
   echo "java gui program"
@@ -86,7 +87,7 @@ fi
 # Handle c++ console program
 if [ "$langVersion" = "cpp" ]
 then
-  xterm -fg white -bg black -e "bash -c \"$directory$progName; read -n 1\"" &
+  xterm -fg white -bg black -e "bash -c \"$progName; read -n 1\"" &
   progPid=$!
   echo "c++ console program"
   echo -e "$progName c++ console running" >> $logfile
@@ -94,7 +95,7 @@ fi
 
 if [ "$langVersion" = "cs" ]
 then
-  xterm -fg white -bg black -e "bash -c \"mono $directory$progName; read -n 1\"" &
+  xterm -fg white -bg black -e "bash -c \"mono $progName; read -n 1\"" &
   progPid=$!
   echo "C# console program"
   echo -e "$progName C# console running" >> $logFile
@@ -102,11 +103,13 @@ fi
 
 #if [ "$langVersion" = "csg" ]
 #then
-#  mono $directory$progName
+#  mono $progName
 #  progPid=$!
 #  echo "C# gui program"
 #  echo -e "$progName C# gui running" >> $logFile
 #fi 
+
+cd -
 
 echo "AGORA:starting python program $progName ..."
 

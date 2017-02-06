@@ -13,11 +13,16 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "Description: A simple calculator program.",
       image: $scope.picturePath + "python_calculator.png" //"http://i63.tinypic.com/eja1qw.png"
     },
-    /*{
+    {
+      id: "gui.py",
+      name: "Solitaire",
+      details: "A Solitaire-like Card Game"
+    },
+    {
       id: "main.py",
       name: "Mario Cart",
       details: "Click below to run the program."
-    },*/
+    },
     {
       id: "driver.py",
       name: "Snake",
@@ -29,7 +34,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Othello (Kinda)",
       details: "Othello game (mostly broken).",
       image: $scope.picturePath + "othello.png" //"http://i64.tinypic.com/2eao32g.png"
-    }/*,
+    },
     {
       id: "driver.py",
       name: "Super Tic Tac Toe",
@@ -59,6 +64,6 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       id: "CSharpGui.exe",
       name: "C# Gui",
       details: "C# Gui Program"
-    }*/
-  ];
+    },
+      ];
 }]);

@@ -1,3 +1,4 @@
+Solitaire,/home/Agora/python/cardgame/,gui.py,p3
 Python Distribute,/home/Agora/python/,distrib.py,p2
 Python Calculator,/home/Agora/python/,tkintertest2.py,p3
 Mario Cart,/home/Agora/python/maze/,main.py,p3

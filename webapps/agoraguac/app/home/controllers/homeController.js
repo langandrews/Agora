@@ -71,9 +71,7 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
      *     useful, false otherwise.
      */
     $scope.isLoaded = function isLoaded() {
-
         return $scope.rootConnectionGroup !== null;
-
     };
 
     /**
@@ -81,7 +79,6 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
      * functions or data.
      */
     $scope.context = {
-
         /**
          * Returns the unique string identifier which must be used when
          * connecting to a connection or connection group represented by the
@@ -116,12 +113,9 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
                     id         : item.identifier
                 });
 	    }
-
             // Otherwise, no such identifier can exist
             return null;
-
         }
-
     };
 
     // Retrieve root groups and all descendants
@@ -134,20 +128,18 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
         $scope.rootConnectionGroups = rootConnectionGroups;
     });
 
-	// Agora - we're not sure what we're doing here
+    // Agora - we're not sure what we're doing here
     $scope.delay = function(URL) {
 	alert("Hie ur in the delay");
 	setTimeout( function() { window.location = URL }, 500);
     };
 
-	//Agora - trying to add a logout function
+    //Agora - trying to add a logout function
     $scope.reload = function reload() {
       console.log("scope reload in homecontroller.js");
-      //console.log($scope.context["getClientIdentifier"]());
       // Delay a wee bit so that the reload will grab the new configs
       $timeout( function() { 
         authenticationService.logout()['finally'](function logoutComplete() {
-	  //$location.url("/agoraguac/#/client/" + $scope.context["getClientIdentifier"]());
           if($location.path() !== '/') {
             $location.url('/');
 	    console.log("I'm in the if");
@@ -156,11 +148,7 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 	    console.log("I'm in the else");
             $route.reload();
 	  }
-          //console.log("This is a message. I'm making a note here, WE'RE STILL OBLIVIOUS.");
-          //window.location.href = $scope.context[getClientIdentifier];*/
         }); 
       }, 500);
     };
-
-
 }]);

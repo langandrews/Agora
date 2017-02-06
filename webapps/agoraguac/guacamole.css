@@ -1637,7 +1637,7 @@ h2 {
 
 #projects {
   float: left;
-  width: 80%;
+  width: 100%;
 }
 
 #right-sidebar {
@@ -1682,7 +1682,7 @@ a:hover {
   height: auto;
   float: left;
   clear: both;
-  width: 800px;
+  width: 100%;
 }
 
 /* Too narrow to support three columns */
