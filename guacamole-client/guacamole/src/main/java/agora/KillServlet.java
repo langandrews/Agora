@@ -27,7 +27,6 @@ public class KillServlet extends HttpServlet {
     	String pidList = request.getParameter("pid");
 
 	Process proc = new ProcessBuilder().inheritIO().command("/home/Agora/kill.sh" , pidList).start();
-	System.out.println("In KillServlet, started script to kill process " + pidList);
    
         response.setContentType("text/plain");  
         response.setCharacterEncoding("UTF-8"); 

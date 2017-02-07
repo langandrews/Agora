@@ -46746,71 +46746,99 @@ angular.module('settings').provider('preferenceService', function preferenceServ
 
 });
 angular.module('home').controller('progListController', ['$scope', function($scope) {
+  $scope.runButton = "images/grey_run_button.png";
   $scope.picturePath = "images/";
   $scope.progListItems = [ 
     { 
       id: "distrib.py",
       name: "Python Distribute",
       details: "Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.",
-      image: $scope.picturePath + "distrib_py.png" //"http://i63.tinypic.com/23jhiqr.png"
+      image: $scope.picturePath + "distrib_py.png",
+      author: "Victor Norman",
+      date: "Before Fall 2017"
     }, 
     { 
       id: "tkintertest2.py",
       name: "Python Calculator",
       details: "Description: A simple calculator program.",
-      image: $scope.picturePath + "python_calculator.png" //"http://i63.tinypic.com/eja1qw.png"
+      image: $scope.picturePath + "python_calculator.png",
+      author: "Unknown",
+      date: "Before Fall 2017"
     },
     {
       id: "gui.py",
       name: "Solitaire",
-      details: "A Solitaire-like Card Game"
+      details: "A Solitaire-like Card Game",
+      image: $scope.picturePath + "solitaire.png",
+      author: "Prof Norman",
+      date: "Feb 6, 2017"
     },
     {
       id: "main.py",
-      name: "Mario Cart",
-      details: "Click below to run the program."
+      name: "Mario Kart",
+      details: "Click below to run the program.",
+      image: $scope.picturePath + "mariokart.png",
+      author: "Unknown",
+      date: "Before Fall 2017"
     },
     {
       id: "driver.py",
       name: "Snake",
       details: "A clone of the classic Snake game.",
-      image: $scope.picturePath + "snake.png" //"http://i65.tinypic.com/261ewci.png"
+      image: $scope.picturePath + "snake.png",
+      author: "Unknown",
+      date: "Before Fall 2017"
     },
     {
       id: "driver.py",
       name: "Othello (Kinda)",
       details: "Othello game (mostly broken).",
-      image: $scope.picturePath + "othello.png" //"http://i64.tinypic.com/2eao32g.png"
+      image: $scope.picturePath + "othello.png",
+      author: "Unknown",
+      date: "Before Fall 2017"
     },
     {
       id: "driver.py",
       name: "Super Tic Tac Toe",
-      details: "Not your grandma's tic tac toe -IGN"
+      details: "Not your grandma's tic tac toe -IGN",
+      image: $scope.picturePath + "super_tictactoe.png",
+      author: "Unknown",
+      date: "Before Fall 2017"
     },
     {
       id: "GuiApp1",
       name: "Java Gui",
-      details: "Java test..."
+      details: "Java test...",
+      author: "Joel Stehouwer",
+      date: "Fall 2017"
     },
     {
       id: "HelloWorld",
       name: "Java Console",
-      details: "Java test, check logs/java_try.log..."
+      details: "Java test, check logs/java_try.log...",
+      author: "Joel Stehouwer",
+      date: "Fall 2017"
     },
     {
       id: "main",
       name: "C++ Console",
-      details: "C++ program"
+      details: "C++ program",
+      author: "Joel Stehouwer",
+      date: "Fall 2017"
     },
     {
       id: "hello.exe",
       name: "C# Console",
-      details: "C# program"
+      details: "C# program",
+      author: "Andrew Lang",
+      date: "Fall 2017"
     },
     {
       id: "CSharpGui.exe",
       name: "C# Gui",
-      details: "C# Gui Program"
+      details: "C# Gui Program",
+      author: "Andrew Lang",
+      date: "Fall 2017"
     },
       ];
 }]);
@@ -49345,6 +49373,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"  <body>\n" +
 	"    <div id=\"content\">\n" +
 	"      <div id=\"header\">\n" +
+	"        <img src=\"//www.calvin.edu/global/images/calvin-college-inverse.svg\" alt=\"Calvin College\" width=\"170\" height=\"47\">\n" +
 	"        <h1>Calvin College CS Department Project Showcase</h1>\n" +
 	"        <div class=\"invisible\" style=\"display:none\">\n" +
 	"          <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
@@ -49364,21 +49393,22 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"        <div id=\"projects\">\n" +
 	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
 	"            <div ng-repeat=\"progListItem in progListItems\">\n" +
-	"              <a id={{progListItem.id}} class=\"program-list-item\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\">\n" +
+	"              <div class=\"program-list-item\">\n" +
 	"                <div>\n" +
 	"                  <figure style=\"float: left;\">\n" +
 	"                    <img ng-src=\"{{progListItem.image}}\"/>\n" +
 	"                  </figure>\n" +
-	"                  <div style=\"clear: none; margin-top: 18px; padding-left: 20px;\">\n" +
-	"                    <p>{{ progListItem.name }}</p>\n" +
-	"                    <p>Author: abcd efghijklmno</p>\n" +
-	"                    <p>Date Added: Dec 12, 2016</p>\n" +
+	"                  <div class=\"project-info\" style=\"clear: none; margin-top: 18px; padding-left: 20px;\">\n" +
+	"                    <p>{{progListItem.name}}</p>\n" +
+	"                    <p>Author: {{progListItem.author}}</p>\n" +
+	"                    <p>Date Added: {{progListItem.date}}</p>\n" +
+	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
 	"                    {{progListItem.details}}\n" +
 	"                  </div>\n" +
 	"                </div>\n" +
-	"              </a>\n" +
+	"              </div>\n" +
 	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
 	"                <p>{{progListItem.details}}</p>\n" +
 	"              </div>\n" +
@@ -49406,11 +49436,12 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"       var buttonToClick = $(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\")[0];\n" +
 	"       \n" +
 	"       if (buttonToClick) {\n" +
-	"	 console.log(\"Clicking \" + buttonToClick);\n" +
-	"         buttonToClick.click();\n" +
 	"         // Clear state to avoid opening the same thing forever\n" +
 	"         sessionStorage.setItem('thisProgName', null);\n" +
 	"         sessionStorage.setItem('thisPid', null);\n" +
+	"         sessionStorage.setItem('previousPid', thisPid);\n" +
+	"\n" +
+	"         buttonToClick.click();\n" +
 	"       }\n" +
 	"    });\n" +
 	"\n" +
@@ -49422,44 +49453,41 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"     */\n" +
 	"    function progListItemClick() {\n" +
 	"      var myId = event.target.id;\n" +
-	"      var progName = event.target.parentElement.nextElementSibling.firstElementChild.textContent;\n" +
+	"      var progName = event.target.parentElement.parentElement.firstElementChild.textContent;\n" +
 	"      \n" +
 	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
 	"      // Receives back the pid of the process started as responseText.\n" +
 	"      $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
 	"        var myPid = responseText;\n" +
+	"\n" +
+	"        // Kill previous programs by this user\n" +
+	"        killPrevious();\n" +
+	"\n" +
 	"        sessionStorage.setItem(\"thisPid\", myPid);\n" +
 	"        sessionStorage.setItem(\"thisProgName\", myId);\n" +
-	"\n" +
-	"        // Keep track of all the pids this browser session has initialized\n" +
-	"        var pidList = sessionStorage.getItem(\"pidList\");\n" +
-	"        if (pidList) {\n" +
-	"          pidList = pidList + \",\" + myPid;\n" +
-	"        } else {\n" +
-	"          pidList = myPid;\n" +
-	"        }\n" +
-	"        sessionStorage.setItem(\"pidList\", pidList);\n" +
-	"        console.log(pidList);\n" +
 	"      })\n" +
 	"      .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
 	"    }\n" +
 	"\n" +
 	"    /**\n" +
-	"     * Kill all of my processes when tab is closed using the pids that were stored earlier.\n" +
+	"     * Kill all previous programs that were run by this user\n" +
 	"     */\n" +
-	"    $(window).unload(function() {\n" +
-	"      console.log(\"Unload\");\n" +
-	"      var pidList = sessionStorage.getItem(\"pidList\");\n" +
-	"      console.log(pidList);\n" +
-	"      if (pidList) {\n" +
-	"        pidList = pidList.split(\",\");\n" +
-	"        console.log(pidList);\n" +
-	"        $.get('KillServlet',{pid:pidList},function(responseText) {\n" +
+	"    function killPrevious() {\n" +
+	"      var pid = sessionStorage.getItem(\"previousPid\");\n" +
+	"      if (pid) {\n" +
+	"        $.get('KillServlet',{pid:pid},function(responseText) {\n" +
 	"          var newVar = responseText;\n" +
-	"          console.log(\"jquery received from KillServlet value \" + newVar);\n" +
+	"          sessionStorage.setItem(\"previousPid\", null);\n" +
 	"        });\n" +
 	"      }\n" +
-	"    });\n" +
+	"    }\n" +
+	"\n" +
+	"    /**\n" +
+	"     * Kill all of my processes when tab is closed using the pids that were stored earlier.\n" +
+	"     */\n" +
+	"    /*$(window).unload(function() {\n" +
+	"      console.log(\"Unload\");\n" +
+	"    });*/\n" +
 	"    </script>\n" +
 	"  </body>\n" +
 	"</html>");

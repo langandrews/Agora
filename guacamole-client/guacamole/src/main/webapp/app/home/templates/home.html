@@ -27,6 +27,7 @@
   <body>
     <div id="content">
       <div id="header">
+        <img src="//www.calvin.edu/global/images/calvin-college-inverse.svg" alt="Calvin College" width="170" height="47">
         <h1>Calvin College CS Department Project Showcase</h1>
         <div class="invisible" style="display:none">
           <guac-group-list-filter connection-groups="rootConnectionGroups"
@@ -46,21 +47,22 @@
         <div id="projects">
           <div id="project-list" class="project-section" ng-controller="progListController">
             <div ng-repeat="progListItem in progListItems">
-              <a id={{progListItem.id}} class="program-list-item" onclick="progListItemClick();" href="" ng-click="reload()">
+              <div class="program-list-item">
                 <div>
                   <figure style="float: left;">
                     <img ng-src="{{progListItem.image}}"/>
                   </figure>
-                  <div style="clear: none; margin-top: 18px; padding-left: 20px;">
-                    <p>{{ progListItem.name }}</p>
-                    <p>Author: abcd efghijklmno</p>
-                    <p>Date Added: Dec 12, 2016</p>
+                  <div class="project-info" style="clear: none; margin-top: 18px; padding-left: 20px;">
+                    <p>{{progListItem.name}}</p>
+                    <p>Author: {{progListItem.author}}</p>
+                    <p>Date Added: {{progListItem.date}}</p>
+                    <div><img  id={{progListItem.id}} class="runButton" onclick="progListItemClick();" href="" ng-click="reload()" ng-src="{{runButton}}" style="height: 35px; width: 50px;"/></div>
                   </div>
                   <div style="clear: left;">
                     {{progListItem.details}}
                   </div>
                 </div>
-              </a>
+              </div>
               <div class="program-item-details" style="display:none">
                 <p>{{progListItem.details}}</p>
               </div>
@@ -88,11 +90,12 @@
        var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
        
        if (buttonToClick) {
-	 console.log("Clicking " + buttonToClick);
-         buttonToClick.click();
          // Clear state to avoid opening the same thing forever
          sessionStorage.setItem('thisProgName', null);
          sessionStorage.setItem('thisPid', null);
+         sessionStorage.setItem('previousPid', thisPid);
+
+         buttonToClick.click();
        }
     });
 
@@ -104,44 +107,41 @@
      */
     function progListItemClick() {
       var myId = event.target.id;
-      var progName = event.target.parentElement.nextElementSibling.firstElementChild.textContent;
+      var progName = event.target.parentElement.parentElement.firstElementChild.textContent;
       
       // Send the displayed program name (e.g. "Python Distribute") as a parameter to the servlet.
       // Receives back the pid of the process started as responseText.
       $.get('AgoraServlet',{program:progName},function(responseText) {
         var myPid = responseText;
+
+        // Kill previous programs by this user
+        killPrevious();
+
         sessionStorage.setItem("thisPid", myPid);
         sessionStorage.setItem("thisProgName", myId);
-
-        // Keep track of all the pids this browser session has initialized
-        var pidList = sessionStorage.getItem("pidList");
-        if (pidList) {
-          pidList = pidList + "," + myPid;
-        } else {
-          pidList = myPid;
-        }
-        sessionStorage.setItem("pidList", pidList);
-        console.log(pidList);
       })
       .fail(function() { alert("Error! Failed get from AgoraServlet."); });
     }
 
     /**
-     * Kill all of my processes when tab is closed using the pids that were stored earlier.
+     * Kill all previous programs that were run by this user
      */
-    $(window).unload(function() {
-      console.log("Unload");
-      var pidList = sessionStorage.getItem("pidList");
-      console.log(pidList);
-      if (pidList) {
-        pidList = pidList.split(",");
-        console.log(pidList);
-        $.get('KillServlet',{pid:pidList},function(responseText) {
+    function killPrevious() {
+      var pid = sessionStorage.getItem("previousPid");
+      if (pid) {
+        $.get('KillServlet',{pid:pid},function(responseText) {
           var newVar = responseText;
-          console.log("jquery received from KillServlet value " + newVar);
+          sessionStorage.setItem("previousPid", null);
         });
       }
-    });
+    }
+
+    /**
+     * Kill all of my processes when tab is closed using the pids that were stored earlier.
+     */
+    /*$(window).unload(function() {
+      console.log("Unload");
+    });*/
     </script>
   </body>
 </html>

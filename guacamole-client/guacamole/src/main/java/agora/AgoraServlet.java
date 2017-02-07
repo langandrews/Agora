@@ -37,9 +37,6 @@ public class AgoraServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // Need some way to differentiate between program name and program path (e.g. "mario-cart" vs "108/108-final-examples/mario-cart/main.py"), but they could be the same.
-    // The above was a comment from Campo-Webster, we hope to solve this with the Tuple class
-
     List<String> project_list = Files.readAllLines(Paths.get("/home/Agora/resources/project_listing.txt"), StandardCharsets.US_ASCII);
     HashMap<String, Tuple> programs;
     programs = new HashMap<String, Tuple>();
@@ -54,14 +51,11 @@ public class AgoraServlet extends HttpServlet {
     String langVersion = programs.get(displayWebName).lang;
     System.out.println("Language version is " + langVersion);
 
-    Process P1 = new ProcessBuilder().inheritIO().command("/home/Agora/blah.sh" , directory, progName, langVersion).start();
-
     // Run start.sh script to start the vnc server with a python program and version
     Process proc = new ProcessBuilder().inheritIO().command("/home/Agora/start.sh" , directory, progName, langVersion).start();
 
     // Read from the file /home/Agora/pids/recent.txt - which contains the most recently started process.  Use a delay 
-    // to make sure the file has already been written to by start.sh when we read it.
-    // maybe also remove the delay in the angular reload
+    // to make sure the file has already been written to by start.sh when we read it. Maybe also remove the delay in the angular reload
     try {
             System.out.println("about to sleep for 0.5 seconds");
             Thread.sleep(500);
@@ -71,8 +65,6 @@ public class AgoraServlet extends HttpServlet {
     List<String> lines = Files.readAllLines(Paths.get("/home/Agora/pids/recent.txt"), StandardCharsets.US_ASCII);
     String myPid = lines.get(0);
     System.out.println("the most recent pid is " + myPid);
-
-    Process P2 = new ProcessBuilder().inheritIO().command("/home/Agora/blah.sh" , directory, progName, langVersion).start();
 
     response.setContentType("text/plain");  
     response.setCharacterEncoding("UTF-8"); 
