@@ -56,7 +56,7 @@
                     <p>{{progListItem.name}}</p>
                     <p>Author: {{progListItem.author}}</p>
                     <p>Date Added: {{progListItem.date}}</p>
-                    <div><img  id={{progListItem.id}} class="runButton" onclick="progListItemClick();" href="" ng-click="reload()" ng-src="{{runButton}}" style="height: 35px; width: 50px;"/></div>
+                    <div><img  id={{progListItem.id}} class="runButton" onclick="progListItemClick();" href="" ng-click="reload();{{loadProgram()}}" ng-src="{{runButton}}" style="height: 35px; width: 50px;"/></div>
                   </div>
                   <div style="clear: left;">
                     {{progListItem.details}}
@@ -85,26 +85,6 @@
 
     <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script>
-    /**
-     * This is a bad way to do what we want, but it works
-     * The sessionStorage will have the program information we want to run
-     * We do not know where the button comes from, but this works to find and click it
-     */
-    $("body").mouseover(function() {
-       var thisProgName = sessionStorage.getItem("thisProgName");
-       var thisPid = sessionStorage.getItem("thisPid");
-       var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
-       
-       if (buttonToClick) {
-         // Clear state to avoid opening the same thing forever
-         sessionStorage.setItem('thisProgName', null);
-         sessionStorage.setItem('thisPid', null);
-         sessionStorage.setItem('previousPid', thisPid);
-
-         buttonToClick.click();
-       }
-    });
-
     /**
      * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).
      * and store the program information for the program we want to run

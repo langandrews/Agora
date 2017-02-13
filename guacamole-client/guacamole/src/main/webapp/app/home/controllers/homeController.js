@@ -134,21 +134,33 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 	setTimeout( function() { window.location = URL }, 500);
     };
 
+    $scope.loadProgram = function loadProgram() {
+       var thisProgName = sessionStorage.getItem("thisProgName");
+       var thisPid = sessionStorage.getItem("thisPid");
+       var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
+       
+       if (buttonToClick) {
+         // Clear state to avoid opening the same thing forever
+         sessionStorage.setItem('thisProgName', null);
+         sessionStorage.setItem('thisPid', null);
+         sessionStorage.setItem('previousPid', thisPid);
+
+         buttonToClick.click();
+       }
+    }
     //Agora - trying to add a logout function
     $scope.reload = function reload() {
-      console.log("scope reload in homecontroller.js");
       // Delay a wee bit so that the reload will grab the new configs
       $timeout( function() { 
         authenticationService.logout()['finally'](function logoutComplete() {
           if($location.path() !== '/') {
             $location.url('/');
-	    console.log("I'm in the if");
-	  }
+	        }
           else {
-	    console.log("I'm in the else");
             $route.reload();
-	  }
+	        }
         }); 
       }, 500);
+      loadProgram();
     };
 }]);

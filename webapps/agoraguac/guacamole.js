@@ -39312,22 +39312,34 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
 	setTimeout( function() { window.location = URL }, 500);
     };
 
+    $scope.loadProgram = function loadProgram() {
+       var thisProgName = sessionStorage.getItem("thisProgName");
+       var thisPid = sessionStorage.getItem("thisPid");
+       var buttonToClick = $(".name.ng-binding:contains('" + thisProgName + "-" + thisPid + "')")[0];
+       
+       if (buttonToClick) {
+         // Clear state to avoid opening the same thing forever
+         sessionStorage.setItem('thisProgName', null);
+         sessionStorage.setItem('thisPid', null);
+         sessionStorage.setItem('previousPid', thisPid);
+
+         buttonToClick.click();
+       }
+    }
     //Agora - trying to add a logout function
     $scope.reload = function reload() {
-      console.log("scope reload in homecontroller.js");
       // Delay a wee bit so that the reload will grab the new configs
       $timeout( function() { 
         authenticationService.logout()['finally'](function logoutComplete() {
           if($location.path() !== '/') {
             $location.url('/');
-	    console.log("I'm in the if");
-	  }
+	        }
           else {
-	    console.log("I'm in the else");
             $route.reload();
-	  }
+	        }
         }); 
       }, 500);
+      loadProgram();
     };
 }]);
 /*
@@ -49422,7 +49434,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"                    <p>{{progListItem.name}}</p>\n" +
 	"                    <p>Author: {{progListItem.author}}</p>\n" +
 	"                    <p>Date Added: {{progListItem.date}}</p>\n" +
-	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload()\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
+	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload();{{loadProgram()}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
 	"                    {{progListItem.details}}\n" +
@@ -49451,26 +49463,6 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"\n" +
 	"    <script src=\"http://code.jquery.com/jquery-2.2.0.min.js\"></script>\n" +
 	"    <script>\n" +
-	"    /**\n" +
-	"     * This is a bad way to do what we want, but it works\n" +
-	"     * The sessionStorage will have the program information we want to run\n" +
-	"     * We do not know where the button comes from, but this works to find and click it\n" +
-	"     */\n" +
-	"    $(\"body\").mouseover(function() {\n" +
-	"       var thisProgName = sessionStorage.getItem(\"thisProgName\");\n" +
-	"       var thisPid = sessionStorage.getItem(\"thisPid\");\n" +
-	"       var buttonToClick = $(\".name.ng-binding:contains('\" + thisProgName + \"-\" + thisPid + \"')\")[0];\n" +
-	"       \n" +
-	"       if (buttonToClick) {\n" +
-	"         // Clear state to avoid opening the same thing forever\n" +
-	"         sessionStorage.setItem('thisProgName', null);\n" +
-	"         sessionStorage.setItem('thisPid', null);\n" +
-	"         sessionStorage.setItem('previousPid', thisPid);\n" +
-	"\n" +
-	"         buttonToClick.click();\n" +
-	"       }\n" +
-	"    });\n" +
-	"\n" +
 	"    /**\n" +
 	"     * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).\n" +
 	"     * and store the program information for the program we want to run\n" +
