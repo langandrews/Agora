@@ -1248,6 +1248,12 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"                  <div style=\"clear: left;\">\n" +
 	"                    {{progListItem.details}}\n" +
 	"                  </div>\n" +
+	"                  <div style=\"clear: left;\">\n" +
+	"										<button class=\"accordion\" onclick=\"toggleInstructions()\">Instructions</button>\n" +
+	"										<div class=\"accordion-panel\">\n" +
+	"											{{progListItem.instructions}}\n" +
+	"										</div>\n" +
+	"                  </div>\n" +
 	"                </div>\n" +
 	"              </div>\n" +
 	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
@@ -1329,6 +1335,18 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"    /*$(window).unload(function() {\n" +
 	"      console.log(\"Unload\");\n" +
 	"    });*/\n" +
+	"\n" +
+	"		function toggleInstructions() {\n" +
+	"			event.target.classList.toggle(\"active\");\n" +
+	"\n" +
+	"			/* Toggle between hiding and showing the active panel */\n" +
+	"			var panel = event.target.nextElementSibling;\n" +
+	"			if (panel.style.display === \"block\") {\n" +
+	"					panel.style.display = \"none\";\n" +
+	"			} else {\n" +
+	"					panel.style.display = \"block\";\n" +
+	"			}\n" +
+	"		}\n" +
 	"    </script>\n" +
 	"  </body>\n" +
 	"</html>");

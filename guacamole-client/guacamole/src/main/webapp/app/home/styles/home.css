@@ -83,6 +83,20 @@ body {
   cursor: hand;
 }
 
+button.accordion {
+	background-color: #eee;
+	cursor: pointer;
+}
+button.accordion.active, button.accordion:hover {
+	background-color: #ddd;
+}
+
+.project-section div div.accordion-panel {
+	background-color: #fff;
+	padding: 0 18px;
+	display: none;
+}
+
 /* Too narrow to support three columns */
 @media all and (max-width: 1050px) {
   #projects {

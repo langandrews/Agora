@@ -46754,6 +46754,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Python Distribute",
       details: "Description: clicking on the canvas adds a turtle; all the turtles will distribute themselves evenly across the canvas.",
       image: $scope.picturePath + "distrib_py.png",
+			instructions: "Simply click on any blank area of the background to place a turtle there.  The turtles will then automatically try to  distribute themselves in the space.",
       author: "Victor Norman",
       date: "Before Fall 2017"
     }, 
@@ -46762,6 +46763,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Python Calculator",
       details: "Description: A simple calculator program.",
       image: $scope.picturePath + "python_calculator.png",
+			instructions: "Type in values and hit + or - to calculate.  The result is displayed in the top right corner of the window.  Hit reset to begin a new calculation.",
       author: "Unknown",
       date: "Before Fall 2017"
     },
@@ -46770,6 +46772,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Solitaire",
       details: "A Solitaire-like Card Game",
       image: $scope.picturePath + "solitaire.png",
+			instructions: "This is a form of solitaire that has a really long set of instructions.",
       author: "Prof Norman",
       date: "Feb 6, 2017"
     },
@@ -46778,6 +46781,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Mario Kart",
       details: "Click below to run the program.",
       image: $scope.picturePath + "mariokart.png",
+			instructions: "Use wasd or ijkl to race your opponent around the racetrack.  Try not to stray off the track, or else your speed will be dramatically reduced!",
       author: "Unknown",
       date: "Before Fall 2017"
     },
@@ -46786,6 +46790,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Snake",
       details: "A clone of the classic Snake game.",
       image: $scope.picturePath + "snake.png",
+			instructions: "Use the arrow keys to control your snake's movement.  Collect the red things to get longer.  Going off the edge on one side results in showing up on the other.",
       author: "Unknown",
       date: "Before Fall 2017"
     },
@@ -46794,6 +46799,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Othello (Kinda)",
       details: "Othello game (mostly broken).",
       image: $scope.picturePath + "othello.png",
+			instructions: "This game doesn't actually work, so don't play it.",
       author: "Unknown",
       date: "Before Fall 2017"
     },
@@ -46802,6 +46808,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       name: "Super Tic Tac Toe",
       details: "Not your grandma's tic tac toe -IGN",
       image: $scope.picturePath + "super_tictactoe.png",
+			instructions: "Instructions coming soon.",
       author: "Unknown",
       date: "Before Fall 2017"
     },
@@ -46809,6 +46816,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       id: "GuiApp1",
       name: "Java Gui",
       details: "Java test...",
+			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Joel Stehouwer",
       date: "Fall 2017"
     },
@@ -46816,6 +46824,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       id: "HelloWorld",
       name: "Java Console",
       details: "Java test, check logs/java_try.log...",
+			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Joel Stehouwer",
       date: "Fall 2017"
     },
@@ -46823,6 +46832,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       id: "main",
       name: "C++ Console",
       details: "C++ program",
+			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Joel Stehouwer",
       date: "Fall 2017"
     },
@@ -46830,6 +46840,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       id: "hello.exe",
       name: "C# Console",
       details: "C# program",
+			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Andrew Lang",
       date: "Fall 2017"
     },
@@ -46837,6 +46848,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       id: "CSharpGui.exe",
       name: "C# Gui",
       details: "C# Gui Program",
+			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Andrew Lang",
       date: "Fall 2017"
     },
@@ -49407,6 +49419,12 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"                  <div style=\"clear: left;\">\n" +
 	"                    {{progListItem.details}}\n" +
 	"                  </div>\n" +
+	"                  <div style=\"clear: left;\">\n" +
+	"										<button class=\"accordion\" onclick=\"toggleInstructions()\">Instructions</button>\n" +
+	"										<div class=\"accordion-panel\">\n" +
+	"											{{progListItem.instructions}}\n" +
+	"										</div>\n" +
+	"                  </div>\n" +
 	"                </div>\n" +
 	"              </div>\n" +
 	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
@@ -49488,6 +49506,18 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"    /*$(window).unload(function() {\n" +
 	"      console.log(\"Unload\");\n" +
 	"    });*/\n" +
+	"\n" +
+	"		function toggleInstructions() {\n" +
+	"			event.target.classList.toggle(\"active\");\n" +
+	"\n" +
+	"			/* Toggle between hiding and showing the active panel */\n" +
+	"			var panel = event.target.nextElementSibling;\n" +
+	"			if (panel.style.display === \"block\") {\n" +
+	"					panel.style.display = \"none\";\n" +
+	"			} else {\n" +
+	"					panel.style.display = \"block\";\n" +
+	"			}\n" +
+	"		}\n" +
 	"    </script>\n" +
 	"  </body>\n" +
 	"</html>");

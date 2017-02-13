@@ -61,6 +61,12 @@
                   <div style="clear: left;">
                     {{progListItem.details}}
                   </div>
+                  <div style="clear: left;">
+										<button class="accordion" onclick="toggleInstructions()">Instructions</button>
+										<div class="accordion-panel">
+											{{progListItem.instructions}}
+										</div>
+                  </div>
                 </div>
               </div>
               <div class="program-item-details" style="display:none">
@@ -142,6 +148,18 @@
     /*$(window).unload(function() {
       console.log("Unload");
     });*/
+
+		function toggleInstructions() {
+			event.target.classList.toggle("active");
+
+			/* Toggle between hiding and showing the active panel */
+			var panel = event.target.nextElementSibling;
+			if (panel.style.display === "block") {
+					panel.style.display = "none";
+			} else {
+					panel.style.display = "block";
+			}
+		}
     </script>
   </body>
 </html>
