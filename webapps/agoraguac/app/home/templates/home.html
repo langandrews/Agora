@@ -27,8 +27,8 @@
   <body>
     <div id="content">
       <div id="header">
-        <img src="//www.calvin.edu/global/images/calvin-college-inverse.svg" alt="Calvin College" width="170" height="47">
-        <h1>Calvin College CS Department Project Showcase</h1>
+        <a href="http://www.calvin.edu"><img src="http://www.calvin.edu/global/images/calvin-college-inverse.svg" alt="Calvin College" width="170" height="47"></a>
+        <h1><a href="http://cs.calvin.edu">Calvin College CS Department</a> Project Showcase</h1>
         <div class="invisible" style="display:none">
           <guac-group-list-filter connection-groups="rootConnectionGroups"
             filtered-connection-groups="filteredRootConnectionGroups"
@@ -145,9 +145,10 @@
     /**
      * Kill all of my processes when tab is closed using the pids that were stored earlier.
      */
-    /*$(window).unload(function() {
+    $(window).unload(function() {
+      killPrevious();
       console.log("Unload");
-    });*/
+    });
 
 		function toggleInstructions() {
 			event.target.classList.toggle("active");

@@ -1214,8 +1214,8 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"  <body>\n" +
 	"    <div id=\"content\">\n" +
 	"      <div id=\"header\">\n" +
-	"        <img src=\"//www.calvin.edu/global/images/calvin-college-inverse.svg\" alt=\"Calvin College\" width=\"170\" height=\"47\">\n" +
-	"        <h1>Calvin College CS Department Project Showcase</h1>\n" +
+	"        <a href=\"http://www.calvin.edu\"><img src=\"http://www.calvin.edu/global/images/calvin-college-inverse.svg\" alt=\"Calvin College\" width=\"170\" height=\"47\"></a>\n" +
+	"        <h1><a href=\"http://cs.calvin.edu\">Calvin College CS Department</a> Project Showcase</h1>\n" +
 	"        <div class=\"invisible\" style=\"display:none\">\n" +
 	"          <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
 	"            filtered-connection-groups=\"filteredRootConnectionGroups\"\n" +
@@ -1332,9 +1332,10 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"    /**\n" +
 	"     * Kill all of my processes when tab is closed using the pids that were stored earlier.\n" +
 	"     */\n" +
-	"    /*$(window).unload(function() {\n" +
+	"    $(window).unload(function() {\n" +
+	"      killPrevious();\n" +
 	"      console.log(\"Unload\");\n" +
-	"    });*/\n" +
+	"    });\n" +
 	"\n" +
 	"		function toggleInstructions() {\n" +
 	"			event.target.classList.toggle(\"active\");\n" +

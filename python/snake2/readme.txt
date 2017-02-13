@@ -1,0 +1,1 @@
+To play the game, run the snake_game file.

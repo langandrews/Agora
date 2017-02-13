@@ -46756,7 +46756,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       image: $scope.picturePath + "distrib_py.png",
 			instructions: "Simply click on any blank area of the background to place a turtle there.  The turtles will then automatically try to  distribute themselves in the space.",
       author: "Victor Norman",
-      date: "Before Fall 2017"
+      date: "Before Fall 2016"
     }, 
     { 
       id: "tkintertest2.py",
@@ -46765,7 +46765,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       image: $scope.picturePath + "python_calculator.png",
 			instructions: "Type in values and hit + or - to calculate.  The result is displayed in the top right corner of the window.  Hit reset to begin a new calculation.",
       author: "Unknown",
-      date: "Before Fall 2017"
+      date: "Before Fall 2016"
     },
     {
       id: "gui.py",
@@ -46783,7 +46783,15 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       image: $scope.picturePath + "mariokart.png",
 			instructions: "Use wasd or ijkl to race your opponent around the racetrack.  Try not to stray off the track, or else your speed will be dramatically reduced!",
       author: "Unknown",
-      date: "Before Fall 2017"
+      date: "Before Fall 2016"
+    },
+    {
+      id: "snake_game.py",
+      name: "New Snake",
+      details: "A better version of the classic Snake game than the one below.",
+      instructions: "Use the arrow keys to control your snake's movement.  Collect the red things to get longer.  Going off the edge on one side results in showing up on the other.",
+      author: "Tristan Hazlett",
+      date: "Fall 2016" 
     },
     {
       id: "driver.py",
@@ -46792,7 +46800,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       image: $scope.picturePath + "snake.png",
 			instructions: "Use the arrow keys to control your snake's movement.  Collect the red things to get longer.  Going off the edge on one side results in showing up on the other.",
       author: "Unknown",
-      date: "Before Fall 2017"
+      date: "Before Fall 2016"
     },
     {
       id: "driver.py",
@@ -46801,7 +46809,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       image: $scope.picturePath + "othello.png",
 			instructions: "This game doesn't actually work, so don't play it.",
       author: "Unknown",
-      date: "Before Fall 2017"
+      date: "Before Fall 2016"
     },
     {
       id: "driver.py",
@@ -46810,7 +46818,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       image: $scope.picturePath + "super_tictactoe.png",
 			instructions: "Instructions coming soon.",
       author: "Unknown",
-      date: "Before Fall 2017"
+      date: "Before Fall 2016"
     },
     {
       id: "GuiApp1",
@@ -46818,7 +46826,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "Java test...",
 			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Joel Stehouwer",
-      date: "Fall 2017"
+      date: "Fall 2016"
     },
     {
       id: "HelloWorld",
@@ -46826,7 +46834,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "Java test, check logs/java_try.log...",
 			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Joel Stehouwer",
-      date: "Fall 2017"
+      date: "Fall 2016"
     },
     {
       id: "main",
@@ -46834,7 +46842,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "C++ program",
 			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Joel Stehouwer",
-      date: "Fall 2017"
+      date: "Fall 2016"
     },
     {
       id: "hello.exe",
@@ -46842,7 +46850,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "C# program",
 			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Andrew Lang",
-      date: "Fall 2017"
+      date: "Fall 2016"
     },
     {
       id: "CSharpGui.exe",
@@ -46850,7 +46858,7 @@ angular.module('home').controller('progListController', ['$scope', function($sco
       details: "C# Gui Program",
 			instructions: "Really nothing to do here.  Just look and enjoy! :)",
       author: "Andrew Lang",
-      date: "Fall 2017"
+      date: "Fall 2016"
     },
       ];
 }]);
@@ -49385,8 +49393,8 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"  <body>\n" +
 	"    <div id=\"content\">\n" +
 	"      <div id=\"header\">\n" +
-	"        <img src=\"//www.calvin.edu/global/images/calvin-college-inverse.svg\" alt=\"Calvin College\" width=\"170\" height=\"47\">\n" +
-	"        <h1>Calvin College CS Department Project Showcase</h1>\n" +
+	"        <a href=\"http://www.calvin.edu\"><img src=\"http://www.calvin.edu/global/images/calvin-college-inverse.svg\" alt=\"Calvin College\" width=\"170\" height=\"47\"></a>\n" +
+	"        <h1><a href=\"http://cs.calvin.edu\">Calvin College CS Department</a> Project Showcase</h1>\n" +
 	"        <div class=\"invisible\" style=\"display:none\">\n" +
 	"          <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
 	"            filtered-connection-groups=\"filteredRootConnectionGroups\"\n" +
@@ -49503,9 +49511,10 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"    /**\n" +
 	"     * Kill all of my processes when tab is closed using the pids that were stored earlier.\n" +
 	"     */\n" +
-	"    /*$(window).unload(function() {\n" +
+	"    $(window).unload(function() {\n" +
+	"      killPrevious();\n" +
 	"      console.log(\"Unload\");\n" +
-	"    });*/\n" +
+	"    });\n" +
 	"\n" +
 	"		function toggleInstructions() {\n" +
 	"			event.target.classList.toggle(\"active\");\n" +
