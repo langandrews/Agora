@@ -5,13 +5,14 @@ import sys
 args = sys.argv
 pid = args[1]
 
-file = open('/etc/guacamole/noauth_config.xml', 'r')
+file = open('/etc/guacamole/noauth-config.xml', 'r')
 lines = file.read().split('\n')
 for i in range(len(lines)):
     if pid in lines[i]:
         del lines[i:i+4]
         break
-file = open('/etc/guacamole/noauth_config.xml', 'w')
+file = open('/etc/guacamole/noauth-config.xml', 'w')
+del lines[-1]
 for line in lines:
     file.write(line + "\n");
 file.close()

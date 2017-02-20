@@ -4,12 +4,13 @@
 mvn package
 cd target
 # I don't know if we need the war file or if we need the target folder stuff...  Maybe we only want the war file?
-mv agoraguac-1.war agoraguac.war
-cp agoraguac.war /home/Agora/webapps
-rm -r agoraguac
-mv agoraguac-1 agoraguac
-cp -r agoraguac /home/Agora/webapps
-echo "agoraguac app deployed"
+mv agoraguac-1.war agora.war
+cp agora.war /home/Agora/webapps
+rm -r agora.war
+rm -r agora
+mv agoraguac-1 agora
+cp -r agora /home/Agora/webapps
+echo "agora app deployed"
 
 # Restart required services
 service guacd restart

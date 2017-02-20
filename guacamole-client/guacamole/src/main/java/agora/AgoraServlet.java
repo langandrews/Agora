@@ -57,10 +57,10 @@ public class AgoraServlet extends HttpServlet {
     // Read from the file /home/Agora/pids/recent.txt - which contains the most recently started process.  Use a delay 
     // to make sure the file has already been written to by start.sh when we read it. Maybe also remove the delay in the angular reload
     try {
-            System.out.println("about to sleep for 0.5 seconds");
-            Thread.sleep(500);
+      System.out.println("about to sleep for 0.5 seconds");
+      Thread.sleep(500);
     } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
+      Thread.currentThread().interrupt();
     }
     List<String> lines = Files.readAllLines(Paths.get("/home/Agora/pids/recent.txt"), StandardCharsets.US_ASCII);
     String myPid = lines.get(0);

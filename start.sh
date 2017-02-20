@@ -76,12 +76,10 @@ then
 fi
 if [ "$langVersion" = "jg" ]
 then
-  here=$(pwd)
   java $progName &
   progPid=$!
   echo "java gui program"
   echo -e "$progName java gui running" >> $logfile
-  cd $here
 fi
 
 # Handle c++ console program
@@ -124,11 +122,12 @@ echo -e "Agora:x11vnc server starting on $nextPort" >> $logfile
 noauthfile="/etc/guacamole/noauth-config.xml"
 sed '$ d' $noauthfile > /etc/guacamole/temp.xml
 mv /etc/guacamole/temp.xml $noauthfile
-echo "    <config name='${progName}-${thisPid}' protocol='vnc'>" >> $noauthfile
+echo "    <config name='Agora_Project-${thisPid}' protocol='vnc'>" >> $noauthfile
 echo '        <param name="hostname" value="localhost" />' >> $noauthfile
 echo "        <param name='port' value='$nextPort' />" >> $noauthfile
 echo '    </config>' >> $noauthfile
 echo '</configs>' >> $noauthfile
+chmod 777 $noauthfile
 
 echo -e "Start_sh end\n\n" >> $logfile
 

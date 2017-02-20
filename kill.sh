@@ -12,7 +12,8 @@ echo "kill.sh: Killing process ${pid}"
 
 echo -e "Killing pid $pid" >> $logfile
 
-# Should also edit noauth-config to get rid of the corresponding entry
+# Update the noauth-config
+python ./scripts/update_noauth_config.py $pid >> $logfile
 
 while IFS='' read -r line
 do
