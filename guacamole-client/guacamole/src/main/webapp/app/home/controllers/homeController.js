@@ -152,7 +152,7 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
     //Agora - trying to add a logout function
     $scope.reload = function reload() {
       // Delay a wee bit so that the reload will grab the new configs
-      $timeout( function() { 
+      setTimeout( function() { 
         authenticationService.logout()['finally'](function logoutComplete() {
           /**if($location.path() !== '/') {
             $location.url('/');

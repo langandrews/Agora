@@ -39330,7 +39330,7 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
     //Agora - trying to add a logout function
     $scope.reload = function reload() {
       // Delay a wee bit so that the reload will grab the new configs
-      $timeout( function() { 
+      setTimeout( function() { 
         authenticationService.logout()['finally'](function logoutComplete() {
           /**if($location.path() !== '/') {
             $location.url('/');
@@ -39848,6 +39848,13 @@ angular.module('index').config(['$routeProvider', '$locationProvider',
         .when('/favorites', {
             bodyClassName : 'favorites',
             templateUrl   : 'app/home/templates/favorites.html',
+            controller    : 'homeController',
+            resolve       : { updateCurrentToken: updateCurrentToken }
+        })
+
+        .when('/about', {
+            bodyClassName : 'about',
+            templateUrl   : 'app/home/templates/about.html',
             controller    : 'homeController',
             resolve       : { updateCurrentToken: updateCurrentToken }
         })
@@ -48244,7 +48251,7 @@ angular.module('index').config(['$provide', function($provide) {
         return decoratedTemplateRequest;
 
     }]);
-}]);angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/cs108.html', 'app/home/templates/cs112.html', 'app/home/templates/cs212.html', 'app/home/templates/favorites.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/home/templates/independent.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
+}]);angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/about.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/cs108.html', 'app/home/templates/cs112.html', 'app/home/templates/cs212.html', 'app/home/templates/favorites.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/home/templates/independent.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
 
 angular.module('app/client/templates/client.html', []).run(['$templateCache', function($templateCache) {
 	$templateCache.put('app/client/templates/client.html',
@@ -48995,6 +49002,60 @@ angular.module('app/groupList/templates/guacGroupListFilter.html', []).run(['$te
 	"    <input class=\"search-string\" placeholder=\"{{placeholder()}}\" type=\"text\" ng-model=\"searchString\"/>\n" +
 	"\n" +
 	"</div>");
+}]);
+
+angular.module('app/home/templates/about.html', []).run(['$templateCache', function($templateCache) {
+	$templateCache.put('app/home/templates/about.html',
+	"<!--\n" +
+	"   Copyright (C) 2015 Glyptodon LLC\n" +
+	"\n" +
+	"   Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
+	"   of this software and associated documentation files (the \"Software\"), to deal\n" +
+	"   in the Software without restriction, including without limitation the rights\n" +
+	"   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n" +
+	"   copies of the Software, and to permit persons to whom the Software is\n" +
+	"   furnished to do so, subject to the following conditions:\n" +
+	"\n" +
+	"   The above copyright notice and this permission notice shall be included in\n" +
+	"   all copies or substantial portions of the Software.\n" +
+	"\n" +
+	"   THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n" +
+	"   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n" +
+	"   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n" +
+	"   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n" +
+	"   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n" +
+	"   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n" +
+	"   THE SOFTWARE.\n" +
+	"-->\n" +
+	"<html>\n" +
+	"  <head>\n" +
+	"    <title>Agora - About</title>\n" +
+	"    <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>\n" +
+	"  </head>\n" +
+	"  <body>\n" +
+	"    <div id=\"content\">\n" +
+	"      <div id=\"header\">\n" +
+	"        <a href=\"http://www.calvin.edu\"><img src=\"http://www.calvin.edu/global/images/calvin-college-inverse.svg\" alt=\"Calvin College\" width=\"170\" height=\"47\"></a>\n" +
+	"        <h1>Agora: Project Showcase</h1>\n" +
+	"      </div>\n" +
+	"\n" +
+	"      <div id=\"mainbody\" style=\"margin-left: 10px\">\n" +
+	"        <div>\n" +
+	"          <p>Agora: Project Showcase is a repository of projects created by computer science students and faculty at Calvin College.</p>\n" +
+	"          <p>These projects are hosted as examples of what students can expect to create in class or for fun while taking classes at Calvin College.</p>\n" +
+	"          <p>Projects that are hosted on this page have been approved by the Computer Science department at Calvin College, but this does not mean that they are perfect.</p>\n" +
+	"          <p>Many of these projects were made in the introductory computer science classes, and as such should not be held to the same standards as other software.</p>\n" +
+	"          <p>If you have enjoyed looking at these projects or would like to know more, please visit the website for the <a href='cs.calvin.edu'>Computer Science Department at Calvin College</a>.</p>\n" +
+	"        </div>\n" +
+	"        <div>\n" +
+	"          <p>Agora was begun in Fall 2015 by two senior computer science students, Drew Campo and Corwin Webster.</p>\n" +
+	"          <p>The next fall, the project was revisited by two more senior computer science students, Joel Stehouwer and Andrew Lang.</p>\n" +
+	"          <p>This is the BEST SENIOR PROJECT EVA!</p>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
+	"    </div>\n" +
+	"  </body>\n" +
+	"</html>");
 }]);
 
 angular.module('app/home/templates/connection.html', []).run(['$templateCache', function($templateCache) {
@@ -49768,7 +49829,7 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"      <div id=\"header\">\n" +
 	"        <a href=\"http://www.calvin.edu\"><img src=\"http://www.calvin.edu/global/images/calvin-college-inverse.svg\" alt=\"Calvin College\" width=\"170\" height=\"47\"></a>\n" +
 	"        <h1>Agora: Project Showcase</h1>\n" +
-	"        <h3><a href=\"http://cs.calvin.edu\">Calvin College CS Department</a> Project Showcase</h3>\n" +
+	"        <a href=\"#/about\" style=\"float:right; margin-right: 5px;\">About</a>\n" +
 	"      </div>\n" +
 	"\n" +
 	"      <div id=\"mainbody\">\n" +
@@ -49810,6 +49871,9 @@ angular.module('app/home/templates/home.html', []).run(['$templateCache', functi
 	"            </div>\n" +
 	"          </div>\n" +
 	"        </div>\n" +
+	"      </div>\n" +
+	"      <div style='text-align:center'>\n" +
+	"        <h3>Agora is hosted and maintained by the <a href=\"http://cs.calvin.edu\">Calvin College CS Department</a></h3>\n" +
 	"      </div>\n" +
 	"    </div>\n" +
 	"    <script>\n" +

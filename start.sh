@@ -122,7 +122,7 @@ echo -e "Agora:x11vnc server starting on $nextPort" >> $logfile
 noauthfile="/etc/guacamole/noauth-config.xml"
 sed '$ d' $noauthfile > /etc/guacamole/temp.xml
 mv /etc/guacamole/temp.xml $noauthfile
-echo "    <config name='Agora_Project-${thisPid}' protocol='vnc'>" >> $noauthfile
+echo "    <config name='Agora Project Showcase-${thisPid}-' protocol='vnc'>" >> $noauthfile
 echo '        <param name="hostname" value="localhost" />' >> $noauthfile
 echo "        <param name='port' value='$nextPort' />" >> $noauthfile
 echo '    </config>' >> $noauthfile

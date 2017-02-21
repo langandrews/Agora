@@ -3,7 +3,7 @@ import sys
 # This program should be run like:
 # python update_noauth_config.py $port $pid
 args = sys.argv
-pid = args[1]
+pid = '-' + args[1] + '-'
 
 file = open('/etc/guacamole/noauth-config.xml', 'r')
 lines = file.read().split('\n')

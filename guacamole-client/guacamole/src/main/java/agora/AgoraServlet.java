@@ -51,6 +51,9 @@ public class AgoraServlet extends HttpServlet {
     String langVersion = programs.get(displayWebName).lang;
     System.out.println("Language version is " + langVersion);
 
+    //String previousPid = Files.readAllLines(Paths.get("/home/Agora/pids/recent.txt"), StandardCharsets.US_ASCII).get(0);
+    //String myPid = previousPid;
+
     // Run start.sh script to start the vnc server with a python program and version
     Process proc = new ProcessBuilder().inheritIO().command("/home/Agora/start.sh" , directory, progName, langVersion).start();
 
@@ -62,8 +65,10 @@ public class AgoraServlet extends HttpServlet {
     } catch(InterruptedException ex) {
       Thread.currentThread().interrupt();
     }
-    List<String> lines = Files.readAllLines(Paths.get("/home/Agora/pids/recent.txt"), StandardCharsets.US_ASCII);
-    String myPid = lines.get(0);
+    //while(previousPid == myPid) {
+      List<String> lines = Files.readAllLines(Paths.get("/home/Agora/pids/recent.txt"), StandardCharsets.US_ASCII);
+      String myPid = lines.get(0);
+    //}
     System.out.println("the most recent pid is " + myPid);
 
     response.setContentType("text/plain");  
