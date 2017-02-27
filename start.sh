@@ -40,10 +40,11 @@ echo "AGORA:Display $nextDisplay set..."
 /usr/bin/Xvfb :$nextDisplay -screen 0 1366x766x24 &
 # Save the pid this xvfb is started on, keep a file for the most recent one
 thisPid=$!
-touch /home/Agora/pids/${thisPid}.pid
-echo $thisPid > /home/Agora/pids/recent.txt
+uniqueId=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+touch /home/Agora/pids/${uniqueId}.pid
+echo $uniqueId > /home/Agora/pids/recent.txt
 echo "AGORA:Xvfb starting on $nextDisplay ..."
-echo -e "Agora process for $progName on pid $thisPid" >> $logfile
+echo -e "Agora process for $progName on pid $thisPid with unique identifier $uniqueId" >> $logfile
 echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 
 cd $directory
@@ -122,7 +123,7 @@ echo -e "Agora:x11vnc server starting on $nextPort" >> $logfile
 noauthfile="/etc/guacamole/noauth-config.xml"
 sed '$ d' $noauthfile > /etc/guacamole/temp.xml
 mv /etc/guacamole/temp.xml $noauthfile
-echo "    <config name='Agora Project Showcase-${thisPid}-' protocol='vnc'>" >> $noauthfile
+echo "    <config name='Agora Project Showcase-${uniqueId}-' protocol='vnc'>" >> $noauthfile
 echo '        <param name="hostname" value="localhost" />' >> $noauthfile
 echo "        <param name='port' value='$nextPort' />" >> $noauthfile
 echo '    </config>' >> $noauthfile
@@ -132,6 +133,6 @@ chmod 777 $noauthfile
 echo -e "Start_sh end\n\n" >> $logfile
 
 # Write the pids and port to the correct pid file in /home/Agora/pids
-echo -e $thisPid > /home/Agora/pids/$thisPid.pid
-echo -e $x11Pid >> /home/Agora/pids/${thisPid}.pid
-echo -e $progPid >> /home/Agora/pids/${thisPid}.pid
+echo -e $thisPid > /home/Agora/pids/${uniqueId}.pid
+echo -e $x11Pid >> /home/Agora/pids/${uniqueId}.pid
+echo -e $progPid >> /home/Agora/pids/${uniqueId}.pid

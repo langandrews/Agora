@@ -56,15 +56,15 @@
                     <p>{{progListItem.name}}</p>
                     <p>Author: {{progListItem.author}}</p>
                     <p>Date Added: {{progListItem.date}}</p>
-                    <div><img  id={{progListItem.id}} class="runButton" onclick="progListItemClick();" href="" ng-click="reload();{{loadProgram('cs108')}}" ng-src="{{runButton}}" style="height: 35px; width: 50px;"/></div>
+                    <div><img  id={{progListItem.id}} class="runButton" onclick="progListItemClick(event);" href="" ng-click="reload();{{loadProgram('cs108')}}" ng-src="{{runButton}}" style="height: 35px; width: 50px;"/></div>
                   </div>
                   <div style="clear: left;">
                     {{progListItem.details}}
                   </div>
                   <div style="clear: left;">
-                    <button class="accordion" onclick="toggleInstructions()">Instructions</button>
+                    <div><button class="accordion" onclick="toggleInstructions(event)">Instructions</button></div>
                     <div class="accordion-panel">
-                        {{progListItem.instructions}}		
+                        {{progListItem.instructions}}
                     </div>
                   </div>
                 </div>
@@ -86,12 +86,12 @@
      *
      * Will also reload the page (see angular reload function in "webapps/app/home/controllers/homeController.js")
      */
-    function progListItemClick() {
+    function progListItemClick(event) {
       var myId = event.target.id;
       var progName = event.target.parentElement.parentElement.firstElementChild.textContent;
       
       // Send the displayed program name (e.g. "Python Distribute") as a parameter to the servlet.
-      // Receives back the pid of the process started as responseText.
+      // Receives back a unique identifier of the process started as responseText.
       $.get('AgoraServlet',{program:progName},function(responseText) {
         var myPid = responseText;
 
@@ -125,11 +125,11 @@
       console.log("Unload");
     });
 
-      function toggleInstructions() {
+      function toggleInstructions(event) {
         event.target.classList.toggle("active");
 
         /* Toggle between hiding and showing the active panel */
-        var panel = event.target.nextElementSibling;
+        var panel = event.target.parentElement.nextElementSibling;
         if (panel.style.display === "block") {
           panel.style.display = "none";
         } else {

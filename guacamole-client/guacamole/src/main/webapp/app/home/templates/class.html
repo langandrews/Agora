@@ -21,14 +21,14 @@
 -->
 <html>
   <head>
-    <title>CS-212</title>
+    <title>{{classPage.name}}</title>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
   <body>
     <div id="content">
       <div id="header">
         <a href="http://www.calvin.edu"><img src="http://www.calvin.edu/global/images/calvin-college-inverse.svg" alt="Calvin College" width="170" height="47"></a>
-        <h1><a href="http://cs.calvin.edu">Calvin College CS Department</a> Project Showcase</h1>
+        <h1>{{classPage.name}}</h1>
         <div class="invisible" style="display:none">
           <guac-group-list-filter connection-groups="rootConnectionGroups"
             filtered-connection-groups="filteredRootConnectionGroups"
@@ -46,7 +46,7 @@
       <div id="mainbody">
         <div id="projects">
           <div id="project-list" class="project-section" ng-controller="progListController">
-            <div ng-repeat="progListItem in progListItems['cs212']">
+            <div ng-repeat="progListItem in progListItems['cs108']">
               <div class="program-list-item">
                 <div>
                   <figure style="float: left;">
@@ -56,7 +56,7 @@
                     <p>{{progListItem.name}}</p>
                     <p>Author: {{progListItem.author}}</p>
                     <p>Date Added: {{progListItem.date}}</p>
-                    <div><img  id={{progListItem.id}} class="runButton" onclick="progListItemClick(event);" href="" ng-click="reload();{{loadProgram()}}" ng-src="{{runButton}}" style="height: 35px; width: 50px;"/></div>
+                    <div><img  id={{progListItem.id}} class="runButton" onclick="progListItemClick(event);" href="" ng-click="reload();{{loadProgram('cs108')}}" ng-src="{{runButton}}" style="height: 35px; width: 50px;"/></div>
                   </div>
                   <div style="clear: left;">
                     {{progListItem.details}}
@@ -125,17 +125,17 @@
       console.log("Unload");
     });
 
-    function toggleInstructions(event) {
-      event.target.classList.toggle("active");
+      function toggleInstructions(event) {
+        event.target.classList.toggle("active");
 
-      /* Toggle between hiding and showing the active panel */
-      var panel = event.target.parentElement.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
+        /* Toggle between hiding and showing the active panel */
+        var panel = event.target.parentElement.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
       }
-    }
     </script>
   </body>
 </html>

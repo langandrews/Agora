@@ -39313,7 +39313,6 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
     };
 
     $scope.loadProgram = function loadProgram(URL) {
-      //$location.url('/'+URL);
       var thisProgName = sessionStorage.getItem("thisProgName");
       var thisPid = sessionStorage.getItem("thisPid");
       var buttonToClick = $(".name.ng-binding:contains('" + thisPid + "')")[0];
@@ -48251,7 +48250,7 @@ angular.module('index').config(['$provide', function($provide) {
         return decoratedTemplateRequest;
 
     }]);
-}]);angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/about.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/cs108.html', 'app/home/templates/cs112.html', 'app/home/templates/cs212.html', 'app/home/templates/favorites.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/home/templates/independent.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
+}]);angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/about.html', 'app/home/templates/class.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/cs108.html', 'app/home/templates/cs112.html', 'app/home/templates/cs212.html', 'app/home/templates/favorites.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/home/templates/independent.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
 
 angular.module('app/client/templates/client.html', []).run(['$templateCache', function($templateCache) {
 	$templateCache.put('app/client/templates/client.html',
@@ -49058,6 +49057,151 @@ angular.module('app/home/templates/about.html', []).run(['$templateCache', funct
 	"</html>");
 }]);
 
+angular.module('app/home/templates/class.html', []).run(['$templateCache', function($templateCache) {
+	$templateCache.put('app/home/templates/class.html',
+	"<!--\n" +
+	"   Copyright (C) 2015 Glyptodon LLC\n" +
+	"\n" +
+	"   Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
+	"   of this software and associated documentation files (the \"Software\"), to deal\n" +
+	"   in the Software without restriction, including without limitation the rights\n" +
+	"   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n" +
+	"   copies of the Software, and to permit persons to whom the Software is\n" +
+	"   furnished to do so, subject to the following conditions:\n" +
+	"\n" +
+	"   The above copyright notice and this permission notice shall be included in\n" +
+	"   all copies or substantial portions of the Software.\n" +
+	"\n" +
+	"   THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n" +
+	"   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n" +
+	"   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n" +
+	"   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n" +
+	"   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n" +
+	"   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n" +
+	"   THE SOFTWARE.\n" +
+	"-->\n" +
+	"<html>\n" +
+	"  <head>\n" +
+	"    <title>{{classPage.name}}</title>\n" +
+	"    <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>\n" +
+	"  </head>\n" +
+	"  <body>\n" +
+	"    <div id=\"content\">\n" +
+	"      <div id=\"header\">\n" +
+	"        <a href=\"http://www.calvin.edu\"><img src=\"http://www.calvin.edu/global/images/calvin-college-inverse.svg\" alt=\"Calvin College\" width=\"170\" height=\"47\"></a>\n" +
+	"        <h1>{{classPage.name}}</h1>\n" +
+	"        <div class=\"invisible\" style=\"display:none\">\n" +
+	"          <guac-group-list-filter connection-groups=\"rootConnectionGroups\"\n" +
+	"            filtered-connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            placeholder=\"Rawr\"\n" +
+	"            connection-properties=\"filteredConnectionProperties\"\n" +
+	"            connection-group-properties=\"filteredConnectionGroupProperties\"></guac-group-list-filter>\n" +
+	"          <guac-group-list\n" +
+	"            context=\"context\"\n" +
+	"            connection-groups=\"filteredRootConnectionGroups\"\n" +
+	"            connection-template=\"'app/home/templates/connection.html'\"\n" +
+	"            connection-group-template=\"'app/home/templates/connectionGroup.html'\"\n" +
+	"            page-size=\"250\"></guac-group-list>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
+	"      <div id=\"mainbody\">\n" +
+	"        <div id=\"projects\">\n" +
+	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
+	"            <div ng-repeat=\"progListItem in progListItems['cs108']\">\n" +
+	"              <div class=\"program-list-item\">\n" +
+	"                <div>\n" +
+	"                  <figure style=\"float: left;\">\n" +
+	"                    <img ng-src=\"{{progListItem.image}}\"/>\n" +
+	"                  </figure>\n" +
+	"                  <div class=\"project-info\" style=\"clear: none; margin-top: 18px; padding-left: 20px;\">\n" +
+	"                    <p>{{progListItem.name}}</p>\n" +
+	"                    <p>Author: {{progListItem.author}}</p>\n" +
+	"                    <p>Date Added: {{progListItem.date}}</p>\n" +
+	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick(event);\" href=\"\" ng-click=\"reload();{{loadProgram('cs108')}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
+	"                  </div>\n" +
+	"                  <div style=\"clear: left;\">\n" +
+	"                    {{progListItem.details}}\n" +
+	"                  </div>\n" +
+	"                  <div style=\"clear: left;\">\n" +
+	"                    <div><button class=\"accordion\" onclick=\"toggleInstructions(event)\">Instructions</button></div>\n" +
+	"                    <div class=\"accordion-panel\">\n" +
+	"                        {{progListItem.instructions}}\n" +
+	"                    </div>\n" +
+	"                  </div>\n" +
+	"                </div>\n" +
+	"              </div>\n" +
+	"              <div class=\"program-item-details\" style=\"display:none\">\n" +
+	"                <p>{{progListItem.details}}</p>\n" +
+	"              </div>\n" +
+	"            </div>\n" +
+	"          </div>\n" +
+	"        </div>\n" +
+	"      </div>\n" +
+	"    </div>\n" +
+	"\n" +
+	"    <script src=\"http://code.jquery.com/jquery-2.2.0.min.js\"></script>\n" +
+	"    <script>\n" +
+	"    /**\n" +
+	"     * Clicking on a program in the list will trigger a call to the Agora Servlet (which runs start.sh).\n" +
+	"     * and store the program information for the program we want to run\n" +
+	"     *\n" +
+	"     * Will also reload the page (see angular reload function in \"webapps/app/home/controllers/homeController.js\")\n" +
+	"     */\n" +
+	"    function progListItemClick(event) {\n" +
+	"      var myId = event.target.id;\n" +
+	"      var progName = event.target.parentElement.parentElement.firstElementChild.textContent;\n" +
+	"      \n" +
+	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
+	"      // Receives back the pid of the process started as responseText.\n" +
+	"      $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
+	"        var myPid = responseText;\n" +
+	"\n" +
+	"        // Kill previous programs by this user\n" +
+	"        killPrevious();\n" +
+	"\n" +
+	"        sessionStorage.setItem(\"thisPid\", myPid);\n" +
+	"        sessionStorage.setItem(\"thisProgName\", myId);\n" +
+	"      })\n" +
+	"      .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
+	"    }\n" +
+	"\n" +
+	"    /**\n" +
+	"     * Kill all previous programs that were run by this user\n" +
+	"     */\n" +
+	"    function killPrevious() {\n" +
+	"      var pid = sessionStorage.getItem(\"previousPid\");\n" +
+	"      if (pid) {\n" +
+	"        $.get('KillServlet',{pid:pid},function(responseText) {\n" +
+	"          var newVar = responseText;\n" +
+	"          sessionStorage.setItem(\"previousPid\", null);\n" +
+	"        });\n" +
+	"      }\n" +
+	"    }\n" +
+	"\n" +
+	"    /**\n" +
+	"     * Kill all of my processes when tab is closed using the pids that were stored earlier.\n" +
+	"     */\n" +
+	"    $(window).unload(function() {\n" +
+	"      killPrevious();\n" +
+	"      console.log(\"Unload\");\n" +
+	"    });\n" +
+	"\n" +
+	"      function toggleInstructions(event) {\n" +
+	"        event.target.classList.toggle(\"active\");\n" +
+	"\n" +
+	"        /* Toggle between hiding and showing the active panel */\n" +
+	"        var panel = event.target.parentElement.nextElementSibling;\n" +
+	"        if (panel.style.display === \"block\") {\n" +
+	"          panel.style.display = \"none\";\n" +
+	"        } else {\n" +
+	"          panel.style.display = \"block\";\n" +
+	"        }\n" +
+	"      }\n" +
+	"    </script>\n" +
+	"  </body>\n" +
+	"</html>");
+}]);
+
 angular.module('app/home/templates/connection.html', []).run(['$templateCache', function($templateCache) {
 	$templateCache.put('app/home/templates/connection.html',
 	"<a ng-href=\"#/client/{{context.getClientIdentifier(item)}}\">\n" +
@@ -49211,15 +49355,15 @@ angular.module('app/home/templates/cs108.html', []).run(['$templateCache', funct
 	"                    <p>{{progListItem.name}}</p>\n" +
 	"                    <p>Author: {{progListItem.author}}</p>\n" +
 	"                    <p>Date Added: {{progListItem.date}}</p>\n" +
-	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload();{{loadProgram('cs108')}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
+	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick(event);\" href=\"\" ng-click=\"reload();{{loadProgram('cs108')}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
 	"                    {{progListItem.details}}\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
-	"                    <button class=\"accordion\" onclick=\"toggleInstructions()\">Instructions</button>\n" +
+	"                    <div><button class=\"accordion\" onclick=\"toggleInstructions(event)\">Instructions</button></div>\n" +
 	"                    <div class=\"accordion-panel\">\n" +
-	"                        {{progListItem.instructions}}		\n" +
+	"                        {{progListItem.instructions}}\n" +
 	"                    </div>\n" +
 	"                  </div>\n" +
 	"                </div>\n" +
@@ -49241,12 +49385,12 @@ angular.module('app/home/templates/cs108.html', []).run(['$templateCache', funct
 	"     *\n" +
 	"     * Will also reload the page (see angular reload function in \"webapps/app/home/controllers/homeController.js\")\n" +
 	"     */\n" +
-	"    function progListItemClick() {\n" +
+	"    function progListItemClick(event) {\n" +
 	"      var myId = event.target.id;\n" +
 	"      var progName = event.target.parentElement.parentElement.firstElementChild.textContent;\n" +
 	"      \n" +
 	"      // Send the displayed program name (e.g. \"Python Distribute\") as a parameter to the servlet.\n" +
-	"      // Receives back the pid of the process started as responseText.\n" +
+	"      // Receives back a unique identifier of the process started as responseText.\n" +
 	"      $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
 	"        var myPid = responseText;\n" +
 	"\n" +
@@ -49280,11 +49424,11 @@ angular.module('app/home/templates/cs108.html', []).run(['$templateCache', funct
 	"      console.log(\"Unload\");\n" +
 	"    });\n" +
 	"\n" +
-	"      function toggleInstructions() {\n" +
+	"      function toggleInstructions(event) {\n" +
 	"        event.target.classList.toggle(\"active\");\n" +
 	"\n" +
 	"        /* Toggle between hiding and showing the active panel */\n" +
-	"        var panel = event.target.nextElementSibling;\n" +
+	"        var panel = event.target.parentElement.nextElementSibling;\n" +
 	"        if (panel.style.display === \"block\") {\n" +
 	"          panel.style.display = \"none\";\n" +
 	"        } else {\n" +
@@ -49356,15 +49500,15 @@ angular.module('app/home/templates/cs112.html', []).run(['$templateCache', funct
 	"                    <p>{{progListItem.name}}</p>\n" +
 	"                    <p>Author: {{progListItem.author}}</p>\n" +
 	"                    <p>Date Added: {{progListItem.date}}</p>\n" +
-	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload();{{loadProgram()}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
+	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick(event);\" href=\"\" ng-click=\"reload();{{loadProgram()}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
 	"                    {{progListItem.details}}\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
-	"                    <button class=\"accordion\" onclick=\"toggleInstructions()\">Instructions</button>\n" +
+	"                    <div><button class=\"accordion\" onclick=\"toggleInstructions(event)\">Instructions</button></div>\n" +
 	"                    <div class=\"accordion-panel\">\n" +
-	"                        {{progListItem.instructions}}		\n" +
+	"                        {{progListItem.instructions}}\n" +
 	"                    </div>\n" +
 	"                  </div>\n" +
 	"                </div>\n" +
@@ -49386,7 +49530,7 @@ angular.module('app/home/templates/cs112.html', []).run(['$templateCache', funct
 	"     *\n" +
 	"     * Will also reload the page (see angular reload function in \"webapps/app/home/controllers/homeController.js\")\n" +
 	"     */\n" +
-	"    function progListItemClick() {\n" +
+	"    function progListItemClick(event) {\n" +
 	"      var myId = event.target.id;\n" +
 	"      var progName = event.target.parentElement.parentElement.firstElementChild.textContent;\n" +
 	"      \n" +
@@ -49425,11 +49569,11 @@ angular.module('app/home/templates/cs112.html', []).run(['$templateCache', funct
 	"      console.log(\"Unload\");\n" +
 	"    });\n" +
 	"\n" +
-	"    function toggleInstructions() {\n" +
+	"    function toggleInstructions(event) {\n" +
 	"      event.target.classList.toggle(\"active\");\n" +
 	"\n" +
 	"      /* Toggle between hiding and showing the active panel */\n" +
-	"      var panel = event.target.nextElementSibling;\n" +
+	"      var panel = event.target.parentElement.nextElementSibling;\n" +
 	"      if (panel.style.display === \"block\") {\n" +
 	"        panel.style.display = \"none\";\n" +
 	"      } else {\n" +
@@ -49501,15 +49645,15 @@ angular.module('app/home/templates/cs212.html', []).run(['$templateCache', funct
 	"                    <p>{{progListItem.name}}</p>\n" +
 	"                    <p>Author: {{progListItem.author}}</p>\n" +
 	"                    <p>Date Added: {{progListItem.date}}</p>\n" +
-	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload();{{loadProgram()}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
+	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick(event);\" href=\"\" ng-click=\"reload();{{loadProgram()}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
 	"                    {{progListItem.details}}\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
-	"                    <button class=\"accordion\" onclick=\"toggleInstructions()\">Instructions</button>\n" +
+	"                    <div><button class=\"accordion\" onclick=\"toggleInstructions(event)\">Instructions</button></div>\n" +
 	"                    <div class=\"accordion-panel\">\n" +
-	"                        {{progListItem.instructions}}		\n" +
+	"                        {{progListItem.instructions}}\n" +
 	"                    </div>\n" +
 	"                  </div>\n" +
 	"                </div>\n" +
@@ -49531,7 +49675,7 @@ angular.module('app/home/templates/cs212.html', []).run(['$templateCache', funct
 	"     *\n" +
 	"     * Will also reload the page (see angular reload function in \"webapps/app/home/controllers/homeController.js\")\n" +
 	"     */\n" +
-	"    function progListItemClick() {\n" +
+	"    function progListItemClick(event) {\n" +
 	"      var myId = event.target.id;\n" +
 	"      var progName = event.target.parentElement.parentElement.firstElementChild.textContent;\n" +
 	"      \n" +
@@ -49570,11 +49714,11 @@ angular.module('app/home/templates/cs212.html', []).run(['$templateCache', funct
 	"      console.log(\"Unload\");\n" +
 	"    });\n" +
 	"\n" +
-	"    function toggleInstructions() {\n" +
+	"    function toggleInstructions(event) {\n" +
 	"      event.target.classList.toggle(\"active\");\n" +
 	"\n" +
 	"      /* Toggle between hiding and showing the active panel */\n" +
-	"      var panel = event.target.nextElementSibling;\n" +
+	"      var panel = event.target.parentElement.nextElementSibling;\n" +
 	"      if (panel.style.display === \"block\") {\n" +
 	"        panel.style.display = \"none\";\n" +
 	"      } else {\n" +
@@ -49652,9 +49796,9 @@ angular.module('app/home/templates/favorites.html', []).run(['$templateCache', f
 	"                    {{progListItem.details}}\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
-	"                    <button class=\"accordion\" onclick=\"toggleInstructions()\">Instructions</button>\n" +
+	"                    <div><button class=\"accordion\" onclick=\"toggleInstructions(event)\">Instructions</button></div>\n" +
 	"                    <div class=\"accordion-panel\">\n" +
-	"                        {{progListItem.instructions}}		\n" +
+	"                        {{progListItem.instructions}}\n" +
 	"                    </div>\n" +
 	"                  </div>\n" +
 	"                </div>\n" +
@@ -49715,11 +49859,11 @@ angular.module('app/home/templates/favorites.html', []).run(['$templateCache', f
 	"      console.log(\"Unload\");\n" +
 	"    });\n" +
 	"\n" +
-	"    function toggleInstructions() {\n" +
+	"    function toggleInstructions(event) {\n" +
 	"      event.target.classList.toggle(\"active\");\n" +
 	"\n" +
 	"      /* Toggle between hiding and showing the active panel */\n" +
-	"      var panel = event.target.nextElementSibling;\n" +
+	"      var panel = event.target.parentElement.nextElementSibling;\n" +
 	"      if (panel.style.display === \"block\") {\n" +
 	"        panel.style.display = \"none\";\n" +
 	"      } else {\n" +
@@ -49962,15 +50106,15 @@ angular.module('app/home/templates/independent.html', []).run(['$templateCache',
 	"                    <p>{{progListItem.name}}</p>\n" +
 	"                    <p>Author: {{progListItem.author}}</p>\n" +
 	"                    <p>Date Added: {{progListItem.date}}</p>\n" +
-	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick();\" href=\"\" ng-click=\"reload();{{loadProgram()}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
+	"                    <div><img  id={{progListItem.id}} class=\"runButton\" onclick=\"progListItemClick(event);\" href=\"\" ng-click=\"reload();{{loadProgram()}}\" ng-src=\"{{runButton}}\" style=\"height: 35px; width: 50px;\"/></div>\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
 	"                    {{progListItem.details}}\n" +
 	"                  </div>\n" +
 	"                  <div style=\"clear: left;\">\n" +
-	"                    <button class=\"accordion\" onclick=\"toggleInstructions()\">Instructions</button>\n" +
+	"                    <div><button class=\"accordion\" onclick=\"toggleInstructions(event)\">Instructions</button></div>\n" +
 	"                    <div class=\"accordion-panel\">\n" +
-	"                        {{progListItem.instructions}}		\n" +
+	"                        {{progListItem.instructions}}\n" +
 	"                    </div>\n" +
 	"                  </div>\n" +
 	"                </div>\n" +
@@ -49992,7 +50136,7 @@ angular.module('app/home/templates/independent.html', []).run(['$templateCache',
 	"     *\n" +
 	"     * Will also reload the page (see angular reload function in \"webapps/app/home/controllers/homeController.js\")\n" +
 	"     */\n" +
-	"    function progListItemClick() {\n" +
+	"    function progListItemClick(event) {\n" +
 	"      var myId = event.target.id;\n" +
 	"      var progName = event.target.parentElement.parentElement.firstElementChild.textContent;\n" +
 	"      \n" +
@@ -50031,11 +50175,11 @@ angular.module('app/home/templates/independent.html', []).run(['$templateCache',
 	"      console.log(\"Unload\");\n" +
 	"    });\n" +
 	"\n" +
-	"    function toggleInstructions() {\n" +
+	"    function toggleInstructions(event) {\n" +
 	"      event.target.classList.toggle(\"active\");\n" +
 	"\n" +
 	"      /* Toggle between hiding and showing the active panel */\n" +
-	"      var panel = event.target.nextElementSibling;\n" +
+	"      var panel = event.target.parentElement.nextElementSibling;\n" +
 	"      if (panel.style.display === \"block\") {\n" +
 	"        panel.style.display = \"none\";\n" +
 	"      } else {\n" +

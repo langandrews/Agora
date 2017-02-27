@@ -135,7 +135,6 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
     };
 
     $scope.loadProgram = function loadProgram(URL) {
-      //$location.url('/'+URL);
       var thisProgName = sessionStorage.getItem("thisProgName");
       var thisPid = sessionStorage.getItem("thisPid");
       var buttonToClick = $(".name.ng-binding:contains('" + thisPid + "')")[0];
