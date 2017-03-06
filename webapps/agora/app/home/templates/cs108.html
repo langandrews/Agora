@@ -19,7 +19,7 @@
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
    THE SOFTWARE.
 -->
-<html>
+<html lang="en" ng-app="home">
   <head>
     <title>CS-108</title>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
@@ -43,7 +43,7 @@
             page-size="250"></guac-group-list>
         </div>
       </div>
-      <div id="mainbody">
+      <div id="mainbody" ng-controller="progListController">
         <div id="projects">
           <div id="project-list" class="project-section" ng-controller="progListController">
             <div ng-repeat="progListItem in progListItems['cs108']">
@@ -94,12 +94,17 @@
       // Receives back a unique identifier of the process started as responseText.
       $.get('AgoraServlet',{program:progName},function(responseText) {
         var myPid = responseText;
+        if (myPid == "0") {
+          alert("There are no available displays.  Please try again later.");
+        }
+        else
+        {
+          // Kill the previous program by this user
+          killPrevious();
 
-        // Kill previous programs by this user
-        killPrevious();
-
-        sessionStorage.setItem("thisPid", myPid);
-        sessionStorage.setItem("thisProgName", myId);
+          sessionStorage.setItem("thisPid", myPid);
+          sessionStorage.setItem("thisProgName", myId);
+        }
       })
       .fail(function() { alert("Error! Failed get from AgoraServlet."); });
     }

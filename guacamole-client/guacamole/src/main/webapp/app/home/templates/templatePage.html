@@ -21,14 +21,14 @@
 -->
 <html>
   <head>
-    <title>{{classPage.name}}</title>
+    <title>**className**</title>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
   <body>
     <div id="content">
       <div id="header">
         <a href="http://www.calvin.edu"><img src="http://www.calvin.edu/global/images/calvin-college-inverse.svg" alt="Calvin College" width="170" height="47"></a>
-        <h1>{{classPage.name}}</h1>
+        <h1>**className**</h1>
         <div class="invisible" style="display:none">
           <guac-group-list-filter connection-groups="rootConnectionGroups"
             filtered-connection-groups="filteredRootConnectionGroups"
@@ -46,7 +46,7 @@
       <div id="mainbody">
         <div id="projects">
           <div id="project-list" class="project-section" ng-controller="progListController">
-            <div ng-repeat="progListItem in progListItems['cs108']">
+            <div ng-repeat="progListItem in progListItems['**nameOfKeyInProgramlistController**']">
               <div class="program-list-item">
                 <div>
                   <figure style="float: left;">
@@ -94,12 +94,17 @@
       // Receives back the pid of the process started as responseText.
       $.get('AgoraServlet',{program:progName},function(responseText) {
         var myPid = responseText;
+	if (myPid == "0") {
+          alert("There are no available displays.  Please try again later.");
+        }
+        else
+        {
+          // Kill previous programs by this user
+          killPrevious();
 
-        // Kill previous programs by this user
-        killPrevious();
-
-        sessionStorage.setItem("thisPid", myPid);
-        sessionStorage.setItem("thisProgName", myId);
+          sessionStorage.setItem("thisPid", myPid);
+          sessionStorage.setItem("thisProgName", myId);
+        }
       })
       .fail(function() { alert("Error! Failed get from AgoraServlet."); });
     }

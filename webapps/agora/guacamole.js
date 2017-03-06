@@ -48250,7 +48250,7 @@ angular.module('index').config(['$provide', function($provide) {
         return decoratedTemplateRequest;
 
     }]);
-}]);angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/about.html', 'app/home/templates/class.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/cs108.html', 'app/home/templates/cs112.html', 'app/home/templates/cs212.html', 'app/home/templates/favorites.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/home/templates/independent.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
+}]);angular.module('templates-main', ['app/client/templates/client.html', 'app/client/templates/file.html', 'app/client/templates/guacClient.html', 'app/client/templates/guacFileBrowser.html', 'app/client/templates/guacFileTransfer.html', 'app/client/templates/guacFileTransferManager.html', 'app/client/templates/guacThumbnail.html', 'app/client/templates/guacViewport.html', 'app/element/templates/blank.html', 'app/form/templates/checkboxField.html', 'app/form/templates/dateField.html', 'app/form/templates/form.html', 'app/form/templates/formField.html', 'app/form/templates/numberField.html', 'app/form/templates/passwordField.html', 'app/form/templates/selectField.html', 'app/form/templates/textAreaField.html', 'app/form/templates/textField.html', 'app/form/templates/timeField.html', 'app/form/templates/timeZoneField.html', 'app/groupList/templates/guacGroupList.html', 'app/groupList/templates/guacGroupListFilter.html', 'app/home/templates/about.html', 'app/home/templates/class.html', 'app/home/templates/classPage.html', 'app/home/templates/connection.html', 'app/home/templates/connectionGroup.html', 'app/home/templates/cs108.html', 'app/home/templates/cs112.html', 'app/home/templates/cs212.html', 'app/home/templates/favorites.html', 'app/home/templates/guacRecentConnections.html', 'app/home/templates/home.html', 'app/home/templates/independent.html', 'app/list/templates/guacFilter.html', 'app/list/templates/guacPager.html', 'app/login/templates/login.html', 'app/manage/templates/connectionGroupPermission.html', 'app/manage/templates/connectionPermission.html', 'app/manage/templates/locationChooser.html', 'app/manage/templates/locationChooserConnectionGroup.html', 'app/manage/templates/manageConnection.html', 'app/manage/templates/manageConnectionGroup.html', 'app/manage/templates/manageUser.html', 'app/navigation/templates/guacPageList.html', 'app/navigation/templates/guacUserMenu.html', 'app/notification/templates/guacNotification.html', 'app/osk/templates/guacOsk.html', 'app/settings/templates/connection.html', 'app/settings/templates/connectionGroup.html', 'app/settings/templates/settings.html', 'app/settings/templates/settingsConnectionHistory.html', 'app/settings/templates/settingsConnections.html', 'app/settings/templates/settingsPreferences.html', 'app/settings/templates/settingsSessions.html', 'app/settings/templates/settingsUsers.html', 'app/textInput/templates/guacKey.html', 'app/textInput/templates/guacTextInput.html']);
 
 angular.module('app/client/templates/client.html', []).run(['$templateCache', function($templateCache) {
 	$templateCache.put('app/client/templates/client.html',
@@ -48523,6 +48523,7 @@ angular.module('app/client/templates/guacClient.html', []).run(['$templateCache'
 	"    -->\n" +
 	"\n" +
 	"    <!-- Display -->\n" +
+	"    <div>Hahahahahahahahaha</div>\n" +
 	"    <div class=\"displayOuter\">\n" +
 	"\n" +
 	"        <div class=\"displayMiddle\">\n" +
@@ -49202,6 +49203,11 @@ angular.module('app/home/templates/class.html', []).run(['$templateCache', funct
 	"</html>");
 }]);
 
+angular.module('app/home/templates/classPage.html', []).run(['$templateCache', function($templateCache) {
+	$templateCache.put('app/home/templates/classPage.html',
+	"<div><p>RAWRRRRRRRRR</p></div>");
+}]);
+
 angular.module('app/home/templates/connection.html', []).run(['$templateCache', function($templateCache) {
 	$templateCache.put('app/home/templates/connection.html',
 	"<a ng-href=\"#/client/{{context.getClientIdentifier(item)}}\">\n" +
@@ -49318,7 +49324,7 @@ angular.module('app/home/templates/cs108.html', []).run(['$templateCache', funct
 	"   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n" +
 	"   THE SOFTWARE.\n" +
 	"-->\n" +
-	"<html>\n" +
+	"<html lang=\"en\" ng-app=\"home\">\n" +
 	"  <head>\n" +
 	"    <title>CS-108</title>\n" +
 	"    <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>\n" +
@@ -49342,7 +49348,7 @@ angular.module('app/home/templates/cs108.html', []).run(['$templateCache', funct
 	"            page-size=\"250\"></guac-group-list>\n" +
 	"        </div>\n" +
 	"      </div>\n" +
-	"      <div id=\"mainbody\">\n" +
+	"      <div id=\"mainbody\" ng-controller=\"progListController\">\n" +
 	"        <div id=\"projects\">\n" +
 	"          <div id=\"project-list\" class=\"project-section\" ng-controller=\"progListController\">\n" +
 	"            <div ng-repeat=\"progListItem in progListItems['cs108']\">\n" +
@@ -49393,12 +49399,17 @@ angular.module('app/home/templates/cs108.html', []).run(['$templateCache', funct
 	"      // Receives back a unique identifier of the process started as responseText.\n" +
 	"      $.get('AgoraServlet',{program:progName},function(responseText) {\n" +
 	"        var myPid = responseText;\n" +
+	"        if (myPid == \"0\") {\n" +
+	"          alert(\"There are no available displays.  Please try again later.\");\n" +
+	"        }\n" +
+	"        else\n" +
+	"        {\n" +
+	"          // Kill the previous program by this user\n" +
+	"          killPrevious();\n" +
 	"\n" +
-	"        // Kill previous programs by this user\n" +
-	"        killPrevious();\n" +
-	"\n" +
-	"        sessionStorage.setItem(\"thisPid\", myPid);\n" +
-	"        sessionStorage.setItem(\"thisProgName\", myId);\n" +
+	"          sessionStorage.setItem(\"thisPid\", myPid);\n" +
+	"          sessionStorage.setItem(\"thisProgName\", myId);\n" +
+	"        }\n" +
 	"      })\n" +
 	"      .fail(function() { alert(\"Error! Failed get from AgoraServlet.\"); });\n" +
 	"    }\n" +

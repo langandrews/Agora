@@ -11,15 +11,19 @@ echo -e "Start begin" >> $logfile
 
 ############
 # Find the next available port from port.txt, then increment port number
-filename="/home/Agora/port.txt"
 # TODO lock the file first
-nextPort=`cat $filename`
-if [ "$nextPort" -gt 5999 ]
-  then  nextPort="5901" 
+python2 /home/Agora/scripts/get_next_port.py
+nextDisplay=$?
+echo -e "$nextDisplay" >> $logfile
+if [ "$nextDisplay" -eq "0" ]
+then
+  echo -e "No available displays" >> $logfile
+  echo 0 > /home/Agora/pids/recent.txt
+  exit 1
 fi
-echo $((nextPort+1)) > $filename
+echo -e "What is the port? $nextDisplay " >> $logfile
 # TODO unlock the file
-nextDisplay=$((nextPort-5900))
+nextPort=$((nextDisplay+5900))
 echo "Read $nextPort from file"
 echo "Display will be $nextDisplay"
 echo -e "Next display is $nextDisplay" >> $logfile
@@ -48,6 +52,7 @@ echo -e "Agora process for $progName on pid $thisPid with unique identifier $uni
 echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 
 cd $directory
+echo -e "CD'd to $directory" >> $logfile
 
 # Handle different python versions
 if [ "$langVersion" = "p2" ]
@@ -86,7 +91,7 @@ fi
 # Handle c++ console program
 if [ "$langVersion" = "cpp" ]
 then
-  xterm -fg white -bg black -e "bash -c \"$progName; read -n 1\"" &
+  xterm -fg white -bg black -e "bash -c \"./$progName; read -n 1\"" &
   progPid=$!
   echo "c++ console program"
   echo -e "$progName c++ console running" >> $logfile
@@ -110,7 +115,7 @@ fi
 
 cd -
 
-echo "AGORA:starting python program $progName ..."
+echo "AGORA:starting $langVersion program $progName ..."
 
 x11vnc -display :$nextDisplay -forever -shared -rfbport $nextPort &
 x11Pid=$!
@@ -123,7 +128,7 @@ echo -e "Agora:x11vnc server starting on $nextPort" >> $logfile
 noauthfile="/etc/guacamole/noauth-config.xml"
 sed '$ d' $noauthfile > /etc/guacamole/temp.xml
 mv /etc/guacamole/temp.xml $noauthfile
-echo "    <config name='Agora Project Showcase-${uniqueId}-' protocol='vnc'>" >> $noauthfile
+echo "    <config name='Agora Project Showcase -${uniqueId}-' protocol='vnc'>" >> $noauthfile
 echo '        <param name="hostname" value="localhost" />' >> $noauthfile
 echo "        <param name='port' value='$nextPort' />" >> $noauthfile
 echo '    </config>' >> $noauthfile

@@ -5,8 +5,12 @@ using namespace std;
 
 int main() {
   cout << "I work" << endl;
-  ofstream file;
-  file.open("/home/Agora/logs/cpp.log");
-  file << "Yay!" << endl;
-  file.close();
+  string password;
+  while (true) {
+    cout << "Enter the password ('rawr')" << endl;
+    cin >> password;
+    if (password == "rawr") {
+      break;
+    }
+  }
 }
