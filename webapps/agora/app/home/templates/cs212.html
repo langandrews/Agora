@@ -91,15 +91,20 @@
       var progName = event.target.parentElement.parentElement.firstElementChild.textContent;
       
       // Send the displayed program name (e.g. "Python Distribute") as a parameter to the servlet.
-      // Receives back the pid of the process started as responseText.
+      // Receives back a unique identifier of the process started as responseText.
       $.get('AgoraServlet',{program:progName},function(responseText) {
         var myPid = responseText;
+        if (myPid == "0") {
+          alert("There are no available displays.  Please try again later.");
+        }
+        else
+        {
+          // Kill the previous program by this user
+          killPrevious();
 
-        // Kill previous programs by this user
-        killPrevious();
-
-        sessionStorage.setItem("thisPid", myPid);
-        sessionStorage.setItem("thisProgName", myId);
+          sessionStorage.setItem("thisPid", myPid);
+          sessionStorage.setItem("thisProgName", myId);
+        }
       })
       .fail(function() { alert("Error! Failed get from AgoraServlet."); });
     }

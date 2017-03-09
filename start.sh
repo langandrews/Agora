@@ -87,6 +87,14 @@ then
   echo "java gui program"
   echo -e "$progName java gui running" >> $logfile
 fi
+# Handle jar files
+if [ "$langVersion" = "jar" ]
+then
+  xterm -fg white -bg black -e "bash -c \"clear; java -jar $progName; read -n 1\"" &
+  progPid=$!
+  echo "java compiled jar"
+  echo -e "$progName java jar running" >> $logfile
+fi
 
 # Handle c++ console program
 if [ "$langVersion" = "cpp" ]

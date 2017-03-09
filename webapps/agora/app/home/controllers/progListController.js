@@ -109,6 +109,13 @@ angular.module('home').controller('progListController', ['$scope', function($sco
           instructions: "Really nothing to do here.  Just look and enjoy! :)",
           author: "Joel Stehouwer",
           date: "Fall 2016"
+        },
+        {
+          id: "RPSS.jar",
+          name: "RPSS",
+          details: "Greenfoot thing",
+          author: "Victor Norman",
+          date: "03/07/2017"
         }
     ],
     'cs112': [
