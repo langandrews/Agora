@@ -56,7 +56,8 @@ echo -e "Finished configuring guacamole settings\n"
 # Make a link to the properties file so that the guacaole server can read it.
 echo -e "Set up tomcat7"
 mkdir /usr/share/tomcat7/.guacamole > $logFile 2>&1
-cp settings-guac/guacamole.properties /usr/share/tomcat7/.guacamole/ > $logFile 2>&1
+#cp settings-guac/guacamole.properties /usr/share/tomcat7/.guacamole/ > $logFile 2>&1
+ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7/.guacamole/
 
 # make a link to the webapps files to override tomcat's default page with the Agora page.
 rm -r /var/lib/tomcat7/webapps > $logFile 2>&1
