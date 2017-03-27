@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-#
-# Should we do this in python instead??
+# Agora
+# Authors: Joel Stehouwer and Andrew Lang
+# This file is called by the KillServlet found in
+# 'Agora/guacamole-client/guacamole/src/main/java/agora/KillServlet.java'
 #################
 
 logfile="/home/Agora/logs/kill_sh.log"

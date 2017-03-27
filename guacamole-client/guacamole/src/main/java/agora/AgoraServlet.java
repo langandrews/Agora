@@ -52,7 +52,7 @@ public class AgoraServlet extends HttpServlet {
     System.out.println("Language version is " + langVersion);
 
     // Run start.sh script to start the vnc server with a python program and version
-    Process proc = new ProcessBuilder().inheritIO().command("/home/Agora/start.sh" , directory, progName, langVersion).start();
+    Process proc = new ProcessBuilder().inheritIO().command("/home/Agora/scripts/start.sh" , directory, progName, langVersion).start();
 
     // Read from the file /home/Agora/pids/recent.txt - which contains the most recently started process.  Use a delay 
     // to make sure the file has already been written to by start.sh when we read it. Maybe also remove the delay in the angular reload

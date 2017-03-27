@@ -3,6 +3,11 @@
 # Agora
 # Authors: Drew Campo and Corwin Webster
 # Expanded by: Joel Stehouwer and Andrew Lang
+#
+# This starts a new project on a new display
+#
+# This file is called by the AgoraServlet found in
+# 'Agora/guacamole-client/guacamole/src/main/java/agora/AgoraServlet.java'
 ############
 
 # Log file that this script writes to

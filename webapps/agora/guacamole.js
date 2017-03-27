@@ -39306,12 +39306,6 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
       $scope.rootConnectionGroups = rootConnectionGroups;
     });
 
-    // Agora - we're not sure what we're doing here
-    $scope.delay = function(URL) {
-      alert("Hie ur in the delay");
-      setTimeout( function() { window.location = URL }, 500);
-    };
-
     $scope.loadProgram = function loadProgram(URL) {
       var thisProgName = sessionStorage.getItem("thisProgName");
       var thisPid = sessionStorage.getItem("thisPid");
@@ -39328,18 +39322,12 @@ angular.module('home').controller('homeController', ['$scope', '$injector', '$ti
     }
     //Agora - trying to add a logout function
     $scope.reload = function reload() {
-      // Delay a wee bit so that the reload will grab the new configs
+      // Delay a wee bit so that the reload will grab the new configs:q
       setTimeout( function() { 
         authenticationService.logout()['finally'](function logoutComplete() {
-          /**if($location.path() !== '/') {
-            $location.url('/');
-	        }
-          else {
-            $route.reload();
-	        }*/
           $route.reload();
         }); 
-      }, 500);
+      }, 1500);
     };
 }]);
 /*

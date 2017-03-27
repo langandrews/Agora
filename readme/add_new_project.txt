@@ -1,0 +1,6 @@
+1. Copy the new project into a new directory that is accessible to this computer,
+   keeping note of the absolute reference to the main file or project executable which
+   will be referred to later in this file as <executable>.
+2. Make note of the language that the program is written in.  This will be referred to as
+   <language>.  The short form of this must also be known, this will be referred to as
+   <lang>.
