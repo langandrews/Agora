@@ -4,3 +4,5 @@
 2. Make note of the language that the program is written in.  This will be referred to as
    <language>.  The short form of this must also be known, this will be referred to as
    <lang>.
+     - We recommend creating a <language> directory in the Agora base directory, and then
+       placing all <language> projects in their own directories within this directory.

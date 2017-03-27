@@ -1,14 +1,14 @@
-Solitaire,/home/Agora/python/cardgame/,gui.py,p3
-Python Distribute,/home/Agora/python/,distrib.py,p2
-Python Calculator,/home/Agora/python/,tkintertest2.py,p3
-Mario Kart,/home/Agora/python/maze/,main.py,p3
-New Snake,/home/Agora/python/snake2/,snake_game.py,p3
-Snake,/home/Agora/python/snake/,driver.py,p3
-Othello (Kinda),/home/Agora/python/othello/,driver.py,p3
-Super Tic Tac Toe,/home/Agora/python/super_tic_tac_toe/,driver.py,p3
-Java Gui,/home/Agora/java/,GuiApp1,jg
-Java Console,/home/Agora/java/,HelloWorld,jc
-RPSS,/home/Agora/java/,RPSS.jar,jar
-C++ Console,/home/Agora/cpp/,main,cpp
-C# Console,/home/Agora/csharp/,hello.exe,cs
-C# Gui,/home/Agora/csharp/CSharpGui/CSharpGui/bin/Debug/,CSharpGui.exe,cs
+Solitaire,/home/Agora/projects/python/cardgame/,gui.py,p3
+Python Distribute,/home/Agora/projects/python/,distrib.py,p2
+Python Calculator,/home/Agora/projects/python/,tkintertest2.py,p3
+Mario Kart,/home/Agora/projects/python/maze/,main.py,p3
+New Snake,/home/Agora/projects/python/snake2/,snake_game.py,p3
+Snake,/home/Agora/projects/python/snake/,driver.py,p3
+Othello (Kinda),/home/Agora/projects/python/othello/,driver.py,p3
+Super Tic Tac Toe,/home/Agora/projects/python/super_tic_tac_toe/,driver.py,p3
+Java Gui,/home/Agora/projects/java/,GuiApp1,jg
+Java Console,/home/Agora/projects/java/,HelloWorld,jc
+RPSS,/home/Agora/projects/java/,RPSS.jar,jar
+C++ Console,/home/Agora/projects/cpp/,main,cpp
+C# Console,/home/Agora/projects/csharp/,hello.exe,cs
+C# Gui,/home/Agora/projects/csharp/CSharpGui/CSharpGui/bin/Debug/,CSharpGui.exe,cs

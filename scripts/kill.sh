@@ -2,13 +2,16 @@
 #
 # Agora
 # Authors: Joel Stehouwer and Andrew Lang
+#
+# This kills all processes related to the specified running project
+#
 # This file is called by the KillServlet found in
 # 'Agora/guacamole-client/guacamole/src/main/java/agora/KillServlet.java'
 #################
 
 logfile="/home/Agora/logs/kill_sh.log"
 
-# Kill the process specified by command line arg
+# Kill the process specified by command line argument
 pid=$1
 echo "kill.sh: Killing processes relating to ${pid}"
 

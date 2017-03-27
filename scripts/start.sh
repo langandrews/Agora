@@ -59,7 +59,15 @@ echo -e "Agora:Xvfb starting on $nextDisplay" >> $logfile
 cd $directory
 echo -e "CD'd to $directory" >> $logfile
 
-# Handle different python versions
+# Handle different languages
+# In order to add a new language to Agora, create an if block similar to those shown below
+# The if block should have this format
+#   if ["$langVersion" = "<lang>" ]
+#   then
+#     *Start the program*
+#     progPid=$!
+#     *Any desired logging*
+#   fi
 if [ "$langVersion" = "p2" ]
 then
   #python2 /home/Agora/python/$progName &
