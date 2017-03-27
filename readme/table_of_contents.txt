@@ -1,5 +1,8 @@
 This file provides a short summary of each of the other files found in this directory
 
+add_new_language.txt
+  Detailed instructions describing the process required to add a new language to Agora.
+
 add_new_project.txt
   Detailed instructions describing the process required to add a new project to Agora.
 
