@@ -12,3 +12,4 @@ RPSS,/home/Agora/projects/java/,RPSS.jar,jar
 C++ Console,/home/Agora/projects/cpp/,main,cpp
 C# Console,/home/Agora/projects/csharp/,hello.exe,cs
 C# Gui,/home/Agora/projects/csharp/CSharpGui/CSharpGui/bin/Debug/,CSharpGui.exe,cs
+Solitaire Docker,/home/Agora/projects/docker/cardgame/,solitaire,docker

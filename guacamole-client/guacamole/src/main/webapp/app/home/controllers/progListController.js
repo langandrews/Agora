@@ -91,6 +91,15 @@ angular.module('home').controller('progListController', ['$scope', function($sco
           instructions: "Instructions coming soon.",
           author: "Unknown",
           date: "Before Fall 2016"
+        },
+	{
+          id: "solitaire",
+          name: "Solitaire Docker",
+          details: "Description: A Solitaire-like game.",
+          image: $scope.picturePath + "solitaire.png",
+          instructions: "Complicated stuff...",
+          author: "Prof Norman",
+          date: "Feb 6, 2017"
         }
     ],
     'independent': [

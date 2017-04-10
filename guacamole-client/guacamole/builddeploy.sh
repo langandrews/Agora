@@ -3,16 +3,17 @@
 
 mvn package
 cd target
-# I don't know if we need the war file or if we need the target folder stuff...  Maybe we only want the war file?
-mv agoraguac-1.war agora.war
+
+# Now copy the war file with an appropriate name to the tomcat webapps folder
+mv agora-1.war agora.war
 cp agora.war /home/Agora/webapps
+
+# Delete the renamed war file so we don't have problems building next time
 rm -r agora.war
-rm -r agora
-mv agoraguac-1 agora
-cp -r agora /home/Agora/webapps
 echo "agora app deployed"
 
 # Restart required services
 service guacd restart
 service tomcat7 restart
-echo "guacd and tomcat7 restarted"
+echo "Agora should be ready"
+echo "If any services failed to restart, try 'sudo service guacd restart' and 'sudo service tomcat7 restart'"

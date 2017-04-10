@@ -126,13 +126,13 @@ then
   echo -e "$progName C# console running" >> $logFile
 fi 
 
-#if [ "$langVersion" = "csg" ]
-#then
-#  mono $progName
-#  progPid=$!
-#  echo "C# gui program"
-#  echo -e "$progName C# gui running" >> $logFile
-#fi 
+if [ "$langVersion" = "docker" ]
+then
+  xterm -fg white -bg black -e "bash -c \"docker run -it -e DISPLAY=unix:$nextDisplay -v /tmp/.X11-unix:/tmp/.X11-unix $progName; read -n 1\"" &
+  progPid=$!
+  echo "Docker Container"
+  echo -e "$progName Docker running" >> $logFile
+fi 
 
 cd -
 
