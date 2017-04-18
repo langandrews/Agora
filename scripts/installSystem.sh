@@ -106,6 +106,9 @@ then
   sudo apt-get install docker-ce > $logFile 2>&1
   echo -e "Test that docker was successfully installed"
   docker run hello-world
+  sudo groupadd docker
+  sudo usermod -aG docker tomcat7
+  sudo systemctl enable docker
   echo -e "Finished installing Docker"
 fi
 
