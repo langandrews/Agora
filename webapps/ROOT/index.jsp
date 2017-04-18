@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0;URL=http://153.106.116.109:8080/agora/">
+    <meta http-equiv="refresh" content="0;URL=http://agora.cs.calvin.edu:8080/agora/">
     <title>Agora</title>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
