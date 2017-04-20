@@ -40,44 +40,44 @@ echo -e "Finished installing guacamole\n"
 
 # Clone Agora repo to /home folder.
 echo -e "Get Agora from github"
-cd /home > $logFile 2>&1
-git clone https://github.com/solsaver/Agora > $logFile 2>&1
+cd /home >> $logFile 2>&1
+git clone https://github.com/solsaver/Agora >> $logFile 2>&1
 echo -e "Finished configuring Agora\n"
 
 
 # Copy over guacamole setting files.
 echo -e "Configure guacamole settings"
-cp -r Agora/settings-guac/* /etc/guacamole/ > $logFile 2>&1
-cd /etc/guacamole > $logFile 2>&1
-chmod 777 . > $logFile 2>&1
+cp -r Agora/settings-guac/* /etc/guacamole/ >> $logFile 2>&1
+cd /etc/guacamole >> $logFile 2>&1
+chmod 777 . >> $logFile 2>&1
 echo -e "Finished configuring guacamole settings\n"
 
 
 # Make a link to the properties file so that the guacaole server can read it.
 echo -e "Set up tomcat7"
-mkdir /usr/share/tomcat7/.guacamole > $logFile 2>&1
+mkdir /usr/share/tomcat7/.guacamole >> $logFile 2>&1
 #cp settings-guac/guacamole.properties /usr/share/tomcat7/.guacamole/ > $logFile 2>&1
 ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7/.guacamole/
 
 # make a link to the webapps files to override tomcat's default page with the Agora page.
-rm -r /var/lib/tomcat7/webapps > $logFile 2>&1
-ln -s /home/Agora/webapps /var/lib/tomcat7/ > $logFile 2>&1
+rm -r /var/lib/tomcat7/webapps >> $logFile 2>&1
+ln -s /home/Agora/webapps /var/lib/tomcat7/ >> $logFile 2>&1
 echo -e "Finished setting up tomcat7\n"
 
 
 # Build the maven project then copy the resulting war file to the webapps directory.
 echo -e "Build the maven project"
-cd /home/Agora/guacamole-client/guacamole > $logFile 2>&1
-mvn package > $logFile 2>&1
-cd target > $logFile 2>&1
-mv agoraguac-1.war agoraguac.war > $logFile 2>&1
-cp agoraguac.war /home/Agora/webapps > $logFile 2>&1
+cd /home/Agora/guacamole-client/guacamole >> $logFile 2>&1
+mvn package >> $logFile 2>&1
+cd target >> $logFile 2>&1
+mv agoraguac-1.war agoraguac.war >> $logFile 2>&1
+cp agoraguac.war /home/Agora/webapps >> $logFile 2>&1
 echo -e "Finished building the maven project\n"
 
 
 # Set up some permissions and create necessary folders and files
 echo -e "Set up permissions and create necessary folders and files"
-cd /home/Agora > $logFile 2>&1
+cd /home/Agora >> $logFile 2>&1
 sudo chmod 777 pids
 touch pids/recent.txt
 sudo chmod 777 pids/recent.txt
@@ -97,13 +97,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo -e "Installing Docker"
   echo -e "If anything fails here, please refer to Docker's documentation for help (https://docs.docker.com/engine/installation/)"
-  sudo apt-get install apt-transport-https ca-certificates curl software-properties-common > $logFile 2>&1
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - > $logFile 2>&1
+  sudo apt-get install apt-transport-https ca-certificates curl software-properties-common >> $logFile 2>&1
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - >> $logFile 2>&1
   echo -e "Verify the fingerprint is '9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88'"
   sudo apt-key fingerprint 0EBFCD88
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > $logFile 2>&1
-  sudo apt-get update > $logFile 2>&1
-  sudo apt-get install docker-ce > $logFile 2>&1
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" >> $logFile 2>&1
+  sudo apt-get update >> $logFile 2>&1
+  sudo apt-get install docker-ce >> $logFile 2>&1
   echo -e "Test that docker was successfully installed"
   docker run hello-world
   sudo groupadd docker
@@ -114,7 +114,7 @@ fi
 
 # Start/Restart required services
 echo -e "Restart guacd and tomcat7"
-service guacd start > $logFile 2>&1
-service tomcat7 restart > $logFile 2>&1
+service guacd start >> $logFile 2>&1
+service tomcat7 restart >> $logFile 2>&1
 echo -e "Agora has been deployed, navigate to localhost:8080 (or <domain_name>:8080) to see the results"
 echo -e "For documentation on use/custimization, see the /home/Agora/readme folder."
