@@ -9,15 +9,15 @@ echo -e "Installing Agora to your machine.  Please be patient as we install a lo
 
 # Install dependencies
 echo -e "Installing dependencies (expect this to take a long time)"
-apt-get install -y make libcairo2-dev libpng12-dev libjpeg-dev libossp-uuid-dev  freerdp-x11 libssh2-1 libfreerdp-dev libvorbis-dev gcc libssh-dev libpulse-dev tomcat7 tomcat7-admin tomcat7-docs libpango1.0-dev libssh2-1-dev git python-tk > $logFile 2>&1
+apt-get install -y make libcairo2-dev libpng12-dev libjpeg-dev libossp-uuid-dev  freerdp-x11 libssh2-1 libfreerdp-dev libvorbis-dev gcc libssh-dev libpulse-dev tomcat7 tomcat7-admin tomcat7-docs libpango1.0-dev libssh2-1-dev git python-tk >> $logFile 2>&1
 echo -e "Wave 1 installed"
-apt-get install -y libvncserver-dev > $logFile 2>&1
+apt-get install -y libvncserver-dev >> $logFile 2>&1
 echo -e "Wave 2 installed"
-apt-get install -y xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps x11vnc > $logFile 2>&1
+apt-get install -y xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps x11vnc >> $logFile 2>&1
 echo -e "Wave 3 installed"
-apt-get install -y maven > $logFile 2>&1
+apt-get install -y maven >> $logFile 2>&1
 echo -e "Wave 4 installed"
-apt-get install -y default-jdk > $logFile 2>&1
+apt-get install -y default-jdk >> $logFile 2>&1
 echo -e "Wave 5 installed"
 echo -e "Finished installing dependencies\n"
 
@@ -25,16 +25,16 @@ echo -e "Finished installing dependencies\n"
 # Download and install guacamole.
 echo -e "Download and install guacamole"
 wget -O guacamole-server-0.9.9.tar.gz http://sourceforge.net/projects/guacamole/files/current/source/guacamole-server-0.9.9.tar.gz/download > $logFile 2>&1
-tar -xvzf guacamole-server-0.9.9.tar.gz > $logFile 2>&1
-cd guacamole-server-0.9.9 > $logFile 2>&1
-./configure --with-init-dir=/etc/init.d > $logFile 2>&1
-make && make install > $logFile 2>&1
-update-rc.d guacd defaults > $logFile 2>&1
-ldconfig > $logFile 2>&1
-mkdir /etc/guacamole > $logFile 2>&1
-cd /home/Agora > $logFile 2>&1
-rm -r $here/guacamole-server-0.9.9/ > $logFile 2>&1
-rm $here/guacamole-server-0.9.9.tar.gz $logFile 2>&1
+tar -xvzf guacamole-server-0.9.9.tar.gz >> $logFile 2>&1
+cd guacamole-server-0.9.9 >> $logFile 2>&1
+./configure --with-init-dir=/etc/init.d >> $logFile 2>&1
+make && make install >> $logFile 2>&1
+update-rc.d guacd defaults >> $logFile 2>&1
+ldconfig >> $logFile 2>&1
+mkdir /etc/guacamole >> $logFile 2>&1
+cd /home/Agora >> $logFile 2>&1
+rm -r $here/guacamole-server-0.9.9/ >> $logFile 2>&1
+rm $here/guacamole-server-0.9.9.tar.gz >> $logFile 2>&1
 echo -e "Finished installing guacamole\n"
 
 
