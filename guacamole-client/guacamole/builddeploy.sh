@@ -1,6 +1,7 @@
 #!/bin/bash
 # Script to build the maven project then copy the resulting war file to the webapps directory.
 
+cd /home/Agora/guacamole-client/guacamole
 mvn package
 cd target
 
