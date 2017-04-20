@@ -81,7 +81,7 @@ cd /home/Agora > $logFile 2>&1
 sudo chmod 777 pids
 touch pids/recent.txt
 sudo chmod 777 pids/recent.txt
-sudo chmod 777 /home/Agora/port.txt
+sudo chmod 777 resources/current_ports.txt
 mkdir /home/Agora/logs
 sudo chmod 777 /home/Agora/logs
 touch /home/Agora/logs/start_sh.log
