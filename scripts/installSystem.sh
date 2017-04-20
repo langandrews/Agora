@@ -24,7 +24,7 @@ echo -e "Finished installing dependencies\n"
 
 # Download and install guacamole.
 echo -e "Download and install guacamole"
-wget -O guacamole-server-0.9.9.tar.gz http://sourceforge.net/projects/guacamole/files/current/source/guacamole-server-0.9.9.tar.gz/download > $logFile 2>&1
+wget -O guacamole-server-0.9.9.tar.gz http://sourceforge.net/projects/guacamole/files/current/source/guacamole-server-0.9.9.tar.gz/download >> $logFile 2>&1
 tar -xvzf guacamole-server-0.9.9.tar.gz >> $logFile 2>&1
 cd guacamole-server-0.9.9 >> $logFile 2>&1
 ./configure --with-init-dir=/etc/init.d >> $logFile 2>&1
