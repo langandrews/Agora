@@ -93,7 +93,7 @@
     /**
      * Kill all of my processes when tab is closed using the pids that were stored earlier.
      */
-    $(window).unload(function() {
+    $(window).on('beforeunload', function() {
       killPrevious();
       console.log("Unload");
     });

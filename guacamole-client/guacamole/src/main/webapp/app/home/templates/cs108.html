@@ -110,7 +110,7 @@
     }
 
     /**
-     * Kill all previous programs that were run by this user
+     * Kill previous program that was run by this user
      */
     function killPrevious() {
       var pid = sessionStorage.getItem("previousPid");
@@ -123,9 +123,9 @@
     }
 
     /**
-     * Kill all of my processes when tab is closed using the pids that were stored earlier.
+     * Kill my previous process when tab is closed using the pid that was stored earlier.
      */
-    $(window).unload(function() {
+    $(window).on('beforeunload', function() {
       killPrevious();
       console.log("Unload");
     });
