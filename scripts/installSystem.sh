@@ -117,4 +117,4 @@ echo -e "Restart guacd and tomcat7"
 service guacd start >> $logFile 2>&1
 service tomcat7 restart >> $logFile 2>&1
 echo -e "Agora has been deployed, navigate to localhost:8080 (or <domain_name>:8080) to see the results"
-echo -e "For documentation on use/custimization, see the /home/Agora/readme folder."
+echo -e "For documentation on use/customization, see the /home/Agora/readme folder."
